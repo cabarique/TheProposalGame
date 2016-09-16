@@ -35,17 +35,21 @@ enum AnimationState: String {
 }
 
 enum ColliderType:UInt32 {
-  case Player        = 0
-  case Destroyable   = 0b1
-  case Wall          = 0b10
-  case Collectable   = 0b100
-  case EndLevel      = 0b1000
-  case Projectile    = 0b10000
-  case None          = 0b100000
-  case KillZone      = 0b1000000
+  case Player        = 0b1
+  case Destroyable   = 0b10
+  case Wall          = 0b100
+  case Collectable   = 0b1000
+  case EndLevel      = 0b10000
+  case Projectile    = 0b100000
+  case None          = 0b1000000
+  case KillZone      = 0b10000000
 }
 
 struct GameSettings {
+    
+    struct Builder {
+        static var ALL_Black_Background: Bool = false
+    }
   
   /**
   Standard options when game is run in debug mode.
@@ -58,7 +62,7 @@ struct GameSettings {
     
     static let IOS_ShowDrawCount: Bool = false
     static let IOS_ShowQuadCount: Bool = false
-    static let IOS_ShowPhysics  : Bool = false
+    static let IOS_ShowPhysics  : Bool = true
     static let IOS_ShowFields   : Bool = false
     
     static let ALL_TellMeStatus : Bool = true

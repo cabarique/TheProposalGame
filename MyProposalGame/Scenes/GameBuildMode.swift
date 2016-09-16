@@ -31,7 +31,7 @@ enum toolSelection {
 }
 
 class GameBuildMode: SGScene {
-  
+    
   //Layers
   var worldLayer:TileLayer!
   var overlayLayer = SKNode()
@@ -50,6 +50,8 @@ class GameBuildMode: SGScene {
   
   
   override func didMoveToView(view: SKView) {
+    
+    GameSettings.Builder.ALL_Black_Background = true
     
     //Setup camera
     let myCamera = SKCameraNode()

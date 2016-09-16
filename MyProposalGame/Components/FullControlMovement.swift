@@ -68,6 +68,10 @@ class FullControlComponent: GKComponent {
         
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: FullMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
         
@@ -93,13 +97,14 @@ class FullControlComponent: GKComponent {
         }
         if (jumpTime > 0.0) {
             jumpTime = jumpTime - CGFloat(seconds)
-            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (seconds * 25.0)), atPoint: spriteComponent.node.position)
+            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (seconds * 32.0)), atPoint: spriteComponent.node.position)
             return
         }
         
         if spriteComponent.node.physicsBody?.allContactedBodies().count > 0 {
             for body in (spriteComponent.node.physicsBody?.allContactedBodies())! {
                 let nodeDir = ((body.node?.position)! - spriteComponent.node.position).angle
+                
                 if (nodeDir > -2.355 && nodeDir < -0.785) {
                     isJumping = false
                     
@@ -107,6 +112,16 @@ class FullControlComponent: GKComponent {
                         animationComponent.requestedAnimationState = .Run
                     } else {
                         animationComponent.requestedAnimationState = .Idle
+                    }
+                    
+                    if let inOutTile = body.node as? SGSpriteNode where
+                        inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
+                        body.node?.physicsBody?.categoryBitMask = ColliderType.Wall.rawValue
+                    }
+                }else{
+                    if let inOutTile = body.node as? SGSpriteNode where
+                        inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
+                        body.node?.physicsBody?.categoryBitMask = ColliderType.None.rawValue
                     }
                 }
             }
