@@ -38,6 +38,7 @@ class MovementStick: SKNode {
         
         let background = SKSpriteNode(texture: atlas.textureNamed("stick_bounds"))
         background.zPosition = zPos
+        background.size = CGSize(width: 150, height: 150)
         radius = background.size.width/2
         
         super.init()
@@ -45,7 +46,9 @@ class MovementStick: SKNode {
         self.name = stickName
         self.userInteractionEnabled = true
         
-        stick = SKSpriteNode(texture: atlas.textureNamed("stick_centre"))
+        stick = SKSpriteNode(texture: atlas.textureNamed("Joystick"))
+        stick.size = CGSize(width: 80, height: 80)
+        stick.alpha = 0.7
         stick.zPosition = zPos + 1
         
         self.addChild(background)

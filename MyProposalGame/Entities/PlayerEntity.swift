@@ -103,10 +103,6 @@ class PlayerEntity: SGEntity {
             }
         }
         
-        if entity.name == "killZoneEntity" {
-            playerDied()
-        }
-        
     }
     
     func playerDied() {

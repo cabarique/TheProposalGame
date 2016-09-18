@@ -97,7 +97,7 @@ class FullControlComponent: GKComponent {
         }
         if (jumpTime > 0.0) {
             jumpTime = jumpTime - CGFloat(seconds)
-            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (seconds * 32.0)), atPoint: spriteComponent.node.position)
+            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (seconds * 43)), atPoint: spriteComponent.node.position)
             return
         }
         

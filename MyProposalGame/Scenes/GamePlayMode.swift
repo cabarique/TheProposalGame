@@ -215,8 +215,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
       
       let insetContentRect = boardContentRect.insetBy(dx: xInset, dy: yInset)
       
-      let xRange = SKRange(lowerLimit: insetContentRect.minX, upperLimit: insetContentRect.maxX)
-      let yRange = SKRange(lowerLimit: insetContentRect.minY, upperLimit: insetContentRect.maxY)
+      let xRange = SKRange(lowerLimit: insetContentRect.minX + 110, upperLimit: insetContentRect.maxX)
+      let yRange = SKRange(lowerLimit: insetContentRect.minY + 50, upperLimit: insetContentRect.maxY)
       
       let levelEdgeConstraint = SKConstraint.positionX(xRange, y: yRange)
       levelEdgeConstraint.referenceNode = worldLayer

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4FA27EE21D8B7F93001C9812 /* SGSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */; };
+		4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2B3621D8DBC4F005F169A /* Button.atlas */; };
 		4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */; };
 		4FEA1FC41D87802B00E96E1A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC31D87802B00E96E1A /* GameViewController.swift */; };
 		4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC51D87802B00E96E1A /* Main.storyboard */; };
@@ -36,7 +37,6 @@
 		4FEA20361D87893A00E96E1A /* BackgroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */; };
 		4FEA20371D87893A00E96E1A /* FinishEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20311D87893A00E96E1A /* FinishEntity.swift */; };
 		4FEA20381D87893A00E96E1A /* GemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20321D87893A00E96E1A /* GemEntity.swift */; };
-		4FEA20391D87893A00E96E1A /* KillZoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20331D87893A00E96E1A /* KillZoneEntity.swift */; };
 		4FEA203A1D87893A00E96E1A /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20341D87893A00E96E1A /* PlayerEntity.swift */; };
 		4FEA203B1D87893A00E96E1A /* SGEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20351D87893A00E96E1A /* SGEntity.swift */; };
 		4FEA203D1D878A3C00E96E1A /* TileLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA203C1D878A3C00E96E1A /* TileLayer.swift */; };
@@ -72,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGSpriteNode.swift; sourceTree = "<group>"; };
+		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProposalGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA1FC31D87802B00E96E1A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackgroundEntity.swift; path = Entities/BackgroundEntity.swift; sourceTree = "<group>"; };
 		4FEA20311D87893A00E96E1A /* FinishEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinishEntity.swift; path = Entities/FinishEntity.swift; sourceTree = "<group>"; };
 		4FEA20321D87893A00E96E1A /* GemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GemEntity.swift; path = Entities/GemEntity.swift; sourceTree = "<group>"; };
-		4FEA20331D87893A00E96E1A /* KillZoneEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KillZoneEntity.swift; path = Entities/KillZoneEntity.swift; sourceTree = "<group>"; };
 		4FEA20341D87893A00E96E1A /* PlayerEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerEntity.swift; path = Entities/PlayerEntity.swift; sourceTree = "<group>"; };
 		4FEA20351D87893A00E96E1A /* SGEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SGEntity.swift; path = Entities/SGEntity.swift; sourceTree = "<group>"; };
 		4FEA203C1D878A3C00E96E1A /* TileLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer.swift; path = Scenes/Layers/TileLayer.swift; sourceTree = "<group>"; };
@@ -209,7 +209,6 @@
 				4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */,
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
 				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
-				4FEA20331D87893A00E96E1A /* KillZoneEntity.swift */,
 				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
@@ -285,6 +284,7 @@
 		4FEA1FDD1D87845A00E96E1A /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				4FD2B3621D8DBC4F005F169A /* Button.atlas */,
 				4FEA20741D87912300E96E1A /* GUI.atlas */,
 				4FEA20681D878CB200E96E1A /* Female.atlas */,
 				4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */,
@@ -419,6 +419,7 @@
 				4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */,
 				4FEA206E1D878CB200E96E1A /* Male.atlas in Resources */,
 				4FEA20661D878C9F00E96E1A /* throw.wav in Resources */,
+				4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,7 +460,6 @@
 				4FEA203A1D87893A00E96E1A /* PlayerEntity.swift in Sources */,
 				4FEA20521D878A5800E96E1A /* PhysicsComponent.swift in Sources */,
 				4FEA20371D87893A00E96E1A /* FinishEntity.swift in Sources */,
-				4FEA20391D87893A00E96E1A /* KillZoneEntity.swift in Sources */,
 				4FEA20481D878A4A00E96E1A /* GameScene.swift in Sources */,
 				4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */,
 				4FEA201D1D87880200E96E1A /* SKTEffects.swift in Sources */,

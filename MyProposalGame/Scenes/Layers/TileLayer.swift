@@ -49,6 +49,7 @@ class TileLayer: SKNode, tileMapDelegate {
     func createNodeOf(type type:tileType, location:CGPoint) {
         //Load texture atlas
         let atlasTiles = SKTextureAtlas(named: "Tiles")
+        let atlasGUI = SKTextureAtlas(named: "GUI")
         
         //Handle each object
         switch type {
@@ -342,8 +343,17 @@ class TileLayer: SKNode, tileMapDelegate {
             node.name = "placeholder_FinishPoint"
             addChild(node)
             break
+        case .tileDiamond:
+            let node = SKNode()
+            node.position = location
+            node.name = "placeholder_Diamond"
+            addChild(node)
+        case .tileCoin:
+            let node = SKNode()
+            node.position = location
+            node.name = "placeholder_Coin"
+            addChild(node)
         }
-        
         
     }
     
