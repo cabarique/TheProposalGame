@@ -125,10 +125,14 @@ class GameSceneInitialState: GameSceneState {
         pauseButton.name = "PauseButton"
         gs.overlayGUI.addChild(pauseButton)
         
+        //Controls
         gs.movementStick.posByScreen(-0.40, y: -0.49)
         gs.overlayGUI.addChild(gs.movementStick)
-        gs.stateMachine.enterState(GameSceneActiveState.self)
         
+        gs.jumpButton.posByScreen(0.42, y: -0.52)
+        gs.overlayGUI.addChild(gs.jumpButton)
+        
+        gs.stateMachine.enterState(GameSceneActiveState.self)
     }
     
 }

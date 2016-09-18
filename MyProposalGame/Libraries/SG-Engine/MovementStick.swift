@@ -48,7 +48,7 @@ class MovementStick: SKNode {
         
         stick = SKSpriteNode(texture: atlas.textureNamed("Joystick"))
         stick.size = CGSize(width: 80, height: 80)
-        stick.alpha = 0.7
+        stick.alpha = 0.5
         stick.zPosition = zPos + 1
         
         self.addChild(background)
@@ -70,7 +70,7 @@ class MovementStick: SKNode {
         for touch in touches {
             let location = touch.locationInNode(self)
             stick.position = location
-            
+            stick.alpha = 1.0
         }
     }
     
@@ -79,12 +79,13 @@ class MovementStick: SKNode {
         for touch in touches {
             let location = touch.locationInNode(self)
             stick.position = location
-            
+            stick.alpha = 1.0
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         stick.position = CGPointZero
+        stick.alpha = 0.5
     }
     
 }

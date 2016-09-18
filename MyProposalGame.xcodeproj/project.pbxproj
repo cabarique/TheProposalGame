@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4FA27EE21D8B7F93001C9812 /* SGSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */; };
+		4FD11F031D8F19B700FBBE26 /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD11F021D8F19B700FBBE26 /* JumpButton.swift */; };
 		4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2B3621D8DBC4F005F169A /* Button.atlas */; };
 		4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */; };
 		4FEA1FC41D87802B00E96E1A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC31D87802B00E96E1A /* GameViewController.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGSpriteNode.swift; sourceTree = "<group>"; };
+		4FD11F021D8F19B700FBBE26 /* JumpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpButton.swift; sourceTree = "<group>"; };
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProposalGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEA20721D878FDF00E96E1A /* MovementStick.swift */,
+				4FD11F021D8F19B700FBBE26 /* JumpButton.swift */,
 				4FEA20201D87882200E96E1A /* IOS_Responder.swift */,
 				4FEA20211D87882200E96E1A /* SGExtensions.swift */,
 				4FEA20221D87882200E96E1A /* SGResolution.swift */,
@@ -454,6 +457,7 @@
 				4FEA202D1D87882F00E96E1A /* TileMapLevels.swift in Sources */,
 				4FEA202B1D87882F00E96E1A /* SGGameSettings.swift in Sources */,
 				4FEA20261D87882200E96E1A /* SGResolution.swift in Sources */,
+				4FD11F031D8F19B700FBBE26 /* JumpButton.swift in Sources */,
 				4FEA203D1D878A3C00E96E1A /* TileLayer.swift in Sources */,
 				4FEA20511D878A5800E96E1A /* ParallaxComponent.swift in Sources */,
 				4FEA20191D87880200E96E1A /* SKAction+SpecialEffects.swift in Sources */,

@@ -26,8 +26,8 @@ import GameplayKit
 struct FullMoveControlScheme {
     
     //Input
-    var jumpPressed:Bool = false
-    var throwPressed:Bool = false
+    var jumpPressed:Bool            = false
+    var throwPressed:Bool       	= false
     
     var movement:CGPoint = CGPointZero
     
@@ -50,6 +50,7 @@ class FullControlComponent: GKComponent {
     
     //State
     var isJumping = false
+    var isDoubleJumping = false
     var jumpTime:CGFloat = 0.0
     var isThrowing = false
     
@@ -92,9 +93,19 @@ class FullControlComponent: GKComponent {
                 playerEnt.gameScene.runAction(playerEnt.gameScene.sndJump)
             }
             isJumping = true
-            jumpTime = 0.2
+            jumpTime = 0.1
+            animationComponent.requestedAnimationState = .Jump
+        }else if controlInput.jumpPressed && isJumping && isDoubleJumping == false { //double jumping
+            if let playerEnt = entity as? PlayerEntity {
+                playerEnt.gameScene.runAction(playerEnt.gameScene.sndJump)
+            }
+            isJumping = true
+            isDoubleJumping = true
+            
+            jumpTime = 0.12
             animationComponent.requestedAnimationState = .Jump
         }
+        
         if (jumpTime > 0.0) {
             jumpTime = jumpTime - CGFloat(seconds)
             spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: (seconds * 43)), atPoint: spriteComponent.node.position)
@@ -107,6 +118,8 @@ class FullControlComponent: GKComponent {
                 
                 if (nodeDir > -2.355 && nodeDir < -0.785) {
                     isJumping = false
+                    isDoubleJumping = false
+
                     
                     if (controlInput.movement.x > 0.1 || controlInput.movement.x < -0.1) {
                         animationComponent.requestedAnimationState = .Run
