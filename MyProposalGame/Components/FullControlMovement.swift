@@ -27,7 +27,7 @@ struct FullMoveControlScheme {
     
     //Input
     var jumpPressed:Bool            = false
-    var throwPressed:Bool       	= false
+    var firePressed:Bool            = false
     
     var movement:CGPoint = CGPointZero
     
@@ -52,7 +52,9 @@ class FullControlComponent: GKComponent {
     var isJumping = false
     var isDoubleJumping = false
     var jumpTime:CGFloat = 0.0
-    var isThrowing = false
+    
+    var isFiring = false
+    var fireTime: CGFloat = 0.0
     
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
@@ -112,6 +114,18 @@ class FullControlComponent: GKComponent {
             return
         }
         
+        if controlInput.firePressed && !isFiring {
+            if let playerEnt = entity as? PlayerEntity {
+                playerEnt.gameScene.runAction(playerEnt.gameScene.sndFire)
+            }
+            fireTime = 0.5
+            animationComponent.requestedAnimationState = .IdleFire
+        }
+        if (fireTime > 0.0) {
+            fireTime = fireTime - CGFloat(seconds)
+            return
+        }
+        
         if spriteComponent.node.physicsBody?.allContactedBodies().count > 0 {
             for body in (spriteComponent.node.physicsBody?.allContactedBodies())! {
                 let nodeDir = ((body.node?.position)! - spriteComponent.node.position).angle
@@ -131,7 +145,7 @@ class FullControlComponent: GKComponent {
                         inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
                         body.node?.physicsBody?.categoryBitMask = ColliderType.Wall.rawValue
                     }
-                }else{
+                }else if nodeDir > 0 {
                     if let inOutTile = body.node as? SGSpriteNode where
                         inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
                         body.node?.physicsBody?.categoryBitMask = ColliderType.None.rawValue
@@ -139,12 +153,7 @@ class FullControlComponent: GKComponent {
                 }
             }
         }
-        
-        //Throw
-        
     }
-    
-    
 }
 
 

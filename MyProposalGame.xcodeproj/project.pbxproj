@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4FA27EE21D8B7F93001C9812 /* SGSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */; };
 		4FD11F031D8F19B700FBBE26 /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD11F021D8F19B700FBBE26 /* JumpButton.swift */; };
+		4FD11F051D8F4A6500FBBE26 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD11F041D8F4A6500FBBE26 /* FireButton.swift */; };
+		4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */; };
+		4FD11F111D8F647500FBBE26 /* ProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD11F101D8F647500FBBE26 /* ProjectileEntity.swift */; };
 		4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2B3621D8DBC4F005F169A /* Button.atlas */; };
 		4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */; };
 		4FEA1FC41D87802B00E96E1A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC31D87802B00E96E1A /* GameViewController.swift */; };
@@ -60,7 +63,6 @@
 		4FEA20631D878C9F00E96E1A /* collect_good.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205D1D878C9F00E96E1A /* collect_good.wav */; };
 		4FEA20641D878C9F00E96E1A /* impact.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205E1D878C9F00E96E1A /* impact.wav */; };
 		4FEA20651D878C9F00E96E1A /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205F1D878C9F00E96E1A /* jump.wav */; };
-		4FEA20661D878C9F00E96E1A /* throw.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20601D878C9F00E96E1A /* throw.wav */; };
 		4FEA20671D878C9F00E96E1A /* title_drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20611D878C9F00E96E1A /* title_drop.wav */; };
 		4FEA206C1D878CB200E96E1A /* Female.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20681D878CB200E96E1A /* Female.atlas */; };
 		4FEA206D1D878CB200E96E1A /* LargeMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */; };
@@ -74,6 +76,9 @@
 /* Begin PBXFileReference section */
 		4FA27EE11D8B7F93001C9812 /* SGSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGSpriteNode.swift; sourceTree = "<group>"; };
 		4FD11F021D8F19B700FBBE26 /* JumpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpButton.swift; sourceTree = "<group>"; };
+		4FD11F041D8F4A6500FBBE26 /* FireButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireButton.swift; sourceTree = "<group>"; };
+		4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunshot.wav; path = Resources/Sounds/gunshot.wav; sourceTree = "<group>"; };
+		4FD11F101D8F647500FBBE26 /* ProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileEntity.swift; sourceTree = "<group>"; };
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProposalGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +132,6 @@
 		4FEA205D1D878C9F00E96E1A /* collect_good.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = collect_good.wav; path = Resources/Sounds/collect_good.wav; sourceTree = "<group>"; };
 		4FEA205E1D878C9F00E96E1A /* impact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = impact.wav; path = Resources/Sounds/impact.wav; sourceTree = "<group>"; };
 		4FEA205F1D878C9F00E96E1A /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Resources/Sounds/jump.wav; sourceTree = "<group>"; };
-		4FEA20601D878C9F00E96E1A /* throw.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = throw.wav; path = Resources/Sounds/throw.wav; sourceTree = "<group>"; };
 		4FEA20611D878C9F00E96E1A /* title_drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = title_drop.wav; path = Resources/Sounds/title_drop.wav; sourceTree = "<group>"; };
 		4FEA20681D878CB200E96E1A /* Female.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Female.atlas; path = Resources/Atlas/Female.atlas; sourceTree = "<group>"; };
 		4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = LargeMedia.xcassets; path = Resources/Atlas/LargeMedia.xcassets; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
 				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
 				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
+				4FD11F101D8F647500FBBE26 /* ProjectileEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
 			name = Entities;
@@ -277,7 +282,7 @@
 				4FEA205D1D878C9F00E96E1A /* collect_good.wav */,
 				4FEA205E1D878C9F00E96E1A /* impact.wav */,
 				4FEA205F1D878C9F00E96E1A /* jump.wav */,
-				4FEA20601D878C9F00E96E1A /* throw.wav */,
+				4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */,
 				4FEA20611D878C9F00E96E1A /* title_drop.wav */,
 			);
 			name = Sounds;
@@ -311,6 +316,7 @@
 			children = (
 				4FEA20721D878FDF00E96E1A /* MovementStick.swift */,
 				4FD11F021D8F19B700FBBE26 /* JumpButton.swift */,
+				4FD11F041D8F4A6500FBBE26 /* FireButton.swift */,
 				4FEA20201D87882200E96E1A /* IOS_Responder.swift */,
 				4FEA20211D87882200E96E1A /* SGExtensions.swift */,
 				4FEA20221D87882200E96E1A /* SGResolution.swift */,
@@ -408,6 +414,7 @@
 			files = (
 				4FEA20671D878C9F00E96E1A /* title_drop.wav in Resources */,
 				4FEA20751D87912300E96E1A /* GUI.atlas in Resources */,
+				4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */,
 				4FEA205B1D878C9000E96E1A /* background_music.mp3 in Resources */,
 				4FEA206F1D878CB200E96E1A /* Tiles.atlas in Resources */,
 				4FEA20621D878C9F00E96E1A /* button_click.wav in Resources */,
@@ -421,7 +428,6 @@
 				4FEA206C1D878CB200E96E1A /* Female.atlas in Resources */,
 				4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */,
 				4FEA206E1D878CB200E96E1A /* Male.atlas in Resources */,
-				4FEA20661D878C9F00E96E1A /* throw.wav in Resources */,
 				4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +460,7 @@
 				4FEA20271D87882200E96E1A /* SGScene.swift in Sources */,
 				4FEA201B1D87880200E96E1A /* SKNode+Extensions.swift in Sources */,
 				4FEA20181D87880200E96E1A /* SKAction+Extensions.swift in Sources */,
+				4FD11F051D8F4A6500FBBE26 /* FireButton.swift in Sources */,
 				4FEA202D1D87882F00E96E1A /* TileMapLevels.swift in Sources */,
 				4FEA202B1D87882F00E96E1A /* SGGameSettings.swift in Sources */,
 				4FEA20261D87882200E96E1A /* SGResolution.swift in Sources */,
@@ -467,6 +474,7 @@
 				4FEA20481D878A4A00E96E1A /* GameScene.swift in Sources */,
 				4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */,
 				4FEA201D1D87880200E96E1A /* SKTEffects.swift in Sources */,
+				4FD11F111D8F647500FBBE26 /* ProjectileEntity.swift in Sources */,
 				4FEA20531D878A5800E96E1A /* SpriteComponent.swift in Sources */,
 				4FEA20241D87882200E96E1A /* IOS_Responder.swift in Sources */,
 				4FEA20361D87893A00E96E1A /* BackgroundEntity.swift in Sources */,

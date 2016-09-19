@@ -49,7 +49,6 @@ class TileLayer: SKNode, tileMapDelegate {
     func createNodeOf(type type:tileType, location:CGPoint) {
         //Load texture atlas
         let atlasTiles = SKTextureAtlas(named: "Tiles")
-        let atlasGUI = SKTextureAtlas(named: "GUI")
         
         //Handle each object
         switch type {

@@ -1,19 +1,20 @@
 //
-//  JumpButton.swift
+//  FireButton.swift
 //  MyProposalGame
 //
 //  Created by Luis Cabarique on 9/18/16.
 //  Copyright © 2016 Luis Cabarique. All rights reserved.
 //
 
+
 import SpriteKit
 import GameplayKit
 
-class JumpButton: SKNode {
+class FireButton: SKNode {
     
     var button = SKSpriteNode()
     let radius:CGFloat
-    var jumpPressed = false
+    var firePressed = false
     
     var zPos:CGFloat = 1000
     
@@ -21,7 +22,7 @@ class JumpButton: SKNode {
         
         let atlas = SKTextureAtlas(named: "Button")
         
-        button = SKSpriteNode(texture: atlas.textureNamed("arrowU"))
+        button = SKSpriteNode(texture: atlas.textureNamed("game"))
         button.zPosition = zPos
         button.alpha = 0.5
         button.size = CGSize(width: 90, height: 90)
@@ -32,7 +33,7 @@ class JumpButton: SKNode {
         
         self.name = buttonName
         self.userInteractionEnabled = true
- 
+        
         self.addChild(button)
         
     }
@@ -45,13 +46,14 @@ class JumpButton: SKNode {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for _ in touches {
             button.alpha = 1.0
-            jumpPressed = true
+            firePressed = true
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         button.alpha = 0.5
-        jumpPressed = false
+        firePressed = false
     }
     
 }
+

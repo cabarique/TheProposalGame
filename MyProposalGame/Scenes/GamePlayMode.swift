@@ -33,6 +33,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     
     //Level Data
     var gemsCollected = 0
+    var diamondsCollected = 0
+    var coinsCollected = 0
     var worldFrame = CGRect()
     
     //Layers
@@ -72,10 +74,12 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     var pauseLoop = false
     let movementStick = MovementStick(stickName: "MoveStick")
     let jumpButton = JumpButton(buttonName: "JumpButton")
+    let fireButton = FireButton(buttonName: "FireButton")
     
     //Sounds
     let sndCollectGood = SKAction.playSoundFileNamed("collect_good.wav", waitForCompletion: false)
     let sndJump = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
+    let sndFire = SKAction.playSoundFileNamed("gunshot.wav", waitForCompletion: false)
     
     //MARK: Initializer
     
@@ -115,8 +119,13 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             //Update State machines
             stateMachine.updateWithDeltaTime(deltaTime)
             
+            var playerEntity: PlayerEntity?
+            
             //Update Entities
             for entity in entities {
+                if entity is PlayerEntity{
+                    playerEntity = entity as? PlayerEntity
+                }
                 entity.updateWithDeltaTime(deltaTime)
             }
             
@@ -130,6 +139,20 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             
             control.jumpPressed = jumpButton.jumpPressed
             jumpButton.jumpPressed = false
+            
+            control.firePressed = fireButton.firePressed
+            
+            if control.firePressed {
+                let atlas = SKTextureAtlas(named: "Tiles")
+                let spriteNode = playerEntity?.spriteComponent.node
+                let orientation: CGFloat = control.movement.x >= 0 ? 1 : -1
+                let projectile = ProjectileEntity(position: CGPoint(x: spriteNode!.position.x + 30, y: spriteNode!.position.y + 20), size: CGSize(width: 40, height: 8), orientation: orientation, texture: atlas.textureNamed("Kunai"), scene: self)
+//                projectile.projectileOrientation = control.movement.x >= 0 ? 1 : -1
+                projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
+                self.addEntity(projectile, toLayer: self.worldLayer)
+                
+                fireButton.firePressed = false
+            }
         }
     }
     
@@ -154,19 +177,19 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             }
         }
         
-//        control.jumpPressed = jumpButton.jump
+        //        control.jumpPressed = jumpButton.jump
         
     }
     
     override func screenInteractionMoved(location: CGPoint) {
         
-//        control.jumpPressed = jumpButton.jump
+        //        control.jumpPressed = jumpButton.jump
         
     }
     
     override func screenInteractionEnded(location: CGPoint) {
         
-//        control.jumpPressed = jumpButton.jump
+        //        control.jumpPressed = jumpButton.jump
         
     }
     

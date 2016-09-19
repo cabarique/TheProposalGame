@@ -132,6 +132,9 @@ class GameSceneInitialState: GameSceneState {
         gs.jumpButton.posByScreen(0.42, y: -0.52)
         gs.overlayGUI.addChild(gs.jumpButton)
         
+        gs.fireButton.posByScreen(0.3, y: -0.52)
+        gs.overlayGUI.addChild(gs.fireButton)
+        
         gs.stateMachine.enterState(GameSceneActiveState.self)
     }
     

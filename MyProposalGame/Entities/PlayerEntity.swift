@@ -71,9 +71,9 @@ class PlayerEntity: SGEntity {
         animations[.Run] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                  withImageIdentifier: AnimationState.Run.rawValue,
                                                                  forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 37.93, height: 48.0))
-        animations[.IdleThrow] = AnimationComponent.animationFromAtlas(textureAtlas,
-                                                                       withImageIdentifier: AnimationState.IdleThrow.rawValue,
-                                                                       forAnimationState: .IdleThrow, repeatTexturesForever: false, textureSize: CGSize(width: 40.1, height: 48.0))
+        animations[.IdleFire] = AnimationComponent.animationFromAtlas(textureAtlas,
+                                                                       withImageIdentifier: AnimationState.IdleFire.rawValue,
+                                                                       forAnimationState: .IdleFire, repeatTexturesForever: false, textureSize: CGSize(width: 40.1, height: 48.0))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 27.84, height: 48.0))
@@ -98,7 +98,23 @@ class PlayerEntity: SGEntity {
         if entity.name == "gemEntity" {
             if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
                 spriteComponent.node.removeFromParent()
-                gameScene.gemsCollected++
+                gameScene.gemsCollected += 1
+                gameScene.runAction(gameScene.sndCollectGood)
+            }
+        }
+        
+        if entity.name == "diamondEntity" {
+            if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
+                spriteComponent.node.removeFromParent()
+                gameScene.diamondsCollected += 1
+                gameScene.runAction(gameScene.sndCollectGood)
+            }
+        }
+        
+        if entity.name == "coinmEntity" {
+            if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
+                spriteComponent.node.removeFromParent()
+                gameScene.coinsCollected += 1
                 gameScene.runAction(gameScene.sndCollectGood)
             }
         }
