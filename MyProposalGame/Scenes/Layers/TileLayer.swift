@@ -76,7 +76,7 @@ class TileLayer: SKNode, tileMapDelegate {
             addChild(node)
             break
         case .tileGround:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("2"))
+            let node = SGInOutSpriteNode(texture: atlasTiles.textureNamed("2"))
             node.size = CGSize(width: 32, height: 32)
             node.tileSpriteType = type
             node.position = location
@@ -141,7 +141,7 @@ class TileLayer: SKNode, tileMapDelegate {
             addChild(node)
             break
         case .tileGroundCornerR:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("7"))
+            let node = SGInOutSpriteNode(texture: atlasTiles.textureNamed("7"))
             node.size = CGSize(width: 32, height: 32)
             node.tileSpriteType = type
             node.position = location
@@ -185,7 +185,7 @@ class TileLayer: SKNode, tileMapDelegate {
             addChild(node)
             break
         case .tileGroundCornerL:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("11"))
+            let node = SGInOutSpriteNode(texture: atlasTiles.textureNamed("11"))
             node.tileSpriteType = type
             node.size = CGSize(width: 32, height: 32)
             node.position = location
@@ -352,7 +352,10 @@ class TileLayer: SKNode, tileMapDelegate {
             node.position = location
             node.name = "placeholder_Coin"
             addChild(node)
+        default:
+            break
         }
+        
         
     }
     

@@ -77,9 +77,9 @@ class FullControlComponent: GKComponent {
     
     func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: FullMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
-        
+        let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
         //Move sprite
-        spriteComponent.node.position += (controlInput.movement * (movementSpeed * CGFloat(seconds)))
+        spriteComponent.node.position += (controlInput.movement * (movementSpeed * CGFloat(seconds))) // < 1
         
         if controlInput.movement.x == 0 {
             //Don't change orientation
@@ -90,7 +90,7 @@ class FullControlComponent: GKComponent {
         }
         
         //Jump
-        if controlInput.jumpPressed && !isJumping {
+        if controlInput.jumpPressed && !isJumping && allContactedBodies?.count > 0 {
             if let playerEnt = entity as? PlayerEntity {
                 playerEnt.gameScene.runAction(playerEnt.gameScene.sndJump)
             }
@@ -118,7 +118,7 @@ class FullControlComponent: GKComponent {
             if let playerEnt = entity as? PlayerEntity {
                 playerEnt.gameScene.runAction(playerEnt.gameScene.sndFire)
             }
-            fireTime = 0.5
+            fireTime = fireTime > 0 ? fireTime : 0.5
             animationComponent.requestedAnimationState = .IdleFire
         }
         if (fireTime > 0.0) {
@@ -126,29 +126,34 @@ class FullControlComponent: GKComponent {
             return
         }
         
-        if spriteComponent.node.physicsBody?.allContactedBodies().count > 0 {
-            for body in (spriteComponent.node.physicsBody?.allContactedBodies())! {
-                let nodeDir = ((body.node?.position)! - spriteComponent.node.position).angle
+        if allContactedBodies?.count > 0 {
+            for body in allContactedBodies! {
+                let nodeDif = (body.node?.position)! - spriteComponent.node.position
+                let nodeDir = nodeDif.angle
                 
-                if (nodeDir > -2.355 && nodeDir < -0.785) {
+                if (nodeDir > -2.355 && nodeDir < -0.785 /*&& nodeDif.y < -16.56*/) {
                     isJumping = false
                     isDoubleJumping = false
-
                     
                     if (controlInput.movement.x > 0.1 || controlInput.movement.x < -0.1) {
                         animationComponent.requestedAnimationState = .Run
                     } else {
                         animationComponent.requestedAnimationState = .Idle
                     }
-                    
+                }
+                
+                if  nodeDir < 0.05 {
                     if let inOutTile = body.node as? SGSpriteNode where
                         inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
-                        body.node?.physicsBody?.categoryBitMask = ColliderType.Wall.rawValue
+                        if body.node?.physicsBody?.categoryBitMask == ColliderType.None.rawValue && nodeDif.y < -5 {
+                            body.node?.physicsBody?.categoryBitMask = ColliderType.Wall.rawValue
+                        }
                     }
-                }else if nodeDir > 0 {
+                }
+                else  {
                     if let inOutTile = body.node as? SGSpriteNode where
-                        inOutTile.tileSpriteType == .tileGroundCornerL || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
-                        body.node?.physicsBody?.categoryBitMask = ColliderType.None.rawValue
+                        inOutTile.tileSpriteType == .tileNotifier || inOutTile.tileSpriteType == .tileGroundCornerR || inOutTile.tileSpriteType == .tileGround {
+                        body.node?.parent!.physicsBody?.categoryBitMask = ColliderType.None.rawValue
                     }
                 }
             }

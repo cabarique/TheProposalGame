@@ -24,6 +24,7 @@ import SpriteKit
 import GameplayKit
 
 enum tileType: Int {
+    case tileNotifier           = -1
     case tileAir                 = 0
     case tileGroundLeft          = 1
     case tileGround              = 2

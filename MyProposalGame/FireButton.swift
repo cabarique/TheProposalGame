@@ -53,6 +53,10 @@ class FireButton: SKNode {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         button.alpha = 0.5
         firePressed = false
+        self.userInteractionEnabled = false
+        NSTimer.scheduledTimerWithTimeInterval(0.1, repeats: false) { (timer) in
+            self.userInteractionEnabled = true
+        }
     }
     
 }

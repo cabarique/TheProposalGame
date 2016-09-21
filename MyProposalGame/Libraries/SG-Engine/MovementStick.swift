@@ -28,7 +28,14 @@ class MovementStick: SKNode {
     
     var stick = SKSpriteNode()
     let radius:CGFloat
-    var movement:CGPoint { get {return CGPoint(x: stick.position.x / radius, y: stick.position.y / radius)}}
+    private var backGroundSize: CGFloat = 150
+    var movement:CGPoint {
+        get {
+            let x = fabs(stick.position.x) <= 75 ? stick.position.x : ( stick.position.x > 0 ? (backGroundSize / 2) : -1 * (backGroundSize / 2) )
+            let y = fabs(stick.position.y) <= 75 ? stick.position.y : ( stick.position.y > 0 ? (backGroundSize / 2) : -1 * (backGroundSize / 2) )
+            return CGPoint(x: x / radius, y: y / radius)
+        }
+    }
     
     var zPos:CGFloat = 1000
     
@@ -38,7 +45,7 @@ class MovementStick: SKNode {
         
         let background = SKSpriteNode(texture: atlas.textureNamed("stick_bounds"))
         background.zPosition = zPos
-        background.size = CGSize(width: 150, height: 150)
+        background.size = CGSize(width: backGroundSize, height: backGroundSize)
         radius = background.size.width/2
         
         super.init()
