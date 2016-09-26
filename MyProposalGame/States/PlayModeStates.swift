@@ -89,6 +89,16 @@ class GameSceneInitialState: GameSceneState {
             fatalError("[Play Mode: No placeholder for player!")
         }
         
+        let enemies = ["Zombie"]
+        let enemyAtlas = SKTextureAtlas(named: enemies[0])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_Zombie") { (node, stop) in
+            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), firstFrame: enemyAtlas.textureNamed("Run__000"), atlas: enemyAtlas, scene: self.gs, name: "zombie")
+            zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer
+            zombie.animationComponent.requestedAnimationState = .Run
+            self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
+        }
+        
         gs.worldLayer.enumerateChildNodesWithName("placeholder_FinishPoint") { (node, stop) -> Void in
             let finish = FinishEntity(position: node.position, size: CGSize(width: 32, height: 32), texture: SKTexture())
             self.gs.addEntity(finish, toLayer: self.gs.worldLayer)

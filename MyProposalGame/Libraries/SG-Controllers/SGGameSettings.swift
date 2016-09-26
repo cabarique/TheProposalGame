@@ -32,6 +32,7 @@ enum AnimationState: String {
     case Run = "Run_"
     case Slide = "Slide_"
     case IdleFire = "Throw_"
+    case Rise = "Rise_"
 }
 
 enum ColliderType:UInt32 {

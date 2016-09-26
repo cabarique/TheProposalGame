@@ -60,7 +60,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
         let parallaxSystem = GKComponentSystem(componentClass: ParallaxComponent.self)
         let animationSystem = GKComponentSystem(componentClass: AnimationComponent.self)
         let scrollerSystem = GKComponentSystem(componentClass: ChaseScrollComponent.self)
-        return [animationSystem, parallaxSystem, scrollerSystem]
+        let enemySystem = GKComponentSystem(componentClass: EnemyMovementComponent.self)
+        return [animationSystem, parallaxSystem, scrollerSystem, enemySystem]
     }()
     let scrollerSystem = FullControlComponentSystem(componentClass: FullControlComponent.self)
     

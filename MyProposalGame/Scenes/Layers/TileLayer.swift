@@ -352,6 +352,12 @@ class TileLayer: SKNode, tileMapDelegate {
             node.position = location
             node.name = "placeholder_Coin"
             addChild(node)
+        case .tileZombie:
+            let node = SKNode()
+            node.position = location
+            node.name = "placeholder_Zombie"
+            node.zPosition = GameSettings.GameParams.zValues.zWorld
+            addChild(node)
         default:
             break
         }
