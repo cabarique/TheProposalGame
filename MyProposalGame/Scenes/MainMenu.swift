@@ -21,9 +21,6 @@
 */
 
 import SpriteKit
-#if os(OSX)
-  import AppKit
-#endif
 
 class MainMenu: SGScene {
   
@@ -71,17 +68,6 @@ class MainMenu: SGScene {
       sndTitleDrop
       ]))
     
-    #if os(OSX)
-      let exitButton = SKLabelNode(fontNamed: "MarkerFelt-Wide")
-      exitButton.posByScreen(0.5, y: 0.1)
-      exitButton.fontSize = 56
-      exitButton.text = lt("Exit")
-      exitButton.fontColor = SKColor.whiteColor()
-      exitButton.zPosition = 10
-      exitButton.name = "exitGame"
-      addChild(exitButton)
-    #endif
-    
   }
   
   //MARK: Responders
@@ -99,13 +85,6 @@ class MainMenu: SGScene {
           buttonEvent("buttonB", velocity: 1.0, pushedOn: true)
         }
         
-        #if os(OSX)
-        if node.name == "exitGame" {
-          self.runAction(sndButtonClick)
-          NSApplication.sharedApplication().terminate(self)
-        }
-        #endif
-        
       }
     }
     
@@ -116,7 +95,7 @@ class MainMenu: SGScene {
       
       self.runAction(sndButtonClick)
       
-      let nextScene = CharSelect(size: self.scene!.size)
+      let nextScene = LevelSelect(size: self.scene!.size)
       nextScene.scaleMode = self.scaleMode
       self.view?.presentScene(nextScene)
       
@@ -136,13 +115,4 @@ class MainMenu: SGScene {
   override func stickEvent(event:String,point:CGPoint) {
     
   }
-  #if !os(OSX)
-  override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-    self.runAction(sndButtonClick)
-    
-    let nextScene = CharSelect(size: self.scene!.size)
-    nextScene.scaleMode = self.scaleMode
-    self.view?.presentScene(nextScene)
-  }
-  #endif
 }

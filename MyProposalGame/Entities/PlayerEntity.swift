@@ -45,7 +45,7 @@ class PlayerEntity: SGEntity {
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         physicsComponent.setCategoryBitmask(ColliderType.Player.rawValue, dynamic: true)
         physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
-        physicsComponent.setPhysicsContacts(ColliderType.Collectable.rawValue | ColliderType.EndLevel.rawValue | ColliderType.KillZone.rawValue | ColliderType.None.rawValue)
+        physicsComponent.setPhysicsContacts(ColliderType.Collectable.rawValue | ColliderType.EndLevel.rawValue | ColliderType.KillZone.rawValue | ColliderType.None.rawValue | ColliderType.Enemy.rawValue)
         addComponent(physicsComponent)
         scrollerComponent = FullControlComponent(entity: self)
         addComponent(scrollerComponent)
@@ -67,16 +67,19 @@ class PlayerEntity: SGEntity {
         
         animations[.Jump] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Jump.rawValue,
-                                                                  forAnimationState: .Jump, repeatTexturesForever: false, textureSize: CGSize(width: 40.1, height: 48.0))
+                                                                  forAnimationState: .Jump, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0))
         animations[.Run] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                  withImageIdentifier: AnimationState.Run.rawValue,
-                                                                 forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 37.93, height: 48.0))
+                                                                 forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48.0))
         animations[.IdleFire] = AnimationComponent.animationFromAtlas(textureAtlas,
-                                                                       withImageIdentifier: AnimationState.IdleFire.rawValue,
-                                                                       forAnimationState: .IdleFire, repeatTexturesForever: false, textureSize: CGSize(width: 40.1, height: 48.0))
+                                                                       withImageIdentifier: AnimationState.Idle.rawValue,
+                                                                       forAnimationState: .Idle, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 27.84, height: 48.0))
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48))
+        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
+                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 78.857, height: 48))
         
         return animations
     }
@@ -119,10 +122,13 @@ class PlayerEntity: SGEntity {
             }
         }
         
+        if entity.name == "zombieEntity" {
+            gameScene.control.willDie = true
+        }
+        
     }
     
     func playerDied() {
         gameScene.stateMachine.enterState(GameSceneLoseState.self)
     }
-    
 }

@@ -30,7 +30,7 @@ class EnemyEntity: SGEntity {
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         physicsComponent.setCategoryBitmask(ColliderType.Enemy.rawValue, dynamic: true)
         physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
-        physicsComponent.setPhysicsContacts(ColliderType.Projectile.rawValue)
+        physicsComponent.setPhysicsContacts(ColliderType.Projectile.rawValue | ColliderType.Player.rawValue)
         addComponent(physicsComponent)
         scrollerComponent = EnemyMovementComponent(entity: self)
         addComponent(scrollerComponent)
@@ -71,9 +71,7 @@ class EnemyEntity: SGEntity {
     
     override func contactWith(entity:SGEntity) {
         
-        if entity.name == "PlayerEntity" {
-            gameScene.stateMachine.enterState(GameSceneLoseState.self)
-        }
+       
         
 
         

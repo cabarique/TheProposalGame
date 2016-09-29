@@ -28,6 +28,7 @@ struct FullMoveControlScheme {
     //Input
     var jumpPressed:Bool            = false
     var firePressed:Bool            = false
+    var willDie: Bool               = false
     
     var movement:CGPoint = CGPointZero
     
@@ -56,6 +57,9 @@ class FullControlComponent: GKComponent {
     var isFiring = false
     var fireTime: CGFloat = 0.0
     
+    var isDying = false
+    var deadTime: CGFloat = 0.0
+    
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
         return spriteComponent
@@ -77,6 +81,25 @@ class FullControlComponent: GKComponent {
     
     func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: FullMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
+        if controlInput.willDie && !isDying {
+            if let playerEnt = entity as? PlayerEntity {
+                playerEnt.gameScene.runAction(SKAction.sequence([playerEnt.gameScene.sndMeow2, SKAction.waitForDuration(0.8), playerEnt.gameScene.sndDead]))
+            }
+            isDying = true
+            deadTime = 3
+            animationComponent.requestedAnimationState = .Dead
+            return
+        }
+        if deadTime > 0 {
+            deadTime = deadTime - CGFloat(seconds)
+            return
+        }
+        if deadTime <= 0 && isDying {
+            if let playerEnt = entity as? PlayerEntity {
+                playerEnt.gameScene.stateMachine.enterState(GameSceneLoseState.self)
+            }
+            return
+        }
         let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
         //Move sprite
         spriteComponent.node.position += (controlInput.movement * (movementSpeed * CGFloat(seconds))) // < 1

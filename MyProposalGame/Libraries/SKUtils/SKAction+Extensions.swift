@@ -56,9 +56,9 @@ public extension SKAction {
         }
     }
     
-    public class func playSoundFileNamed(fileName: String, atVolume: Float, waitForCompletion: Bool) -> SKAction {
+    public class func playSoundFileNamed(fileName: String, atVolume: Float, waitForCompletion: Bool, withExtension fileExtension: String = ".wav") -> SKAction {
         
-        let soundPath = NSBundle.mainBundle().URLForResource(fileName, withExtension: ".wav")
+        let soundPath = NSBundle.mainBundle().URLForResource(fileName, withExtension: fileExtension)
         
         let player: AVAudioPlayer = try! AVAudioPlayer(contentsOfURL: soundPath!)
         

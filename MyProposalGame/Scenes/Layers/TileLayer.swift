@@ -332,7 +332,7 @@ class TileLayer: SKNode, tileMapDelegate {
             break
         case .tileStartLevel:
             let node = SKNode()
-            node.position = CGPoint(x: location.x, y: location.y - 16)
+            node.position = CGPoint(x: location.x, y: location.y)
             node.name = "placeholder_StartPoint"
             addChild(node)
             break
