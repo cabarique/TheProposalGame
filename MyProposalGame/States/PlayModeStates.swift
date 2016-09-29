@@ -103,13 +103,6 @@ class GameSceneInitialState: GameSceneState {
             self.gs.addEntity(finish, toLayer: self.gs.worldLayer)
         }
         
-        let tileAtlas = SKTextureAtlas(named: "Tiles")
-        gs.worldLayer.enumerateChildNodesWithName("placeholder_Gem") { (node, stop) -> Void in
-            let gem = GemEntity(position: node.position, size: CGSize(width: 32, height: 32), texture: tileAtlas.textureNamed("gem"))
-            gem.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
-            self.gs.addEntity(gem, toLayer: self.gs.worldLayer)
-        }
-        
         let GUIAtlas = SKTextureAtlas(named: "GUI")
         gs.worldLayer.enumerateChildNodesWithName("placeholder_Diamond") { (node, stop) -> Void in
             let diamond = GemEntity(position: node.position, size: CGSize(width: 32, height: 29), texture: GUIAtlas.textureNamed("diamondBlue"))
@@ -118,21 +111,23 @@ class GameSceneInitialState: GameSceneState {
         }
         
         gs.worldLayer.enumerateChildNodesWithName("placeholder_Coin") { (node, stop) -> Void in
-            let coin = GemEntity(position: node.position, size: CGSize(width: 20, height: 20), texture: GUIAtlas.textureNamed("Coin"))
+            let coin = CoinEntity(position: node.position, size: CGSize(width: 20, height: 20), texture: GUIAtlas.textureNamed("Coin"))
             coin.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
             self.gs.addEntity(coin, toLayer: self.gs.worldLayer)
         }
         
         
         //Setup UI
-        let pauseButton = SKLabelNode(fontNamed: "MarkerFelt-Wide")
-        pauseButton.posByScreen(0.46, y: 0.42)
-        pauseButton.fontSize = 40
-        pauseButton.text = gs.lt("II")
-        pauseButton.fontColor = SKColor.whiteColor()
+        let buttonAtlas = SKTextureAtlas(named: "Button")
+        let pauseButton = SKSpriteNode(texture: buttonAtlas.textureNamed("Pause"))
+        pauseButton.posByScreen(0.45, y: 0.24)
+        pauseButton.size = CGSize(width: 68.18, height: 70)//150x154
         pauseButton.zPosition = 150
         pauseButton.name = "PauseButton"
         gs.overlayGUI.addChild(pauseButton)
+        
+        gs.scoreBanner.posByScreen(-0.40, y: 0.18)
+        gs.overlayGUI.addChild(gs.scoreBanner)
         
         //Controls
         gs.movementStick.posByScreen(-0.40, y: -0.49)

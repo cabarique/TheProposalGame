@@ -33,8 +33,16 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     
     //Level Data
     var gemsCollected = 0
-    var diamondsCollected = 0
-    var coinsCollected = 0
+    var diamondsCollected = 0{
+        didSet{
+            scoreBanner.addDiamond()
+        }
+    }
+    var coinsCollected = 0{
+        didSet{
+            scoreBanner.addCoint()
+        }
+    }
     var worldFrame = CGRect()
     
     //Layers
@@ -76,6 +84,9 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     let movementStick = MovementStick(stickName: "MoveStick")
     let jumpButton = JumpButton(buttonName: "JumpButton")
     let fireButton = FireButton(buttonName: "FireButton")
+    
+    //Scores
+    let scoreBanner = ScoreBanner(scoreName: "ScoreBanner")
     
     //Sounds
     let sndCollectGood = SKAction.playSoundFileNamed("collect_good.wav", waitForCompletion: false)
@@ -175,11 +186,15 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     
     override func screenInteractionStarted(location: CGPoint) {
         
-        if let node = nodeAtPoint(location) as? SKLabelNode {
+        if let node = nodeAtPoint(location) as? SKSpriteNode {
+            let buttonAtlas = SKTextureAtlas(named: "Button")
+//            let pauseButton = SKSpriteNode(texture: buttonAtlas.textureNamed("Pause"))
             if node.name == "PauseButton" {
                 if pauseLoop {
+                    node.texture = buttonAtlas.textureNamed("Pause")
                     stateMachine.enterState(GameSceneActiveState.self)
                 } else {
+                    node.texture = buttonAtlas.textureNamed("triangleR")
                     stateMachine.enterState(GameScenePausedState.self)
                 }
                 return

@@ -101,20 +101,12 @@ class PlayerEntity: SGEntity {
         if entity.name == "gemEntity" {
             if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
                 spriteComponent.node.removeFromParent()
-                gameScene.gemsCollected += 1
-                gameScene.runAction(gameScene.sndCollectGood)
-            }
-        }
-        
-        if entity.name == "diamondEntity" {
-            if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
-                spriteComponent.node.removeFromParent()
                 gameScene.diamondsCollected += 1
                 gameScene.runAction(gameScene.sndCollectGood)
             }
         }
         
-        if entity.name == "coinmEntity" {
+        if entity.name == "coinEntity" {
             if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
                 spriteComponent.node.removeFromParent()
                 gameScene.coinsCollected += 1

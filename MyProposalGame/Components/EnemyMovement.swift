@@ -83,6 +83,7 @@ class EnemyMovementComponent: GKComponent {
                 
                 if !isDying && body.node?.name == "projectileNode" {
                     body.node?.removeFromParent()
+                    spriteComponent.node.physicsBody = nil
                     if let enemyEnt = entity as? EnemyEntity {
                         enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
                         animationComponent.requestedAnimationState = .Dead
