@@ -56,7 +56,6 @@
 		4FEA20511D878A5800E96E1A /* ParallaxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA204D1D878A5800E96E1A /* ParallaxComponent.swift */; };
 		4FEA20521D878A5800E96E1A /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA204E1D878A5800E96E1A /* PhysicsComponent.swift */; };
 		4FEA20531D878A5800E96E1A /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA204F1D878A5800E96E1A /* SpriteComponent.swift */; };
-		4FEA20561D878BA800E96E1A /* ChaseScrollMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20541D878BA800E96E1A /* ChaseScrollMovement.swift */; };
 		4FEA20571D878BA800E96E1A /* SideScrollMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20551D878BA800E96E1A /* SideScrollMovement.swift */; };
 		4FEA20591D878C8500E96E1A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20581D878C8500E96E1A /* Localizable.strings */; };
 		4FEA205B1D878C9000E96E1A /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205A1D878C9000E96E1A /* background_music.mp3 */; };
@@ -133,7 +132,6 @@
 		4FEA204D1D878A5800E96E1A /* ParallaxComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParallaxComponent.swift; path = Components/ParallaxComponent.swift; sourceTree = "<group>"; };
 		4FEA204E1D878A5800E96E1A /* PhysicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhysicsComponent.swift; path = Components/PhysicsComponent.swift; sourceTree = "<group>"; };
 		4FEA204F1D878A5800E96E1A /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpriteComponent.swift; path = Components/SpriteComponent.swift; sourceTree = "<group>"; };
-		4FEA20541D878BA800E96E1A /* ChaseScrollMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChaseScrollMovement.swift; path = Components/ChaseScrollMovement.swift; sourceTree = "<group>"; };
 		4FEA20551D878BA800E96E1A /* SideScrollMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideScrollMovement.swift; path = Components/SideScrollMovement.swift; sourceTree = "<group>"; };
 		4FEA20581D878C8500E96E1A /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Resources/Content/Localizable.strings; sourceTree = "<group>"; };
 		4FEA205A1D878C9000E96E1A /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background_music.mp3; path = Resources/Music/background_music.mp3; sourceTree = "<group>"; };
@@ -228,11 +226,11 @@
 		4FEA1FD61D87807E00E96E1A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
-				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
 				4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */,
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
 				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
+				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
+				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
 				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
@@ -252,7 +250,6 @@
 			children = (
 				4F8890F31D9369FE00563F8A /* EnemyMovement.swift */,
 				4FEA20701D878D6700E96E1A /* FullControlMovement.swift */,
-				4FEA20541D878BA800E96E1A /* ChaseScrollMovement.swift */,
 				4FEA20551D878BA800E96E1A /* SideScrollMovement.swift */,
 				4FEA204C1D878A5800E96E1A /* AnimationComponent.swift */,
 				4FEA204D1D878A5800E96E1A /* ParallaxComponent.swift */,
@@ -517,7 +514,6 @@
 				4FEA20501D878A5800E96E1A /* AnimationComponent.swift in Sources */,
 				4F8890FA1D936A2C00563F8A /* JumpButton.swift in Sources */,
 				4FEA20571D878BA800E96E1A /* SideScrollMovement.swift in Sources */,
-				4FEA20561D878BA800E96E1A /* ChaseScrollMovement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

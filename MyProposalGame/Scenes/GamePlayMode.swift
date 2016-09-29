@@ -59,10 +59,9 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     lazy var componentSystems: [GKComponentSystem] = {
         let parallaxSystem = GKComponentSystem(componentClass: ParallaxComponent.self)
         let animationSystem = GKComponentSystem(componentClass: AnimationComponent.self)
-        let scrollerSystem = GKComponentSystem(componentClass: ChaseScrollComponent.self)
-        let enemySystem = GKComponentSystem(componentClass: EnemyMovementComponent.self)
-        return [animationSystem, parallaxSystem, scrollerSystem, enemySystem]
+        return [animationSystem, parallaxSystem]
     }()
+    let enemySystem = EnemyControlComponentSystem(componentClass: EnemyMovementComponent.self)
     let scrollerSystem = FullControlComponentSystem(componentClass: FullControlComponent.self)
     
     //Timers
@@ -72,6 +71,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     
     //Controls
     var control = FullMoveControlScheme()
+    var enemyControl = EnemyMoveControlScheme()
     var pauseLoop = false
     let movementStick = MovementStick(stickName: "MoveStick")
     let jumpButton = JumpButton(buttonName: "JumpButton")
@@ -106,7 +106,12 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
         for componentSystem in self.componentSystems {
             componentSystem.addComponentWithEntity(entity)
         }
+        if entity is EnemyEntity || entity is ProjectileEntity{
+            enemySystem.addComponentWithEntity(entity)
+        }
+        
         scrollerSystem.addComponentWithEntity(entity)
+        
         
     }
     
@@ -139,12 +144,11 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             }
             
             control.movement.x = movementStick.movement.x
+            control.jumpPressed = jumpButton.jumpPressed
+            control.firePressed = fireButton.firePressed
             scrollerSystem.updateWithDeltaTime(deltaTime, controlInput: control)
             
-            control.jumpPressed = jumpButton.jumpPressed
             jumpButton.jumpPressed = false
-            
-            control.firePressed = fireButton.firePressed
             
             if control.firePressed {
                 let atlas = SKTextureAtlas(named: "Tiles")
@@ -156,6 +160,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
                 
                 fireButton.firePressed = false
             }
+            
+            enemySystem.updateWithDeltaTime(deltaTime, controlInput: enemyControl)
         }
     }
     

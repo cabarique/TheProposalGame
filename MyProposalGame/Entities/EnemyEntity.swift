@@ -56,7 +56,7 @@ class EnemyEntity: SGEntity {
                                                                  forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 37.93, height: 48.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: true, textureSize: CGSize(width: 27.84, height: 48.0))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 57.39, height: 48.0))
         
         return animations
     }
@@ -72,7 +72,9 @@ class EnemyEntity: SGEntity {
     override func contactWith(entity:SGEntity) {
         
        
-        
+        if entity.name == "projectileEntity" {
+            
+        }
 
         
     }

@@ -40,7 +40,7 @@ class ProjectileEntity: SGEntity {
         physicsComponent.physicsBody.affectedByGravity = false
         spriteComponent.node.physicsBody = physicsComponent.physicsBody
         spriteComponent.node.name = "projectileNode"
-        name = "pprojectileEntity"
+        name = "projectileEntity"
         
     }
     
@@ -50,12 +50,17 @@ class ProjectileEntity: SGEntity {
     
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
-        
+        let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
         let projectileSpeed = CGPoint(x: 400.0 * projectileOrientation, y: 0.0)
         spriteComponent.node.position += (projectileSpeed * CGFloat(seconds))
         
-        if spriteComponent.node.physicsBody?.allContactedBodies().count > 0 {
-            projectileMiss()
+        if allContactedBodies?.count > 0 {
+            for body in allContactedBodies! {
+                if body.node is SGSpriteNode {
+                    projectileMiss()
+                }
+            }
+            
         }
         
         if !gameScene.worldFrame.contains(spriteComponent.node.position) {
@@ -66,8 +71,8 @@ class ProjectileEntity: SGEntity {
     
     override func contactWith(entity:SGEntity) {
         
-        if entity.name == "enemyEntity" {
-            
+        if entity.name == "zombieEntity" {
+           
         }
 
     }

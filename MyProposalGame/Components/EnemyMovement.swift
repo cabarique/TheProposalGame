@@ -9,14 +9,38 @@
 import SpriteKit
 import GameplayKit
 
+struct EnemyMoveControlScheme {
+    
+    //Input
+    //var willDie: Bool               = false
+}
+
+class EnemyControlComponentSystem: GKComponentSystem {
+    
+    func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: EnemyMoveControlScheme) {
+        for component in components {
+            if let comp = component as? EnemyMovementComponent {
+                comp.updateWithDeltaTime(seconds, controlInput: controlInput)
+            }
+        }
+    }
+}
+
 class EnemyMovementComponent: GKComponent {
     
     var movementSpeed = CGPoint(x: -30.0, y: 0.0)
     private var skipMovement = 10
+    var isDying = false
+    var deadTime: CGFloat = 0.0
     
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
         return spriteComponent
+    }
+    
+    var animationComponent: AnimationComponent {
+        guard let animationComponent = entity?.componentForClass(AnimationComponent.self) else { fatalError("AnimationComponent Missing") }
+        return animationComponent
     }
     
     init(entity: GKEntity) {
@@ -28,14 +52,19 @@ class EnemyMovementComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: EnemyMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
-//        if spriteComponent.node.name!.hasPrefix("zombie") && skipMovement == 10{
-//            skipMovement = 0
-//        }else{
-//            skipMovement += 1
-//            return
-//        }
+        
+        if isDying && deadTime > 0{
+            deadTime = deadTime - CGFloat(seconds)
+            return
+        }
+        
+        if deadTime <= 0 && isDying {
+            spriteComponent.node.removeFromParent()
+            return
+        }
+        
         let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
         
         //Move sprite
@@ -51,6 +80,17 @@ class EnemyMovementComponent: GKComponent {
             for body in allContactedBodies! {
                 let nodeDif = (body.node?.position)! - spriteComponent.node.position
                 let nodeDir = nodeDif.angle
+                
+                if !isDying && body.node?.name == "projectileNode" {
+                    body.node?.removeFromParent()
+                    if let enemyEnt = entity as? EnemyEntity {
+                        enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
+                        animationComponent.requestedAnimationState = .Dead
+                        isDying = true
+                        deadTime = 1
+                        return
+                    }
+                }
                 
                 if body.node is SGSpriteNode {
                     let leftAngle: CGFloat = 2.5852
