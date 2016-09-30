@@ -24,7 +24,7 @@ import SpriteKit
 import GameplayKit
 
 enum tileType: Int {
-    case tileNotifier           = -1
+    case tileNotifier            = -1
     case tileAir                 = 0
     case tileGroundLeft          = 1
     case tileGround              = 2
@@ -53,7 +53,7 @@ enum tileType: Int {
     case tileEndLevel            = 25
     case tileDiamond             = 26
     case tileCoin                = 27
-    case tileZombie             = 28
+    case tileZombie              = 28
 }
 
 protocol tileMapDelegate {

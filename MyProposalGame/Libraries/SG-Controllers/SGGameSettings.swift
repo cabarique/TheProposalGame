@@ -45,6 +45,7 @@ enum ColliderType:UInt32 {
     case Projectile     = 0b100000
     case None           = 0b1000000
     case KillZone       = 0b10000000
+    case InvisibleWall  = 0b100000000
 }
 
 struct GameSettings {

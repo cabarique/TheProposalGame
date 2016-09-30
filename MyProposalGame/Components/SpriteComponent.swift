@@ -31,7 +31,7 @@ class SpriteComponent: GKComponent {
     var node: EntityNode
     
     init(entity: GKEntity, texture: SKTexture, size: CGSize, position: CGPoint) {
-        node = EntityNode(texture: texture, color: SKColor.whiteColor(), size: size)
+        node = EntityNode(texture: texture, color: SKColor.clearColor(), size: size)
         node.position = position
         node.entity = entity
         super.init()

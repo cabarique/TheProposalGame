@@ -259,6 +259,12 @@ class GameBuildMode: SGScene {
                     label.position = child.position
                     worldLayer.addChild(label)
                     break
+                case "placeholder_Zombie":
+                    let label = SKLabelNode(text: "Z")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
                 default:
                     break
                 }

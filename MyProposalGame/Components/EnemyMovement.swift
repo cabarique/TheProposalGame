@@ -12,6 +12,7 @@ import GameplayKit
 struct EnemyMoveControlScheme {
     
     //Input
+    //    var didRise: Bool = false
     //var willDie: Bool               = false
 }
 
@@ -32,6 +33,8 @@ class EnemyMovementComponent: GKComponent {
     private var skipMovement = 10
     var isDying = false
     var deadTime: CGFloat = 0.0
+    var isActive: Bool = false
+    var riseTime: CGFloat = 0.0
     
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
@@ -54,51 +57,69 @@ class EnemyMovementComponent: GKComponent {
     
     func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: EnemyMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
+        guard let enemyEnt = entity as? EnemyEntity else{ fatalError("Enemy entity missing") }
         
-        if isDying && deadTime > 0{
-            deadTime = deadTime - CGFloat(seconds)
-            return
-        }
-        
-        if deadTime <= 0 && isDying {
-            spriteComponent.node.removeFromParent()
-            return
-        }
-        
-        let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
-        
-        //Move sprite
-        if movementSpeed.x >= 0 {
-            spriteComponent.node.xScale = 1.0
-        }else{
-            spriteComponent.node.xScale = -1.0
-        }
-        spriteComponent.node.position += (movementSpeed * CGFloat(seconds))
-        
-        //when contacts with a tile, turns arround
-        if allContactedBodies?.count > 0 {
-            for body in allContactedBodies! {
-                let nodeDif = (body.node?.position)! - spriteComponent.node.position
-                let nodeDir = nodeDif.angle
-                
-                if !isDying && body.node?.name == "projectileNode" {
-                    body.node?.removeFromParent()
-                    spriteComponent.node.physicsBody = nil
-                    if let enemyEnt = entity as? EnemyEntity {
+        if enemyEnt.didRise {
+            
+            if !isActive {
+                if riseTime == 0 {
+                    riseTime = 0.4
+                }else if riseTime > 0 {
+                    riseTime = riseTime - CGFloat(seconds)
+                }else{
+                    isActive = true
+                    enemyEnt.enablePhysicContacts()
+                }
+                return
+            }
+            
+            if isDying && deadTime > 0{
+                deadTime = deadTime - CGFloat(seconds)
+                return
+            }
+            
+            if deadTime <= 0 && isDying {
+                spriteComponent.node.removeFromParent()
+                return
+            }
+            
+            let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
+            
+            //Move sprite
+            if movementSpeed.x >= 0 {
+                spriteComponent.node.xScale = 1.0
+            }else{
+                spriteComponent.node.xScale = -1.0
+            }
+            spriteComponent.node.position += (movementSpeed * CGFloat(seconds))
+            
+            //when contacts with a tile, turns arround
+            if allContactedBodies?.count > 0 {
+                for body in allContactedBodies! {
+                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
+                    let nodeDir = nodeDif.angle
+                    
+                    if !isDying && body.node?.name == "projectileNode" {
+                        body.node?.removeFromParent()
+                        spriteComponent.node.physicsBody = nil
                         enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
                         animationComponent.requestedAnimationState = .Dead
                         isDying = true
                         deadTime = 1
                         return
                     }
-                }
-                
-                if body.node is SGSpriteNode {
-                    let leftAngle: CGFloat = 2.5852
-                    let rightAngle: CGFloat = 0.5564
-                    if ( nodeDir > (leftAngle - 0.01) && nodeDir < (leftAngle + 0.01) && spriteComponent.node.xScale == -1 ) ||
-                        ( nodeDir > (rightAngle - 0.01) && nodeDir < (rightAngle + 0.01) && spriteComponent.node.xScale == 1) {
+                    
+                    if body.node?.name == "invisibleWallL" && movementSpeed.x < 0 ||
+                        body.node?.name == "invisibleWallR" && movementSpeed.x > 0{
                         movementSpeed.x *= -1
+                    }else if body.node is SGSpriteNode {
+                        animationComponent.requestedAnimationState = .Run
+                        let leftAngle: CGFloat = 2.5852
+                        let rightAngle: CGFloat = 0.5564
+                        if ( nodeDir > (leftAngle - 0.01) && nodeDir < (leftAngle + 0.01) && spriteComponent.node.xScale == -1 ) ||
+                            ( nodeDir > (rightAngle - 0.01) && nodeDir < (rightAngle + 0.01) && spriteComponent.node.xScale == 1) {
+                            movementSpeed.x *= -1
+                        }
                     }
                 }
             }

@@ -91,10 +91,9 @@ class GameSceneInitialState: GameSceneState {
         let enemies = ["Zombie"]
         let enemyAtlas = SKTextureAtlas(named: enemies[0])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_Zombie") { (node, stop) in
-            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), firstFrame: enemyAtlas.textureNamed("Run__000"), atlas: enemyAtlas, scene: self.gs, name: "zombie")
+            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemyAtlas, scene: self.gs, name: "zombie")
             zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
-            zombie.animationComponent.requestedAnimationState = .Run
             self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
         }
         

@@ -165,7 +165,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
                 let atlas = SKTextureAtlas(named: "Tiles")
                 let spriteNode = playerEntity?.spriteComponent.node
                 let orientation: CGFloat = (spriteNode?.xScale)!
-                let projectile = ProjectileEntity(position: CGPoint(x: spriteNode!.position.x + 40, y: spriteNode!.position.y + 20), size: CGSize(width: 40, height: 8), orientation: orientation, texture: atlas.textureNamed("Kunai"), scene: self)
+                let positionX = orientation >= 0 ? spriteNode!.position.x + 40 : spriteNode!.position.x - 40
+                let projectile = ProjectileEntity(position: CGPoint(x: positionX, y: spriteNode!.position.y + 20), size: CGSize(width: 40, height: 8), orientation: orientation, texture: atlas.textureNamed("Kunai"), scene: self)
                 projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
                 self.addEntity(projectile, toLayer: self.worldLayer)
                 

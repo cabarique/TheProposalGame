@@ -73,6 +73,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallL"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .leftOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
+            
             addChild(node)
             break
         case .tileGround:
@@ -100,6 +111,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
+            
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallR"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .rightOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
             
             addChild(node)
             break
@@ -152,6 +174,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallR"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .rightOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
+            
             addChild(node)
             break
         case .tileGroundCornerRU:
@@ -196,6 +229,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallL"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .leftOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
+            
             addChild(node)
             break
         case .tileCeilingLeft:
@@ -224,6 +268,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallL"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .leftOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
+            
             addChild(node)
             break
         case .tilePlatform:
@@ -251,6 +306,17 @@ class TileLayer: SKNode, tileMapDelegate {
             physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
             physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
             node.physicsBody = physicsComponent.physicsBody
+            
+            let invisibleWall = SKNode()
+            invisibleWall.name = "invisibleWallR"
+            invisibleWall.position = CGPointZero
+            invisibleWall.zPosition = -1
+            
+            let invisiblePhysicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .rightOutline, rotation: false)
+            invisiblePhysicsComponent.setCategoryBitmask(ColliderType.InvisibleWall.rawValue, dynamic: false)
+            invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
+            invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
+            node.addChild(invisibleWall)
             
             addChild(node)
             break

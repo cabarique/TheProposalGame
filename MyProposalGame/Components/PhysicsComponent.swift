@@ -29,6 +29,8 @@ enum PhysicsBodyShape {
     case circle
     case topOutline
     case bottomOutline
+    case leftOutline
+    case rightOutline
 }
 
 class PhysicsComponent: GKComponent {
@@ -40,19 +42,18 @@ class PhysicsComponent: GKComponent {
         switch bodyShape {
         case.square:
             physicsBody = SKPhysicsBody(rectangleOfSize: bodySize)
-            break
         case.squareOffset:
-            physicsBody = SKPhysicsBody(rectangleOfSize: bodySize, center: CGPoint(x: 0, y: bodySize.height/2 + 2))
-            break
+            physicsBody = SKPhysicsBody(rectangleOfSize: bodySize, center: CGPoint(x: 0, y: bodySize.height/2 + 1))
         case .circle:
             physicsBody = SKPhysicsBody(circleOfRadius: bodySize.width / 2)
-            break
         case .topOutline:
             physicsBody = SKPhysicsBody(edgeFromPoint: CGPoint(x: (bodySize.width/2) * -1, y: bodySize.height/2), toPoint: CGPoint(x: bodySize.width/2, y: bodySize.height/2))
-            break
         case .bottomOutline:
             physicsBody = SKPhysicsBody(edgeFromPoint: CGPoint(x: (bodySize.width/2) * -1, y: (bodySize.height/2) * -1), toPoint: CGPoint(x: bodySize.width/2, y: (bodySize.height/2) * -1))
-            break
+        case .leftOutline:
+            physicsBody = SKPhysicsBody(edgeFromPoint: CGPoint(x: (bodySize.width/2) * -1, y: bodySize.height/2), toPoint: CGPoint(x: (bodySize.width/2) * -1, y: bodySize.height))
+        case .rightOutline:
+            physicsBody = SKPhysicsBody(edgeFromPoint: CGPoint(x: bodySize.width/2, y: bodySize.height/2), toPoint: CGPoint(x: bodySize.width/2, y: bodySize.height))
         }
         
         physicsBody.allowsRotation = rotation

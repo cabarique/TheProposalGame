@@ -63,7 +63,7 @@ class ProjectileEntity: SGEntity {
             
         }
         
-        if !gameScene.worldFrame.contains(spriteComponent.node.position) {
+        if !gameScene.camera!.containsNode(spriteComponent.node) {
             projectileMiss()
         }
     }
