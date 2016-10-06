@@ -150,7 +150,6 @@ class LevelSelect: SGScene {
                     if theNode.userData!["Available"] as! Bool == true {
                         self.runAction(sndButtonClick)
                         let nextScene = GamePlayMode(size: self.scene!.size)
-                        nextScene.characterIndex = self.characterIndex
                         nextScene.levelIndex = (theNode.userData!["Index"] as? Int)!
                         nextScene.scaleMode = self.scaleMode
                         self.view?.presentScene(nextScene)

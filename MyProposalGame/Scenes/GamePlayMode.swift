@@ -23,12 +23,13 @@
 import SpriteKit
 import GameplayKit
 
+
+
 class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     
     //MARK: Instance Variables
     
     //Initial Data
-    var characterIndex = 0
     var levelIndex = 0
     
     //Level Data

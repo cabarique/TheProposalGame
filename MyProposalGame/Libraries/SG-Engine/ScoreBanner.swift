@@ -16,7 +16,7 @@ class ScoreBanner: SKNode {
     var zPos:CGFloat = 1000
     private var coins = 0{
         didSet{
-            coinCounter.text = String(coins)
+            coinCounter.text = String(format: "%04d", coins)
         }
     }
     private var diamonds = 0{
@@ -45,7 +45,7 @@ class ScoreBanner: SKNode {
         coinCounter = SKLabelNode(fontNamed: GameSettings.standarFontName)
         coinCounter.fontSize = 35
         coinCounter.fontColor = SKColor.whiteColor()
-        coinCounter.text = String(coins)
+        coinCounter.text = String(format: "%04d", coins)
         coinCounter.zPosition = coinHolder.zPosition + 1
         coinCounter.position = CGPoint(x: 20, y: -12)
         coinHolder.addChild(coinCounter)
@@ -83,7 +83,7 @@ class ScoreBanner: SKNode {
     }
     
     func addCoint(){
-        coins += 1
+        coins += 10
         print("add coin")
     }
     

@@ -106,7 +106,7 @@ class PlayerEntity: SGEntity {
         if entity.name == "coinEntity" {
             if let spriteComponent = entity.componentForClass(SpriteComponent.self) {
                 spriteComponent.node.removeFromParent()
-                gameScene.coinsCollected += 1
+                gameScene.coinsCollected += 10
                 gameScene.runAction(gameScene.sndCollectGood)
             }
         }
