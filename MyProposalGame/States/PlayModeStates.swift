@@ -175,6 +175,7 @@ class GameSceneWinState: GameSceneState {
         nextScene.level = gs.levelIndex
         nextScene.win = true
         nextScene.diamonds = gs.diamondsCollected
+        nextScene.coins = gs.coinsCollected
         nextScene.scaleMode = gs.scaleMode
         gs.view?.presentScene(nextScene)
     }
@@ -186,6 +187,7 @@ class GameSceneLoseState: GameSceneState {
         nextScene.win = false
         nextScene.diamonds = gs.diamondsCollected
         nextScene.scaleMode = gs.scaleMode
+        nextScene.coins = gs.coinsCollected
         gs.view?.presentScene(nextScene)
     }
 }

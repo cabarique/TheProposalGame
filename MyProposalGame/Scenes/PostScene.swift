@@ -21,7 +21,6 @@
  */
 
 import Foundation
-
 import SpriteKit
 
 class PostScreen: SGScene {
@@ -31,6 +30,10 @@ class PostScreen: SGScene {
     var level:Int?
     var win:Bool?
     var diamonds:Int?
+    var coins: Int?
+    
+    private var coinCounter: SKLabelNode!
+    private var endGame: SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
         
@@ -53,11 +56,11 @@ class PostScreen: SGScene {
         background.zPosition = -1
         addChild(background)
         
-        let levelSelector = SKSpriteNode(imageNamed: "gameEnd")
-        levelSelector.posByCanvas(0.5, y: 0.5)
-        levelSelector.xScale = 0.8
-        levelSelector.yScale = 0.8
-        levelSelector.zPosition = 0
+        endGame = SKSpriteNode(imageNamed: "gameEnd")
+        endGame.posByCanvas(0.5, y: 0.5)
+        endGame.xScale = 0.8
+        endGame.yScale = 0.8
+        endGame.zPosition = 0
         
         let buttonScale: CGFloat = 0.62
         let buttonAtlas = SKTextureAtlas(named: "Button")
@@ -65,25 +68,36 @@ class PostScreen: SGScene {
         let homeButton = SKSpriteNode(texture: buttonAtlas.textureNamed("home"))
         homeButton.zPosition = 10
         homeButton.setScale(buttonScale)
-        homeButton.position = CGPoint(x: 0, y: ((-levelSelector.size.height/2) - (homeButton.size.height/2)) + 35)
+        homeButton.position = CGPoint(x: 0, y: ((-endGame.size.height/2) - (homeButton.size.height/2)) + 35)
         homeButton.name = "Home"
-        levelSelector.addChild(homeButton)
+        endGame.addChild(homeButton)
         
         let restartButton = SKSpriteNode(texture: buttonAtlas.textureNamed("update"))
         restartButton.zPosition = 10
         restartButton.setScale(buttonScale)
-        restartButton.position = CGPoint(x: -100, y: ((-levelSelector.size.height/2) - (homeButton.size.height/2)) + 35)
+        restartButton.position = CGPoint(x: -100, y: ((-endGame.size.height/2) - (homeButton.size.height/2)) + 35)
         restartButton.name = "Restart"
-        levelSelector.addChild(restartButton)
+        endGame.addChild(restartButton)
         
         let nextButton = SKSpriteNode(texture: buttonAtlas.textureNamed("triangleR"))
         nextButton.zPosition = 10
         nextButton.setScale(buttonScale)
-        nextButton.position = CGPoint(x: 100, y: ((-levelSelector.size.height/2) - (homeButton.size.height/2)) + 35)
+        nextButton.position = CGPoint(x: 100, y: ((-endGame.size.height/2) - (homeButton.size.height/2)) + 35)
         nextButton.name = "Next"
-        levelSelector.addChild(nextButton)
+        endGame.addChild(nextButton)
         
-        addChild(levelSelector)
+        
+        
+        addChild(endGame)
+        
+        let coinCounter: SKLabelNode = SKLabelNode(fontNamed: GameSettings.standarFontName)
+        coinCounter.fontSize = 55
+        coinCounter.zPosition = 10
+        coinCounter.position = CGPoint(x: 120, y: -163)
+        coinCounter.text = String(format: "%04d", coins!)
+        
+        endGame.addChild(coinCounter)
+        addDiamonds(diamonds!)
         
     }
     
@@ -101,6 +115,7 @@ class PostScreen: SGScene {
             if let theNode:SKNode = node,
                 let nodeName = theNode.name {
                 if nodeName == "Home"{
+                    self.runAction(sndButtonClick)
                     let nextScene = GameScene(size: self.scene!.size)
                     nextScene.scaleMode = self.scaleMode
                     self.view?.presentScene(nextScene)
@@ -120,5 +135,32 @@ class PostScreen: SGScene {
         nextScene.levelIndex = index
         nextScene.scaleMode = self.scaleMode
         self.view?.presentScene(nextScene)
+    }
+    
+    private func addDiamonds(diamonds: Int){
+        let diamondTexture = SKTextureAtlas(named: "GUI").textureNamed("diamondBlue")
+        if diamonds >= 1 {
+            let diamond1: SKSpriteNode = SKSpriteNode(texture: diamondTexture)
+            diamond1.zPosition = 10
+            diamond1.position = CGPoint(x: -99, y: 24)
+            diamond1.setScale(0.58)
+            endGame.addChild(diamond1)
+        }
+        
+        if diamonds >= 2 {
+            let diamond2: SKSpriteNode = SKSpriteNode(texture: diamondTexture)
+            diamond2.zPosition = 10
+            diamond2.position = CGPoint(x: 106, y: 24)
+            diamond2.setScale(0.58)
+            endGame.addChild(diamond2)
+        }
+        
+        if diamonds >= 3 {
+            let diamond3: SKSpriteNode = SKSpriteNode(texture: diamondTexture)
+            diamond3.zPosition = 10
+            diamond3.position = CGPoint(x: 1, y: 83)
+            diamond3.setScale(0.68)
+            endGame.addChild(diamond3)
+        }
     }
 }
