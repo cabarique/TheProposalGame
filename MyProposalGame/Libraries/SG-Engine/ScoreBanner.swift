@@ -42,8 +42,8 @@ class ScoreBanner: SKNode {
         coin.position = CGPoint(x: -44.7, y: 1.5)
         coinHolder.addChild(coin)
         
-        coinCounter = SKLabelNode(fontNamed: "MarkerFelt-Wide")
-        coinCounter.fontSize = 30
+        coinCounter = SKLabelNode(fontNamed: GameSettings.standarFontName)
+        coinCounter.fontSize = 35
         coinCounter.fontColor = SKColor.whiteColor()
         coinCounter.text = String(coins)
         coinCounter.zPosition = coinHolder.zPosition + 1
@@ -61,9 +61,9 @@ class ScoreBanner: SKNode {
         diamond.position = CGPoint(x: -44.7, y: 0)
         diamondHolder.addChild(diamond)
         
-        diamondCounter = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+        diamondCounter = SKLabelNode(fontNamed: GameSettings.standarFontName)
         diamondCounter.zPosition = diamondHolder.zPosition + 1
-        diamondCounter.fontSize = 30
+        diamondCounter.fontSize = 35
         diamondCounter.fontColor = SKColor.whiteColor()
         diamondCounter.text = String(coins)
         diamondCounter.position = CGPoint(x: 20, y: -11)

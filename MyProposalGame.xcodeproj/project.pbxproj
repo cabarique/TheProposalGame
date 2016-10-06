@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0494BF1DA4555F0084FB35 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */; };
 		4F8890EA1D93666C00563F8A /* Zombie.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F8890E91D93666C00563F8A /* Zombie.atlas */; };
 		4F8890F11D9369EF00563F8A /* EnemyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */; };
 		4F8890F21D9369F000563F8A /* ProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADECLASSIC.TTF; path = Resources/Fonts/ARCADECLASSIC.TTF; sourceTree = "<group>"; };
 		4F8890E91D93666C00563F8A /* Zombie.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie.atlas; path = Resources/Atlas/Zombie.atlas; sourceTree = "<group>"; };
 		4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyEntity.swift; path = Entities/EnemyEntity.swift; sourceTree = "<group>"; };
 		4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileEntity.swift; path = Entities/ProjectileEntity.swift; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0494BD1DA4545C0084FB35 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		4FEA1FB11D87802B00E96E1A = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +219,7 @@
 		4FEA1FD31D87805700E96E1A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F0494BD1DA4545C0084FB35 /* Fonts */,
 				4FEA1FDD1D87845A00E96E1A /* Artwork */,
 				4FEA1FDC1D87845300E96E1A /* Sounds */,
 				4FEA1FDB1D87844D00E96E1A /* Music */,
@@ -439,6 +450,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0494BF1DA4555F0084FB35 /* ARCADECLASSIC.TTF in Resources */,
 				4FEA20671D878C9F00E96E1A /* title_drop.wav in Resources */,
 				4FEA20751D87912300E96E1A /* GUI.atlas in Resources */,
 				4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */,

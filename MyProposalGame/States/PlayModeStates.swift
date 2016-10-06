@@ -174,7 +174,7 @@ class GameSceneWinState: GameSceneState {
         let nextScene = PostScreen(size: gs.scene!.size)
         nextScene.level = gs.levelIndex
         nextScene.win = true
-        nextScene.gems = gs.gemsCollected
+        nextScene.diamonds = gs.diamondsCollected
         nextScene.scaleMode = gs.scaleMode
         gs.view?.presentScene(nextScene)
     }
@@ -184,7 +184,7 @@ class GameSceneLoseState: GameSceneState {
         let nextScene = PostScreen(size: gs.scene!.size)
         nextScene.level = gs.levelIndex
         nextScene.win = false
-        nextScene.gems = gs.gemsCollected
+        nextScene.diamonds = gs.diamondsCollected
         nextScene.scaleMode = gs.scaleMode
         gs.view?.presentScene(nextScene)
     }

@@ -24,6 +24,8 @@ import Foundation
 import CoreGraphics
 import SpriteKit
 
+
+
 enum AnimationState: String {
     case Idle = "Idle_"
     case Dead = "Dead_"
@@ -50,6 +52,8 @@ enum ColliderType:UInt32 {
 
 struct GameSettings {
     
+    static let standarFontName = "ArcadeClassic"
+    
     struct Builder {
         static var ALL_Black_Background: Bool = false
     }
@@ -65,7 +69,7 @@ struct GameSettings {
         
         static let IOS_ShowDrawCount: Bool = false
         static let IOS_ShowQuadCount: Bool = false
-        static let IOS_ShowPhysics  : Bool = false
+        static let IOS_ShowPhysics  : Bool = true
         static let IOS_ShowFields   : Bool = false
         
         static let ALL_TellMeStatus : Bool = true

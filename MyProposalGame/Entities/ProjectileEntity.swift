@@ -31,8 +31,8 @@ class ProjectileEntity: SGEntity {
         addComponent(spriteComponent)
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         physicsComponent.setCategoryBitmask(ColliderType.Projectile.rawValue, dynamic: true)
-        physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue | ColliderType.Enemy.rawValue)
-        physicsComponent.setPhysicsContacts(ColliderType.Enemy.rawValue | ColliderType.Destroyable.rawValue)
+        physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
+        physicsComponent.setPhysicsContacts(ColliderType.Enemy.rawValue | ColliderType.Destroyable.rawValue | ColliderType.Enemy.rawValue)
         addComponent(physicsComponent)
         
         

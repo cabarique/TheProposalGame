@@ -32,7 +32,7 @@ class EnemyEntity: SGEntity {
         addComponent(animationComponent)
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         
-        
+        enablePhysicContacts()
         addComponent(physicsComponent)
         scrollerComponent = EnemyMovementComponent(entity: self)
         addComponent(scrollerComponent)
@@ -56,8 +56,8 @@ class EnemyEntity: SGEntity {
                                                                  withImageIdentifier: AnimationState.Run.rawValue,
                                                                  forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
-                                                                  withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: false, textureSize: CGSize(width: 57.39, height: 48.0))
+                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 64, height: 48.0))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
                                                                   forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0))

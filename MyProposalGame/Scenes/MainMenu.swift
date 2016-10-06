@@ -37,25 +37,43 @@ class MainMenu: SGScene {
     background.zPosition = -1
     addChild(background)
     
-    let playButton = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+    let playButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
     playButton.posByScreen(0.5, y: 0.3)
-    playButton.fontSize = 56
-    playButton.text = lt("Enter")
-    playButton.fontColor = SKColor.whiteColor()
+    playButton.fontSize = 70
+    playButton.text = lt("Jugar")
+    playButton.fontColor = SKColor.blackColor()
     playButton.zPosition = 10
     playButton.name = "playGame"
+    
+    let dropShadowPlay = SKLabelNode(fontNamed: GameSettings.standarFontName)
+    dropShadowPlay.fontSize = playButton.fontSize
+    dropShadowPlay.fontColor = SKColor.whiteColor()
+    dropShadowPlay.text = playButton.text
+    dropShadowPlay.zPosition = playButton.zPosition + 1
+    dropShadowPlay.position = CGPointMake(dropShadowPlay.position.x - 2, dropShadowPlay.position.y - 2)
+    playButton.addChild(dropShadowPlay)
     addChild(playButton)
     
     //For debugging
     
-    let buildButton = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+    let buildButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
     buildButton.posByScreen(0.5, y: 0.2)
-    buildButton.fontSize = 56
-    buildButton.text = lt("Build")
-    buildButton.fontColor = SKColor.whiteColor()
+    buildButton.fontSize = 60
+    buildButton.text = lt("Constructor")
+    buildButton.fontColor = SKColor.blackColor()
     buildButton.zPosition = 10
     buildButton.name = "buildGame"
+    
+    let dropShadow = SKLabelNode(fontNamed: GameSettings.standarFontName)
+    dropShadow.fontSize = buildButton.fontSize
+    dropShadow.fontColor = SKColor.whiteColor()
+    dropShadow.text = buildButton.text
+    dropShadow.zPosition = buildButton.zPosition + 1
+    dropShadow.position = CGPointMake(dropShadow.position.x - 2, dropShadow.position.y - 2)
+    buildButton.addChild(dropShadow)
     addChild(buildButton)
+    
+    
     
     let title = SKSpriteNode(imageNamed: "TOTSG01")
     title.posByCanvas(0.5, y: 1.5)

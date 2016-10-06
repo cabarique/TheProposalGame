@@ -265,7 +265,7 @@ class TileLayer: SKNode, tileMapDelegate {
             
             let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
             physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
-            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
+            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue | ColliderType.Enemy.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
             let invisibleWall = SKNode()
@@ -290,7 +290,7 @@ class TileLayer: SKNode, tileMapDelegate {
             
             let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
             physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
-            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
+            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue | ColliderType.Enemy.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
             addChild(node)
@@ -304,7 +304,7 @@ class TileLayer: SKNode, tileMapDelegate {
             
             let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
             physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
-            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
+            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue | ColliderType.Enemy.rawValue)
             node.physicsBody = physicsComponent.physicsBody
             
             let invisibleWall = SKNode()

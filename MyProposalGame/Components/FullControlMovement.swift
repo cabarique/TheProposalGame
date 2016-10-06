@@ -142,7 +142,6 @@ class FullControlComponent: GKComponent {
                 playerEnt.gameScene.runAction(playerEnt.gameScene.sndFire)
             }
             fireTime = fireTime > 0 ? fireTime : 0.5
-            animationComponent.requestedAnimationState = .IdleFire
         }
         if (fireTime > 0.0) {
             fireTime = fireTime - CGFloat(seconds)

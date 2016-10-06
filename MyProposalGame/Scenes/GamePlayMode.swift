@@ -32,7 +32,6 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     var levelIndex = 0
     
     //Level Data
-    var gemsCollected = 0
     var diamondsCollected = 0{
         didSet{
             scoreBanner.addDiamond()

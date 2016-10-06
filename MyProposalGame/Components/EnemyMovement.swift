@@ -99,7 +99,7 @@ class EnemyMovementComponent: GKComponent {
                     let nodeDif = (body.node?.position)! - spriteComponent.node.position
                     let nodeDir = nodeDif.angle
                     
-                    if !isDying && body.node?.name == "projectileNode" {
+                    if !isDying && body.node?.name == "projectileNode" && isActive {
                         body.node?.removeFromParent()
                         spriteComponent.node.physicsBody = nil
                         enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)

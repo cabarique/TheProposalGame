@@ -28,7 +28,7 @@ class PostScreen: SGScene {
   
   var level:Int?
   var win:Bool?
-  var gems:Int?
+  var diamonds:Int?
   
   override func didMoveToView(view: SKView) {
     
@@ -46,7 +46,7 @@ class PostScreen: SGScene {
     background.zPosition = -1
     addChild(background)
     
-    let nameBlock = SKLabelNode(fontNamed: "MarkerFelt-Wide")
+    let nameBlock = SKLabelNode(fontNamed: GameSettings.standarFontName)
     nameBlock.posByScreen(0.5, y: 0.5)
     nameBlock.fontColor = SKColor.whiteColor()
     nameBlock.fontSize = 64
@@ -60,10 +60,9 @@ class PostScreen: SGScene {
   func saveStats() {
     if win! {
       NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Level_\(level!)")
-      if gems! > NSUserDefaults.standardUserDefaults().integerForKey("\(level!)gems") {
-        NSUserDefaults.standardUserDefaults().setInteger(gems!, forKey: "\(level!)gems")
+      if diamonds! > NSUserDefaults.standardUserDefaults().integerForKey("\(level!)diamonds") {
+        NSUserDefaults.standardUserDefaults().setInteger(diamonds!, forKey: "\(level!)diamonds")
       }
-      NSUserDefaults.standardUserDefaults().synchronize()
     }
   }
   
@@ -74,12 +73,5 @@ class PostScreen: SGScene {
     self.view?.presentScene(nextScene)
     
   }
-  #if !os(OSX)
-  override func pressesBegan(presses: Set<UIPress>, withEvent event: UIPressesEvent?) {
-    let nextScene = MainMenu(size: self.scene!.size)
-    nextScene.scaleMode = self.scaleMode
-    self.view?.presentScene(nextScene)
-  }
-  #endif
   
 }

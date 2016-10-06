@@ -28,19 +28,19 @@ class GameScene: SGScene {
     //This scene acts as the first point of contact to start background music and pass off to main menu
     
     //Start Background Music
-//    SKTAudio.sharedInstance().playBackgroundMusic("background_music_intro.wav")
-//    SKTAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.4
+    SKTAudio.sharedInstance().playBackgroundMusic("background_music_intro.wav")
+    SKTAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.4
     
     //Transition to Main Menu
-//    let nextScene = MainMenu(size: self.scene!.size)
-//    nextScene.scaleMode = self.scaleMode
-//    self.view?.presentScene(nextScene)
-    
-    
-    let nextScene = GamePlayMode(size: self.scene!.size)
-    nextScene.levelIndex = 1
+    let nextScene = MainMenu(size: self.scene!.size)
     nextScene.scaleMode = self.scaleMode
     self.view?.presentScene(nextScene)
+    
+    
+//    let nextScene = GamePlayMode(size: self.scene!.size)
+//    nextScene.levelIndex = 1
+//    nextScene.scaleMode = self.scaleMode
+//    self.view?.presentScene(nextScene)
     
 //    let nextScene = GameBuildMode(size: self.scene!.size)
 //    nextScene.scaleMode = self.scaleMode
