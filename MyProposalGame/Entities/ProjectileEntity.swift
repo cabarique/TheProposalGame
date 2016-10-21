@@ -72,7 +72,7 @@ class ProjectileEntity: SGEntity {
     override func contactWith(entity:SGEntity) {
         
         if entity.name == "zombieEntity" {
-           
+           print("")
         }
 
     }

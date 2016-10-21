@@ -18,11 +18,17 @@ class EnemyEntity: SGEntity {
     var gameScene:GamePlayMode!
     var didRise: Bool = false
     
+    var lifePoints: Int!
+    
+    override init() {
+       super.init()
+    }
+    
     init(position: CGPoint, size: CGSize, atlas: SKTextureAtlas, scene:GamePlayMode, name: String) {
         super.init()
         
         gameScene = scene
-        
+        lifePoints = 1
         //Initialize components
         spriteComponent = SpriteComponent(entity: self, texture: SKTexture(), size: size, position:position)
         spriteComponent.node.xScale = -1
@@ -35,6 +41,7 @@ class EnemyEntity: SGEntity {
         enablePhysicContacts()
         addComponent(physicsComponent)
         scrollerComponent = EnemyMovementComponent(entity: self)
+        scrollerComponent.lifePoints = lifePoints
         addComponent(scrollerComponent)
         
         
@@ -65,13 +72,6 @@ class EnemyEntity: SGEntity {
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 57.39, height: 48.0))
         
-//        animations[.Run] = AnimationComponent.animationFromAtlas(textureAtlas,
-//                                                                 withImageIdentifier: AnimationState.Run.rawValue,
-//                                                                 forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 37.93, height: 48.0))
-//        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
-//                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
-//                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 57.39, height: 48.0))
-        
         return animations
     }
     
@@ -91,7 +91,7 @@ class EnemyEntity: SGEntity {
         
        
         if entity.name == "projectileEntity" {
-            
+            print("")
         }
 
         

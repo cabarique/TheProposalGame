@@ -161,6 +161,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             
             jumpButton.jumpPressed = false
             
+            enemySystem.updateWithDeltaTime(deltaTime, controlInput: enemyControl)
+            
             if control.firePressed {
                 let atlas = SKTextureAtlas(named: "Tiles")
                 let spriteNode = playerEntity?.spriteComponent.node
@@ -173,7 +175,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
                 fireButton.firePressed = false
             }
             
-            enemySystem.updateWithDeltaTime(deltaTime, controlInput: enemyControl)
+            
         }
     }
     

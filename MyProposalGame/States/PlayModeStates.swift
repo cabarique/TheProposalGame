@@ -88,13 +88,16 @@ class GameSceneInitialState: GameSceneState {
             fatalError("[Play Mode: No placeholder for player!")
         }
         
-        let enemies = ["Zombie"]
-        let enemyAtlas = SKTextureAtlas(named: enemies[0])
-        gs.worldLayer.enumerateChildNodesWithName("placeholder_Zombie") { (node, stop) in
-            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemyAtlas, scene: self.gs, name: "zombie")
-            zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-            zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
-            self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
+        let enemies = ["Zombie1", "Zombie2"]
+        
+        for enemy in enemies {
+            let enemyAtlas = SKTextureAtlas(named: enemy)
+            gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemy)") { (node, stop) in
+                let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemyAtlas, scene: self.gs, name: enemy)
+                zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+                zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+                self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
+            }
         }
         
         gs.worldLayer.enumerateChildNodesWithName("placeholder_FinishPoint") { (node, stop) -> Void in

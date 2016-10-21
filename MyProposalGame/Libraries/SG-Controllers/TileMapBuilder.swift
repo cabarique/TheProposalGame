@@ -54,6 +54,7 @@ enum tileType: Int {
     case tileDiamond             = 26
     case tileCoin                = 27
     case tileZombie              = 28
+    case tileZombie2             = 29
 }
 
 protocol tileMapDelegate {

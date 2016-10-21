@@ -36,6 +36,8 @@ class EnemyMovementComponent: GKComponent {
     var isActive: Bool = false
     var riseTime: CGFloat = 0.0
     
+    var lifePoints = 1
+    
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
         return spriteComponent
@@ -99,7 +101,12 @@ class EnemyMovementComponent: GKComponent {
                     let nodeDif = (body.node?.position)! - spriteComponent.node.position
                     let nodeDir = nodeDif.angle
                     
-                    if !isDying && body.node?.name == "projectileNode" && isActive {
+                    if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
+                        lifePoints -= 1
+                        body.node?.removeFromParent()
+                    }
+                    
+                    if !isDying && body.node?.name == "projectileNode" && isActive && lifePoints == 0 {
                         body.node?.removeFromParent()
                         spriteComponent.node.physicsBody = nil
                         enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)

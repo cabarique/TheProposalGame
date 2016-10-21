@@ -421,7 +421,7 @@ class TileLayer: SKNode, tileMapDelegate {
         case .tileZombie:
             let node = SKNode()
             node.position = location
-            node.name = "placeholder_Zombie"
+            node.name = "placeholder_Zombie1"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
         default:

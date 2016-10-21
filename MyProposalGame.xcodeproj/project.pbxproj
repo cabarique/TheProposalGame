@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4F0494BF1DA4555F0084FB35 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */; };
-		4F8890EA1D93666C00563F8A /* Zombie.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F8890E91D93666C00563F8A /* Zombie.atlas */; };
+		4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E9591DB426C600FD3538 /* Zombie2.atlas */; };
+		4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E95B1DB4299300FD3538 /* Boss.atlas */; };
+		4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */; };
+		4F8890EA1D93666C00563F8A /* Zombie1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F8890E91D93666C00563F8A /* Zombie1.atlas */; };
 		4F8890F11D9369EF00563F8A /* EnemyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */; };
 		4F8890F21D9369F000563F8A /* ProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */; };
 		4F8890F41D9369FE00563F8A /* EnemyMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F31D9369FE00563F8A /* EnemyMovement.swift */; };
@@ -85,7 +88,10 @@
 
 /* Begin PBXFileReference section */
 		4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADECLASSIC.TTF; path = Resources/Fonts/ARCADECLASSIC.TTF; sourceTree = "<group>"; };
-		4F8890E91D93666C00563F8A /* Zombie.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie.atlas; path = Resources/Atlas/Zombie.atlas; sourceTree = "<group>"; };
+		4F12E9591DB426C600FD3538 /* Zombie2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie2.atlas; path = Resources/Atlas/Zombie2.atlas; sourceTree = "<group>"; };
+		4F12E95B1DB4299300FD3538 /* Boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Boss.atlas; path = Resources/Atlas/Boss.atlas; sourceTree = "<group>"; };
+		4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy2Entity.swift; path = Entities/Enemy2Entity.swift; sourceTree = "<group>"; };
+		4F8890E91D93666C00563F8A /* Zombie1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie1.atlas; path = Resources/Atlas/Zombie1.atlas; sourceTree = "<group>"; };
 		4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyEntity.swift; path = Entities/EnemyEntity.swift; sourceTree = "<group>"; };
 		4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileEntity.swift; path = Entities/ProjectileEntity.swift; sourceTree = "<group>"; };
 		4F8890F31D9369FE00563F8A /* EnemyMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyMovement.swift; path = Components/EnemyMovement.swift; sourceTree = "<group>"; };
@@ -96,7 +102,7 @@
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreBanner.swift; path = "Libraries/SG-Engine/ScoreBanner.swift"; sourceTree = "<group>"; };
 		4FE4B2721D9D928600EB2FC4 /* CoinEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinEntity.swift; sourceTree = "<group>"; };
-		4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProposalGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEA1FBA1D87802B00E96E1A /* the game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA1FC31D87802B00E96E1A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4FEA1FC61D87802B00E96E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +187,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		4F12E95F1DB432CF00FD3538 /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
+				4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */,
+			);
+			name = Enemy;
+			sourceTree = "<group>";
+		};
 		4FEA1FB11D87802B00E96E1A = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +207,7 @@
 		4FEA1FBB1D87802B00E96E1A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */,
+				4FEA1FBA1D87802B00E96E1A /* the game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,12 +256,12 @@
 		4FEA1FD61D87807E00E96E1A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				4F12E95F1DB432CF00FD3538 /* Enemy */,
 				4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */,
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
 				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
 				4FE4B2721D9D928600EB2FC4 /* CoinEntity.swift */,
 				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
-				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
 				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
@@ -332,7 +347,9 @@
 				4FEA20681D878CB200E96E1A /* Female.atlas */,
 				4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */,
 				4FEA206A1D878CB200E96E1A /* Male.atlas */,
-				4F8890E91D93666C00563F8A /* Zombie.atlas */,
+				4F12E95B1DB4299300FD3538 /* Boss.atlas */,
+				4F8890E91D93666C00563F8A /* Zombie1.atlas */,
+				4F12E9591DB426C600FD3538 /* Zombie2.atlas */,
 				4FEA206B1D878CB200E96E1A /* Tiles.atlas */,
 			);
 			name = Artwork;
@@ -408,7 +425,7 @@
 			);
 			name = MyProposalGame;
 			productName = MyProposalGame;
-			productReference = 4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */;
+			productReference = 4FEA1FBA1D87802B00E96E1A /* the game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -423,7 +440,7 @@
 				TargetAttributes = {
 					4FEA1FB91D87802B00E96E1A = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4KLHJ2S5TH;
+						DevelopmentTeam = N3TK924TRG;
 					};
 				};
 			};
@@ -457,6 +474,7 @@
 				4FEA205B1D878C9000E96E1A /* background_music.mp3 in Resources */,
 				4FEA206F1D878CB200E96E1A /* Tiles.atlas in Resources */,
 				4FEA20621D878C9F00E96E1A /* button_click.wav in Resources */,
+				4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */,
 				4FEA20631D878C9F00E96E1A /* collect_good.wav in Resources */,
 				4FEA1FCC1D87802B00E96E1A /* LaunchScreen.storyboard in Resources */,
 				4FEA20641D878C9F00E96E1A /* impact.wav in Resources */,
@@ -474,7 +492,8 @@
 				DAAB0CA11D9B40F800D8A0BD /* Cat.atlas in Resources */,
 				4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */,
 				DAAB0CA41D9CAE3D00D8A0BD /* game_over.wav in Resources */,
-				4F8890EA1D93666C00563F8A /* Zombie.atlas in Resources */,
+				4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */,
+				4F8890EA1D93666C00563F8A /* Zombie1.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +520,7 @@
 				4FEA204A1D878A4A00E96E1A /* MainMenu.swift in Sources */,
 				4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */,
 				4FEA202F1D87888D00E96E1A /* PlayModeStates.swift in Sources */,
+				4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */,
 				4FEA202C1D87882F00E96E1A /* TileMapBuilder.swift in Sources */,
 				4FEA20271D87882200E96E1A /* SGScene.swift in Sources */,
 				4F8890F11D9369EF00563F8A /* EnemyEntity.swift in Sources */,
@@ -653,12 +673,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4KLHJ2S5TH;
+				DEVELOPMENT_TEAM = N3TK924TRG;
 				INFOPLIST_FILE = MyProposalGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.MyProposalGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "the game";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
@@ -667,12 +688,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4KLHJ2S5TH;
+				DEVELOPMENT_TEAM = N3TK924TRG;
 				INFOPLIST_FILE = MyProposalGame/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.MyProposalGame;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "the game";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;

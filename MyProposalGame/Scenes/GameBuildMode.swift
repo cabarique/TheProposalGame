@@ -45,7 +45,7 @@ class GameBuildMode: SGScene {
         "0","1","2","3","4","5","6","7","8","9",
         "10","11","12","13","14","15","16","17",
         "18","B3","Sign_1","Sign_2",
-        "Crate","gem","Mushroom_1","Mushroom_2,", "diamondBlue", "Coin", "Zombie"
+        "Crate","gem","Mushroom_1","Mushroom_2,", "diamondBlue", "Coin", "Zombie1", "Zombie2"
     ]
     
     
@@ -259,8 +259,14 @@ class GameBuildMode: SGScene {
                     label.position = child.position
                     worldLayer.addChild(label)
                     break
-                case "placeholder_Zombie":
-                    let label = SKLabelNode(text: "Z")
+                case "placeholder_Zombie1":
+                    let label = SKLabelNode(text: "Z1")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
+                case "placeholder_Zombie2":
+                    let label = SKLabelNode(text: "Z2")
                     label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
                     label.position = child.position
                     worldLayer.addChild(label)

@@ -69,7 +69,7 @@ struct GameSettings {
         
         static let IOS_ShowDrawCount: Bool = false
         static let IOS_ShowQuadCount: Bool = false
-        static let IOS_ShowPhysics  : Bool = true
+        static let IOS_ShowPhysics  : Bool = false
         static let IOS_ShowFields   : Bool = false
         
         static let ALL_TellMeStatus : Bool = true
