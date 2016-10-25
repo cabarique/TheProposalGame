@@ -11,6 +11,16 @@
 		4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E9591DB426C600FD3538 /* Zombie2.atlas */; };
 		4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E95B1DB4299300FD3538 /* Boss.atlas */; };
 		4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */; };
+		4F5773F81DBED656007CF1FB /* Mage2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5773F61DBED656007CF1FB /* Mage2.atlas */; };
+		4F5773FC1DBED853007CF1FB /* Projectile.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5773FA1DBED853007CF1FB /* Projectile.atlas */; };
+		4F5773FE1DBEE3B9007CF1FB /* Mage1Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5773FD1DBEE3B9007CF1FB /* Mage1Entity.swift */; };
+		4F5774001DBEE503007CF1FB /* MageMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5773FF1DBEE503007CF1FB /* MageMovement.swift */; };
+		4F5774041DBEEBB8007CF1FB /* Tiles2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5774011DBEEBB8007CF1FB /* Tiles2.atlas */; };
+		4F5774051DBEEBB8007CF1FB /* Tiles4.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5774021DBEEBB8007CF1FB /* Tiles4.atlas */; };
+		4F5774061DBEEBB8007CF1FB /* Tiles3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5774031DBEEBB8007CF1FB /* Tiles3.atlas */; };
+		4F5774081DBEFCCB007CF1FB /* TileLayer1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5774071DBEFCCB007CF1FB /* TileLayer1.swift */; };
+		4F57740D1DBF03F7007CF1FB /* Projectile.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F57740B1DBF03F7007CF1FB /* Projectile.atlas */; };
+		4F57740E1DBF03F7007CF1FB /* TileObjects.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F57740C1DBF03F7007CF1FB /* TileObjects.atlas */; };
 		4F8890EA1D93666C00563F8A /* Zombie1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F8890E91D93666C00563F8A /* Zombie1.atlas */; };
 		4F8890F11D9369EF00563F8A /* EnemyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */; };
 		4F8890F21D9369F000563F8A /* ProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */; };
@@ -21,7 +31,6 @@
 		4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */; };
 		4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2B3621D8DBC4F005F169A /* Button.atlas */; };
 		4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */; };
-		4FE4B2731D9D928600EB2FC4 /* CoinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4B2721D9D928600EB2FC4 /* CoinEntity.swift */; };
 		4FEA1FBE1D87802B00E96E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */; };
 		4FEA1FC41D87802B00E96E1A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC31D87802B00E96E1A /* GameViewController.swift */; };
 		4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA1FC51D87802B00E96E1A /* Main.storyboard */; };
@@ -70,13 +79,19 @@
 		4FEA20641D878C9F00E96E1A /* impact.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205E1D878C9F00E96E1A /* impact.wav */; };
 		4FEA20651D878C9F00E96E1A /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA205F1D878C9F00E96E1A /* jump.wav */; };
 		4FEA20671D878C9F00E96E1A /* title_drop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20611D878C9F00E96E1A /* title_drop.wav */; };
-		4FEA206C1D878CB200E96E1A /* Female.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20681D878CB200E96E1A /* Female.atlas */; };
 		4FEA206D1D878CB200E96E1A /* LargeMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */; };
-		4FEA206E1D878CB200E96E1A /* Male.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA206A1D878CB200E96E1A /* Male.atlas */; };
 		4FEA206F1D878CB200E96E1A /* Tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA206B1D878CB200E96E1A /* Tiles.atlas */; };
 		4FEA20711D878D6700E96E1A /* FullControlMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20701D878D6700E96E1A /* FullControlMovement.swift */; };
 		4FEA20731D878FDF00E96E1A /* MovementStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20721D878FDF00E96E1A /* MovementStick.swift */; };
 		4FEA20751D87912300E96E1A /* GUI.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20741D87912300E96E1A /* GUI.atlas */; };
+		4FF367C71DBFA478006C5CAF /* TileLayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C61DBFA478006C5CAF /* TileLayer2.swift */; };
+		4FF367CB1DBFA494006C5CAF /* BossEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C81DBFA494006C5CAF /* BossEntity.swift */; };
+		4FF367CC1DBFA494006C5CAF /* CoinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C91DBFA494006C5CAF /* CoinEntity.swift */; };
+		4FF367CD1DBFA494006C5CAF /* Mage2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367CA1DBFA494006C5CAF /* Mage2Entity.swift */; };
+		4FF367CF1DBFA514006C5CAF /* PrincessEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367CE1DBFA514006C5CAF /* PrincessEntity.swift */; };
+		4FF367D31DBFA623006C5CAF /* Princess.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FF367D21DBFA623006C5CAF /* Princess.atlas */; };
+		4FF367D51DBFA8BA006C5CAF /* TileLayer3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367D41DBFA8BA006C5CAF /* TileLayer3.swift */; };
+		4FF367D71DBFBFE6006C5CAF /* Mage1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FF367D61DBFBFE6006C5CAF /* Mage1.atlas */; };
 		DA9484601D9CB88100EDD1B1 /* background_music_halloween.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA94845F1D9CB88100EDD1B1 /* background_music_halloween.mp3 */; };
 		DA9484631D9CB9AF00EDD1B1 /* background_music_02.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA9484611D9CB9AF00EDD1B1 /* background_music_02.wav */; };
 		DA9484641D9CB9AF00EDD1B1 /* background_music_intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA9484621D9CB9AF00EDD1B1 /* background_music_intro.wav */; };
@@ -91,6 +106,16 @@
 		4F12E9591DB426C600FD3538 /* Zombie2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie2.atlas; path = Resources/Atlas/Zombie2.atlas; sourceTree = "<group>"; };
 		4F12E95B1DB4299300FD3538 /* Boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Boss.atlas; path = Resources/Atlas/Boss.atlas; sourceTree = "<group>"; };
 		4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy2Entity.swift; path = Entities/Enemy2Entity.swift; sourceTree = "<group>"; };
+		4F5773F61DBED656007CF1FB /* Mage2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Mage2.atlas; path = Resources/Atlas/Mage2.atlas; sourceTree = "<group>"; };
+		4F5773FA1DBED853007CF1FB /* Projectile.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Projectile.atlas; path = Resources/Atlas/Projectile.atlas; sourceTree = "<group>"; };
+		4F5773FD1DBEE3B9007CF1FB /* Mage1Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mage1Entity.swift; path = Entities/Mage1Entity.swift; sourceTree = "<group>"; };
+		4F5773FF1DBEE503007CF1FB /* MageMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MageMovement.swift; path = Components/MageMovement.swift; sourceTree = "<group>"; };
+		4F5774011DBEEBB8007CF1FB /* Tiles2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Tiles2.atlas; path = Resources/Atlas/Tiles2.atlas; sourceTree = "<group>"; };
+		4F5774021DBEEBB8007CF1FB /* Tiles4.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Tiles4.atlas; path = Resources/Atlas/Tiles4.atlas; sourceTree = "<group>"; };
+		4F5774031DBEEBB8007CF1FB /* Tiles3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Tiles3.atlas; path = Resources/Atlas/Tiles3.atlas; sourceTree = "<group>"; };
+		4F5774071DBEFCCB007CF1FB /* TileLayer1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer1.swift; path = Scenes/Layers/TileLayer1.swift; sourceTree = "<group>"; };
+		4F57740B1DBF03F7007CF1FB /* Projectile.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Projectile.atlas; path = Resources/Atlas/Projectile.atlas; sourceTree = "<group>"; };
+		4F57740C1DBF03F7007CF1FB /* TileObjects.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = TileObjects.atlas; path = Resources/Atlas/TileObjects.atlas; sourceTree = "<group>"; };
 		4F8890E91D93666C00563F8A /* Zombie1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie1.atlas; path = Resources/Atlas/Zombie1.atlas; sourceTree = "<group>"; };
 		4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyEntity.swift; path = Entities/EnemyEntity.swift; sourceTree = "<group>"; };
 		4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileEntity.swift; path = Entities/ProjectileEntity.swift; sourceTree = "<group>"; };
@@ -101,7 +126,6 @@
 		4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunshot.wav; path = Resources/Sounds/gunshot.wav; sourceTree = "<group>"; };
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreBanner.swift; path = "Libraries/SG-Engine/ScoreBanner.swift"; sourceTree = "<group>"; };
-		4FE4B2721D9D928600EB2FC4 /* CoinEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinEntity.swift; sourceTree = "<group>"; };
 		4FEA1FBA1D87802B00E96E1A /* the game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA1FC31D87802B00E96E1A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -152,13 +176,19 @@
 		4FEA205E1D878C9F00E96E1A /* impact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = impact.wav; path = Resources/Sounds/impact.wav; sourceTree = "<group>"; };
 		4FEA205F1D878C9F00E96E1A /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = jump.wav; path = Resources/Sounds/jump.wav; sourceTree = "<group>"; };
 		4FEA20611D878C9F00E96E1A /* title_drop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = title_drop.wav; path = Resources/Sounds/title_drop.wav; sourceTree = "<group>"; };
-		4FEA20681D878CB200E96E1A /* Female.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Female.atlas; path = Resources/Atlas/Female.atlas; sourceTree = "<group>"; };
 		4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = LargeMedia.xcassets; path = Resources/Atlas/LargeMedia.xcassets; sourceTree = "<group>"; };
-		4FEA206A1D878CB200E96E1A /* Male.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Male.atlas; path = Resources/Atlas/Male.atlas; sourceTree = "<group>"; };
 		4FEA206B1D878CB200E96E1A /* Tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Tiles.atlas; path = Resources/Atlas/Tiles.atlas; sourceTree = "<group>"; };
 		4FEA20701D878D6700E96E1A /* FullControlMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullControlMovement.swift; path = Components/FullControlMovement.swift; sourceTree = "<group>"; };
 		4FEA20721D878FDF00E96E1A /* MovementStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovementStick.swift; path = "Libraries/SG-Engine/MovementStick.swift"; sourceTree = "<group>"; };
 		4FEA20741D87912300E96E1A /* GUI.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GUI.atlas; path = Resources/Atlas/GUI.atlas; sourceTree = "<group>"; };
+		4FF367C61DBFA478006C5CAF /* TileLayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer2.swift; path = Scenes/Layers/TileLayer2.swift; sourceTree = "<group>"; };
+		4FF367C81DBFA494006C5CAF /* BossEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossEntity.swift; path = Entities/BossEntity.swift; sourceTree = "<group>"; };
+		4FF367C91DBFA494006C5CAF /* CoinEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoinEntity.swift; path = Entities/CoinEntity.swift; sourceTree = "<group>"; };
+		4FF367CA1DBFA494006C5CAF /* Mage2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mage2Entity.swift; path = Entities/Mage2Entity.swift; sourceTree = "<group>"; };
+		4FF367CE1DBFA514006C5CAF /* PrincessEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrincessEntity.swift; path = Entities/PrincessEntity.swift; sourceTree = "<group>"; };
+		4FF367D21DBFA623006C5CAF /* Princess.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Princess.atlas; path = Resources/Atlas/Princess.atlas; sourceTree = "<group>"; };
+		4FF367D41DBFA8BA006C5CAF /* TileLayer3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer3.swift; path = Scenes/Layers/TileLayer3.swift; sourceTree = "<group>"; };
+		4FF367D61DBFBFE6006C5CAF /* Mage1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Mage1.atlas; path = Resources/Atlas/Mage1.atlas; sourceTree = "<group>"; };
 		DA94845F1D9CB88100EDD1B1 /* background_music_halloween.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = background_music_halloween.mp3; path = Resources/Music/background_music_halloween.mp3; sourceTree = "<group>"; };
 		DA9484611D9CB9AF00EDD1B1 /* background_music_02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background_music_02.wav; path = Resources/Music/background_music_02.wav; sourceTree = "<group>"; };
 		DA9484621D9CB9AF00EDD1B1 /* background_music_intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background_music_intro.wav; path = Resources/Music/background_music_intro.wav; sourceTree = "<group>"; };
@@ -190,8 +220,11 @@
 		4F12E95F1DB432CF00FD3538 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
-				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
+				4FF367C81DBFA494006C5CAF /* BossEntity.swift */,
 				4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */,
+				4F8890EF1D9369EF00563F8A /* EnemyEntity.swift */,
+				4F5773FD1DBEE3B9007CF1FB /* Mage1Entity.swift */,
+				4FF367CA1DBFA494006C5CAF /* Mage2Entity.swift */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -257,12 +290,11 @@
 			isa = PBXGroup;
 			children = (
 				4F12E95F1DB432CF00FD3538 /* Enemy */,
+				4FF367D11DBFA5B3006C5CAF /* Characters */,
+				4FF367D01DBFA5A6006C5CAF /* Collectable */,
 				4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */,
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
-				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
-				4FE4B2721D9D928600EB2FC4 /* CoinEntity.swift */,
 				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
-				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
 			name = Entities;
@@ -280,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				4F8890F31D9369FE00563F8A /* EnemyMovement.swift */,
+				4F5773FF1DBEE503007CF1FB /* MageMovement.swift */,
 				4FEA20701D878D6700E96E1A /* FullControlMovement.swift */,
 				4FEA20551D878BA800E96E1A /* SideScrollMovement.swift */,
 				4FEA204C1D878A5800E96E1A /* AnimationComponent.swift */,
@@ -341,16 +374,23 @@
 		4FEA1FDD1D87845A00E96E1A /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
-				DAAB0CA01D9B40F800D8A0BD /* Cat.atlas */,
-				4FD2B3621D8DBC4F005F169A /* Button.atlas */,
-				4FEA20741D87912300E96E1A /* GUI.atlas */,
-				4FEA20681D878CB200E96E1A /* Female.atlas */,
-				4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */,
-				4FEA206A1D878CB200E96E1A /* Male.atlas */,
 				4F12E95B1DB4299300FD3538 /* Boss.atlas */,
+				4FD2B3621D8DBC4F005F169A /* Button.atlas */,
+				DAAB0CA01D9B40F800D8A0BD /* Cat.atlas */,
+				4FEA20741D87912300E96E1A /* GUI.atlas */,
+				4FEA20691D878CB200E96E1A /* LargeMedia.xcassets */,
+				4FF367D61DBFBFE6006C5CAF /* Mage1.atlas */,
+				4F5773F61DBED656007CF1FB /* Mage2.atlas */,
+				4FF367D21DBFA623006C5CAF /* Princess.atlas */,
+				4F57740B1DBF03F7007CF1FB /* Projectile.atlas */,
+				4F57740C1DBF03F7007CF1FB /* TileObjects.atlas */,
+				4F5773FA1DBED853007CF1FB /* Projectile.atlas */,
+				4FEA206B1D878CB200E96E1A /* Tiles.atlas */,
+				4F5774011DBEEBB8007CF1FB /* Tiles2.atlas */,
+				4F5774031DBEEBB8007CF1FB /* Tiles3.atlas */,
+				4F5774021DBEEBB8007CF1FB /* Tiles4.atlas */,
 				4F8890E91D93666C00563F8A /* Zombie1.atlas */,
 				4F12E9591DB426C600FD3538 /* Zombie2.atlas */,
-				4FEA206B1D878CB200E96E1A /* Tiles.atlas */,
 			);
 			name = Artwork;
 			sourceTree = "<group>";
@@ -404,8 +444,29 @@
 			isa = PBXGroup;
 			children = (
 				4FEA203C1D878A3C00E96E1A /* TileLayer.swift */,
+				4F5774071DBEFCCB007CF1FB /* TileLayer1.swift */,
+				4FF367C61DBFA478006C5CAF /* TileLayer2.swift */,
+				4FF367D41DBFA8BA006C5CAF /* TileLayer3.swift */,
 			);
 			name = Layers;
+			sourceTree = "<group>";
+		};
+		4FF367D01DBFA5A6006C5CAF /* Collectable */ = {
+			isa = PBXGroup;
+			children = (
+				4FF367C91DBFA494006C5CAF /* CoinEntity.swift */,
+				4FEA20321D87893A00E96E1A /* GemEntity.swift */,
+			);
+			name = Collectable;
+			sourceTree = "<group>";
+		};
+		4FF367D11DBFA5B3006C5CAF /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA20341D87893A00E96E1A /* PlayerEntity.swift */,
+				4FF367CE1DBFA514006C5CAF /* PrincessEntity.swift */,
+			);
+			name = Characters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,29 +528,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F57740E1DBF03F7007CF1FB /* TileObjects.atlas in Resources */,
 				4F0494BF1DA4555F0084FB35 /* ARCADECLASSIC.TTF in Resources */,
 				4FEA20671D878C9F00E96E1A /* title_drop.wav in Resources */,
 				4FEA20751D87912300E96E1A /* GUI.atlas in Resources */,
+				4F5774061DBEEBB8007CF1FB /* Tiles3.atlas in Resources */,
+				4F57740D1DBF03F7007CF1FB /* Projectile.atlas in Resources */,
 				4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */,
 				4FEA205B1D878C9000E96E1A /* background_music.mp3 in Resources */,
 				4FEA206F1D878CB200E96E1A /* Tiles.atlas in Resources */,
 				4FEA20621D878C9F00E96E1A /* button_click.wav in Resources */,
+				4F5774041DBEEBB8007CF1FB /* Tiles2.atlas in Resources */,
 				4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */,
 				4FEA20631D878C9F00E96E1A /* collect_good.wav in Resources */,
 				4FEA1FCC1D87802B00E96E1A /* LaunchScreen.storyboard in Resources */,
 				4FEA20641D878C9F00E96E1A /* impact.wav in Resources */,
 				DA9484641D9CB9AF00EDD1B1 /* background_music_intro.wav in Resources */,
+				4FF367D31DBFA623006C5CAF /* Princess.atlas in Resources */,
 				DA9484631D9CB9AF00EDD1B1 /* background_music_02.wav in Resources */,
 				4FEA20591D878C8500E96E1A /* Localizable.strings in Resources */,
+				4F5773F81DBED656007CF1FB /* Mage2.atlas in Resources */,
 				4FEA206D1D878CB200E96E1A /* LargeMedia.xcassets in Resources */,
 				4FEA20651D878C9F00E96E1A /* jump.wav in Resources */,
+				4F5774051DBEEBB8007CF1FB /* Tiles4.atlas in Resources */,
 				DA9484601D9CB88100EDD1B1 /* background_music_halloween.mp3 in Resources */,
 				4FEA1FC91D87802B00E96E1A /* Assets.xcassets in Resources */,
-				4FEA206C1D878CB200E96E1A /* Female.atlas in Resources */,
+				4F5773FC1DBED853007CF1FB /* Projectile.atlas in Resources */,
 				DAAB0CA51D9CAE3D00D8A0BD /* meow.mp3 in Resources */,
 				4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */,
-				4FEA206E1D878CB200E96E1A /* Male.atlas in Resources */,
 				DAAB0CA11D9B40F800D8A0BD /* Cat.atlas in Resources */,
+				4FF367D71DBFBFE6006C5CAF /* Mage1.atlas in Resources */,
 				4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */,
 				DAAB0CA41D9CAE3D00D8A0BD /* game_over.wav in Resources */,
 				4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */,
@@ -510,18 +578,24 @@
 				4FEA20121D87880200E96E1A /* CGPoint+Extensions.swift in Sources */,
 				4FEA20131D87880200E96E1A /* CGVector+Extensions.swift in Sources */,
 				4FEA204B1D878A4A00E96E1A /* PostScene.swift in Sources */,
+				4F5773FE1DBEE3B9007CF1FB /* Mage1Entity.swift in Sources */,
 				4FEA1FC41D87802B00E96E1A /* GameViewController.swift in Sources */,
 				4FEA20731D878FDF00E96E1A /* MovementStick.swift in Sources */,
 				DA9484661D9CBD7700EDD1B1 /* LevelSelect.swift in Sources */,
 				4FEA20141D87880200E96E1A /* Int+Extensions.swift in Sources */,
+				4FF367D51DBFA8BA006C5CAF /* TileLayer3.swift in Sources */,
 				4FEA20251D87882200E96E1A /* SGExtensions.swift in Sources */,
 				4FEA201C1D87880200E96E1A /* SKTAudio.swift in Sources */,
 				4FEA20111D87880200E96E1A /* CGFloat+Extensions.swift in Sources */,
+				4F5774081DBEFCCB007CF1FB /* TileLayer1.swift in Sources */,
 				4FEA204A1D878A4A00E96E1A /* MainMenu.swift in Sources */,
+				4FF367CF1DBFA514006C5CAF /* PrincessEntity.swift in Sources */,
 				4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */,
 				4FEA202F1D87888D00E96E1A /* PlayModeStates.swift in Sources */,
 				4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */,
 				4FEA202C1D87882F00E96E1A /* TileMapBuilder.swift in Sources */,
+				4FF367C71DBFA478006C5CAF /* TileLayer2.swift in Sources */,
+				4FF367CB1DBFA494006C5CAF /* BossEntity.swift in Sources */,
 				4FEA20271D87882200E96E1A /* SGScene.swift in Sources */,
 				4F8890F11D9369EF00563F8A /* EnemyEntity.swift in Sources */,
 				4FEA201B1D87880200E96E1A /* SKNode+Extensions.swift in Sources */,
@@ -545,14 +619,16 @@
 				4FEA20241D87882200E96E1A /* IOS_Responder.swift in Sources */,
 				4FEA20361D87893A00E96E1A /* BackgroundEntity.swift in Sources */,
 				4F8890FC1D936A6200563F8A /* SGSpriteNode.swift in Sources */,
+				4FF367CD1DBFA494006C5CAF /* Mage2Entity.swift in Sources */,
 				4FEA20381D87893A00E96E1A /* GemEntity.swift in Sources */,
+				4FF367CC1DBFA494006C5CAF /* CoinEntity.swift in Sources */,
 				4FEA201F1D87880200E96E1A /* Vector3.swift in Sources */,
 				4FEA201A1D87880200E96E1A /* SKColor+Extensions.swift in Sources */,
 				4FEA20471D878A4A00E96E1A /* GamePlayMode.swift in Sources */,
 				4FEA20461D878A4A00E96E1A /* GameBuildMode.swift in Sources */,
-				4FE4B2731D9D928600EB2FC4 /* CoinEntity.swift in Sources */,
 				4FEA20501D878A5800E96E1A /* AnimationComponent.swift in Sources */,
 				4F8890FA1D936A2C00563F8A /* JumpButton.swift in Sources */,
+				4F5774001DBEE503007CF1FB /* MageMovement.swift in Sources */,
 				4FEA20571D878BA800E96E1A /* SideScrollMovement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

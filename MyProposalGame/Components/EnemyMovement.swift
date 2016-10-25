@@ -30,7 +30,6 @@ class EnemyControlComponentSystem: GKComponentSystem {
 class EnemyMovementComponent: GKComponent {
     
     var movementSpeed = CGPoint(x: -30.0, y: 0.0)
-    private var skipMovement = 10
     var isDying = false
     var deadTime: CGFloat = 0.0
     var isActive: Bool = false

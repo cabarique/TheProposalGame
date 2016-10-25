@@ -4,6 +4,14 @@
    <ContextStates>
       <ContextState
          contextName = "FullControlComponent.updateWithDeltaTime(Double, controlInput : FullMoveControlScheme) -&gt; ():FullControlMovement.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "controlInput.movement">
+            </PersistentString>
+            <PersistentString
+               value = "movementSpeed">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

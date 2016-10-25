@@ -35,6 +35,7 @@ enum AnimationState: String {
     case Slide = "Slide_"
     case IdleFire = "Throw_"
     case Rise = "Rise_"
+    case Attack = "Attack__"
 }
 
 enum ColliderType:UInt32 {
@@ -48,6 +49,7 @@ enum ColliderType:UInt32 {
     case None           = 0b1000000
     case KillZone       = 0b10000000
     case InvisibleWall  = 0b100000000
+    case Princess       = 0b1000000000
 }
 
 struct GameSettings {
@@ -56,6 +58,7 @@ struct GameSettings {
     
     struct Builder {
         static var ALL_Black_Background: Bool = false
+        static let BUILDER_LEVEL = 2
     }
     
     /**

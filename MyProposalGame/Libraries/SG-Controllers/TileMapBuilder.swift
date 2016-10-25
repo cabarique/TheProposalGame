@@ -48,17 +48,20 @@ enum tileType: Int {
     case tileSignPost            = 20
     case tileSignArrow           = 21
     case tileCrate               = 22
-    case tileGem                 = 23
-    case tileStartLevel          = 24
-    case tileEndLevel            = 25
-    case tileDiamond             = 26
-    case tileCoin                = 27
-    case tileZombie              = 28
-    case tileZombie2             = 29
+    case tileStartLevel          = 23
+    case tileEndLevel            = 24
+    case tileDiamond             = 25
+    case tileCoin                = 26
+    case tileZombie              = 27
+    case tileZombie2             = 28
+    case tileMage1               = 29
+    case tileMage2               = 30
+    case tileBoss                = 31
+    case tilePrincess            = 32
 }
 
 protocol tileMapDelegate {
-    func createNodeOf(type type:tileType, location:CGPoint)
+    func createNodeOf(type type:tileType, location:CGPoint, level: Int)
 }
 
 struct tileMapBuilder {
@@ -98,14 +101,14 @@ struct tileMapBuilder {
     
     //MARK: Presenting the layer
     
-    func presentLayerViaDelegate() {
+    func presentLayerViaDelegate(level: Int) {
         for (indexr, row) in tileLayer.enumerate() {
             for (indexc, cvalue) in row.enumerate() {
                 if (delegate != nil) {
                     delegate!.createNodeOf(type: tileType(rawValue: cvalue)!,
                                            location: CGPoint(
                                             x: tileSize.width * CGFloat(indexc),
-                                            y: tileSize.height * CGFloat(-indexr)))
+                                            y: tileSize.height * CGFloat(-indexr)), level: level)
                 }
             }
         }

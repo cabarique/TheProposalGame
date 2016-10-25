@@ -70,6 +70,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
         return [animationSystem, parallaxSystem]
     }()
     let enemySystem = EnemyControlComponentSystem(componentClass: EnemyMovementComponent.self)
+    let mageSystem = MageControlComponentSystem(componentClass: MageMovementComponent.self)
     let scrollerSystem = FullControlComponentSystem(componentClass: FullControlComponent.self)
     
     //Timers
@@ -80,6 +81,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     //Controls
     var control = FullMoveControlScheme()
     var enemyControl = EnemyMoveControlScheme()
+    var mageControl = MageMoveControlScheme()
     var pauseLoop = false
     let movementStick = MovementStick(stickName: "MoveStick")
     let jumpButton = JumpButton(buttonName: "JumpButton")
@@ -117,9 +119,14 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
         for componentSystem in self.componentSystems {
             componentSystem.addComponentWithEntity(entity)
         }
-        if entity is EnemyEntity || entity is ProjectileEntity{
+        if entity is EnemyEntity || entity is ProjectileEntity  {
             enemySystem.addComponentWithEntity(entity)
         }
+        
+        if entity is Mage1Entity || entity is Mage2Entity{
+            mageSystem.addComponentWithEntity(entity)
+        }
+
         
         scrollerSystem.addComponentWithEntity(entity)
         
@@ -162,26 +169,24 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             jumpButton.jumpPressed = false
             
             enemySystem.updateWithDeltaTime(deltaTime, controlInput: enemyControl)
+            mageSystem.updateWithDeltaTime(deltaTime, controlInput: mageControl)
             
             if control.firePressed {
-                let atlas = SKTextureAtlas(named: "Tiles")
+                let atlas = SKTextureAtlas(named: "Projectile")
                 let spriteNode = playerEntity?.spriteComponent.node
                 let orientation: CGFloat = (spriteNode?.xScale)!
                 let positionX = orientation >= 0 ? spriteNode!.position.x + 40 : spriteNode!.position.x - 40
-                let projectile = ProjectileEntity(position: CGPoint(x: positionX, y: spriteNode!.position.y + 20), size: CGSize(width: 40, height: 8), orientation: orientation, texture: atlas.textureNamed("Kunai"), scene: self)
+                let projectile = ProjectileEntity(position: CGPoint(x: positionX, y: spriteNode!.position.y + 20), size: CGSize(width: 15, height: 8), orientation: orientation, texture: atlas.textureNamed("Cat_Bullet"), scene: self)
                 projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
                 self.addEntity(projectile, toLayer: self.worldLayer)
                 
                 fireButton.firePressed = false
             }
-            
-            
         }
     }
     
     override func didFinishUpdate() {
         //Update UI
-        
         
     }
     

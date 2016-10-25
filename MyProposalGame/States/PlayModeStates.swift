@@ -45,7 +45,19 @@ class GameSceneInitialState: GameSceneState {
         gs.camera?.setScale(0.44)
         
         //Layers
-        gs.worldLayer = TileLayer(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        switch gs.levelIndex{
+        case 0:
+           gs.worldLayer = TileLayer1(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        case 1:
+            gs.worldLayer = TileLayer3(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        case 2:
+            gs.worldLayer = TileLayer3(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        case 3:
+            gs.worldLayer = TileLayer2(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        default:
+            gs.worldLayer = TileLayer1(levelIndex: gs.levelIndex, typeIndex: .setMain)
+        }
+        
         gs.backgroundLayer = SKNode()
         gs.overlayGUI = SKNode()
         gs.addChild(gs.worldLayer)
@@ -74,7 +86,6 @@ class GameSceneInitialState: GameSceneState {
         
         //Add nodes for placeholders
         let atlas = SKTextureAtlas(named: "Cat")
-        
         if let playerPlaceholder = gs.worldLayer.childNodeWithName("placeholder_StartPoint") {
             let player = PlayerEntity(position: playerPlaceholder.position, size: CGSize(width: 25.4, height: 48.0), firstFrame: atlas.textureNamed("Idle__000"), atlas: atlas, scene:gs)
             player.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
@@ -88,16 +99,54 @@ class GameSceneInitialState: GameSceneState {
             fatalError("[Play Mode: No placeholder for player!")
         }
         
-        let enemies = ["Zombie1", "Zombie2"]
+        let princessTexture = SKTextureAtlas(named: "Princess")
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_Princess") { (node, stop) in
+            let princess = PrincessEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: princessTexture, scene: self.gs, name: "Princess")
+            princess.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            princess.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(princess, toLayer: self.gs.worldLayer)
+        }
         
-        for enemy in enemies {
-            let enemyAtlas = SKTextureAtlas(named: enemy)
-            gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemy)") { (node, stop) in
-                let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemyAtlas, scene: self.gs, name: enemy)
-                zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-                zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
-                self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
-            }
+        //Enemies
+        let enemies = ["Zombie1", "Zombie2", "Mage1", "Mage2", "Boss"]
+        let enemy1Atlas = SKTextureAtlas(named: enemies[0])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[0])") { (node, stop) in
+            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemy1Atlas, scene: self.gs, name: enemies[0])
+            zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
+        }
+        
+        let enemy2Atlas = SKTextureAtlas(named: enemies[1])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[1])") { (node, stop) in
+            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemy2Atlas, scene: self.gs, name: enemies[1])
+            zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
+        }
+        
+        let mage1Atlas = SKTextureAtlas(named: enemies[2])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[2])") { (node, stop) in
+            let mage = Mage1Entity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: mage1Atlas, scene: self.gs, name: enemies[2])
+            mage.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            mage.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(mage, toLayer: self.gs.worldLayer)
+        }
+        
+        let mage2Atlas = SKTextureAtlas(named: enemies[3])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[3])") { (node, stop) in
+            let mage = Mage2Entity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: mage2Atlas, scene: self.gs, name: enemies[3])
+            mage.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            mage.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(mage, toLayer: self.gs.worldLayer)
+        }
+        
+        let bossAtlas = SKTextureAtlas(named: enemies[4])
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[4])") { (node, stop) in
+            let boss = BossEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: bossAtlas, scene: self.gs, name: enemies[4])
+            boss.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+            boss.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+            self.gs.addEntity(boss, toLayer: self.gs.worldLayer)
         }
         
         gs.worldLayer.enumerateChildNodesWithName("placeholder_FinishPoint") { (node, stop) -> Void in

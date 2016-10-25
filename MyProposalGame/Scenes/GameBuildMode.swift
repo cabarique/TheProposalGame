@@ -36,17 +36,20 @@ class GameBuildMode: SGScene {
     var worldLayer:TileLayer!
     var overlayLayer = SKNode()
     
+    //Tiles
+    let tileImages = [
+        "0","1","2","3","4","5","6","7","8","9",
+        "10","11","12","13","14","15","16","17","18"
+    ]
+    
+    let tileObjects = [
+        "B3","Sign_1","Sign_2",
+        "Crate","Mushroom_1","Mushroom_2", "diamondBlue", "Coin", "Zombie1", "Zombie2", "Mage1", "Mage2", "Boss", "Princess"
+    ]
+    
     //Tools
     var currentTool = toolSelection.toolMove
-    var tilePanel = builderPanel(images: tileImages)
-    
-    //Tiles
-    static let tileImages = [
-        "0","1","2","3","4","5","6","7","8","9",
-        "10","11","12","13","14","15","16","17",
-        "18","B3","Sign_1","Sign_2",
-        "Crate","gem","Mushroom_1","Mushroom_2,", "diamondBlue", "Coin", "Zombie1", "Zombie2"
-    ]
+    var tilePanel: builderPanel?
     
     
     override func didMoveToView(view: SKView) {
@@ -59,7 +62,21 @@ class GameBuildMode: SGScene {
         addChild(myCamera)
         
         //Setup Layers
-        worldLayer = TileLayer(levelIndex: 0, typeIndex: .setBuilder)
+        switch GameSettings.Builder.BUILDER_LEVEL {
+        case 0:
+            worldLayer = TileLayer1(levelIndex: GameSettings.Builder.BUILDER_LEVEL, typeIndex: .setBuilder)
+            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles")
+        case 1:
+            worldLayer = TileLayer2(levelIndex: GameSettings.Builder.BUILDER_LEVEL, typeIndex: .setBuilder)
+            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles2")
+        case 2:
+            worldLayer = TileLayer3(levelIndex: GameSettings.Builder.BUILDER_LEVEL, typeIndex: .setBuilder)
+            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles2")
+        default:
+            worldLayer = TileLayer1(levelIndex: 0, typeIndex: .setBuilder)
+            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles")
+        }
+        
         addChild(worldLayer)
         myCamera.addChild(overlayLayer)
         updateTileMap()
@@ -127,9 +144,9 @@ class GameBuildMode: SGScene {
         background.zPosition = -1
         overlayLayer.addChild(background)
         
-        tilePanel.posByScreen(0.45, y: 0.45)
-        tilePanel.selectIndex(0)
-        overlayLayer.addChild(tilePanel)
+        tilePanel!.posByScreen(0.45, y: 0.45)
+        tilePanel!.selectIndex(0)
+        overlayLayer.addChild(tilePanel!)
         
     }
     
@@ -170,11 +187,11 @@ class GameBuildMode: SGScene {
                 return
             }
             if node.name == "Up" {
-                tilePanel.position = CGPoint(x: tilePanel.position.x, y: tilePanel.position.y - 34)
+                tilePanel!.position = CGPoint(x: tilePanel!.position.x, y: tilePanel!.position.y - 34)
                 return
             }
             if node.name == "Down" {
-                tilePanel.position = CGPoint(x: tilePanel.position.x, y: tilePanel.position.y + 34)
+                tilePanel!.position = CGPoint(x: tilePanel!.position.x, y: tilePanel!.position.y + 34)
                 return
             }
             if node.name == "Print" {
@@ -184,7 +201,7 @@ class GameBuildMode: SGScene {
         }
         if let node = nodeAtPoint(location) as? SKSpriteNode {
             if ((node.name?.hasPrefix("T_")) != nil) {
-                tilePanel.selectIndex((node.userData!["index"] as? Int)!)
+                tilePanel!.selectIndex((node.userData!["index"] as? Int)!)
                 return
             }
         }
@@ -200,7 +217,7 @@ class GameBuildMode: SGScene {
         case .toolAdd:
             let locationInfo = locationToTileIndex(CGPoint(x: location.x + 16, y: location.y - 16))
             if locationInfo.valid == true {
-                changeTile(tilePanel.selectedIndex, location: locationInfo.tileIndex)
+                changeTile(tilePanel!.selectedIndex, location: locationInfo.tileIndex)
                 updateTileMap()
             }
             break
@@ -224,17 +241,11 @@ class GameBuildMode: SGScene {
         for child in worldLayer.children {
             child.removeFromParent()
         }
-        worldLayer.levelGenerator.presentLayerViaDelegate()
+        worldLayer.levelGenerator.presentLayerViaDelegate(GameSettings.Builder.BUILDER_LEVEL)
         
         for child in worldLayer.children {
             if let name = child.name {
                 switch name {
-                case "placeholder_Gem":
-                    let label = SKLabelNode(text: "G")
-                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
-                    label.position = child.position
-                    worldLayer.addChild(label)
-                    break
                 case "placeholder_Diamond":
                     let label = SKLabelNode(text: "D")
                     label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
@@ -271,6 +282,33 @@ class GameBuildMode: SGScene {
                     label.position = child.position
                     worldLayer.addChild(label)
                     break
+                case "placeholder_Mage1":
+                    let label = SKLabelNode(text: "M1")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
+                case "placeholder_Mage2":
+                    let label = SKLabelNode(text: "M2")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
+                    
+                case "placeholder_Boss":
+                    let label = SKLabelNode(text: "B")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
+                    
+                case "placeholder_Princess":
+                    let label = SKLabelNode(text: "P")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
+                
                 default:
                     break
                 }
@@ -294,14 +332,28 @@ class GameBuildMode: SGScene {
 
 class builderPanel: SKNode {
     
-    let atlasTiles = SKTextureAtlas(named: "Tiles")
+    var atlasTiles: SKTextureAtlas!
+    var atlasObjects: SKTextureAtlas!
     var selectedIndex = 0
     
-    init(images:[String]) {
+    init(objectImages: [String], objectTexture: String, tileImages:[String], imagetexture: String) {
         super.init()
-        
-        for (index, imageString) in images.enumerate() {
+        atlasTiles = SKTextureAtlas(named: imagetexture)
+        for (index, imageString) in tileImages.enumerate() {
             let node = SKSpriteNode(texture: atlasTiles.textureNamed(imageString))
+            node.size = CGSize(width: 32, height: 32)
+            node.position = CGPoint(x: 0, y: index * -34)
+            node.alpha = 0.5
+            node.zPosition = 150
+            node.name = "T_\(index)"
+            node.userData = ["index":index]
+            addChild(node)
+        }
+        
+        atlasObjects = SKTextureAtlas(named: objectTexture)
+        for (i, imageString) in objectImages.enumerate() {
+            let index = i + tileImages.count
+            let node = SKSpriteNode(texture: atlasObjects.textureNamed(imageString))
             node.size = CGSize(width: 32, height: 32)
             node.position = CGPoint(x: 0, y: index * -34)
             node.alpha = 0.5
