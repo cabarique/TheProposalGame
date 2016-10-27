@@ -367,6 +367,7 @@ class TileLayer3: TileLayer{
             node.tileSpriteType = type
             node.position = location
             node.zPosition = GameSettings.GameParams.zValues.zWorld
+            node.name = "crateNode"
             
             let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
             physicsComponent.setCategoryBitmask(ColliderType.Destroyable.rawValue, dynamic: true)

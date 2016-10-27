@@ -24,7 +24,14 @@ import SpriteKit
 import GameplayKit
 
 class TileLayer: SKNode, tileMapDelegate {
-    var randomSceneryArt: [String] = []
+    var randomSceneryArt: [String] {
+        get{
+            return getRandomSceneryArt()
+        }
+        set{
+            
+        }
+    }
     var textureAtlasName  = "Tiles"
     
     var levelGenerator = tileMapBuilder()
@@ -51,5 +58,9 @@ class TileLayer: SKNode, tileMapDelegate {
     
     internal func createNodeOf(type type:tileType, location:CGPoint, level: Int) {
         
+    }
+    
+    func getRandomSceneryArt() -> [String] {
+        return []
     }
 }

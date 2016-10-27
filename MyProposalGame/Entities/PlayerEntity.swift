@@ -31,6 +31,7 @@ class PlayerEntity: SGEntity {
     var scrollerComponent: FullControlComponent!
     
     var gameScene:GamePlayMode!
+    var fireNode: SKSpriteNode!
     
     init(position: CGPoint, size: CGSize, firstFrame:SKTexture, atlas: SKTextureAtlas, scene:GamePlayMode) {
         super.init()
@@ -55,6 +56,13 @@ class PlayerEntity: SGEntity {
         spriteComponent.node.physicsBody = physicsComponent.physicsBody
         spriteComponent.node.name = "playerNode"
         name = "playerEntity"
+        
+        fireNode = SKSpriteNode()
+        fireNode.size = CGSize(width: 16, height: 16)
+        fireNode.position = CGPoint(x: 28, y: 17)
+        fireNode.zPosition = GameSettings.GameParams.zValues.zPlayer + 10
+        fireNode.name = "fireNode"
+        spriteComponent.node.addChild(fireNode)
         
     }
     

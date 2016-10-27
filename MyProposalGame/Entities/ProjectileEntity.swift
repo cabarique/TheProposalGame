@@ -58,6 +58,10 @@ class ProjectileEntity: SGEntity {
             for body in allContactedBodies! {
                 if body.node is SGSpriteNode {
                     projectileMiss()
+                    
+                    if body.node?.name == "crateNode" {
+                        body.node?.removeFromParent()
+                    }
                 }
             }
             

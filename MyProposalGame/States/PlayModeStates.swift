@@ -49,7 +49,7 @@ class GameSceneInitialState: GameSceneState {
         case 0:
            gs.worldLayer = TileLayer1(levelIndex: gs.levelIndex, typeIndex: .setMain)
         case 1:
-            gs.worldLayer = TileLayer3(levelIndex: gs.levelIndex, typeIndex: .setMain)
+            gs.worldLayer = TileLayer2(levelIndex: gs.levelIndex, typeIndex: .setMain)
         case 2:
             gs.worldLayer = TileLayer3(levelIndex: gs.levelIndex, typeIndex: .setMain)
         case 3:

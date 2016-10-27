@@ -11,14 +11,7 @@ import GameplayKit
 
 class TileLayer1: TileLayer{
     
-    override var randomSceneryArt: [String] {
-        get{
-            return ["B1","B2","B3","B4","Mushroom_1","Mushroom_2","Stone","Tree_1","Tree_2","Tree_3"]
-        }
-        set{
-            
-        }
-    }
+    private let _randomSceneryArt = ["B1","B2","B3","B4","Mushroom_1","Mushroom_2","Stone","Tree_1","Tree_2","Tree_3"]
     
     convenience init(levelIndex: Int, typeIndex: setType) {
         self.init(levelIndex: levelIndex, typeIndex: typeIndex, textureName: "Tiles" )
@@ -31,6 +24,10 @@ class TileLayer1: TileLayer{
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func getRandomSceneryArt() -> [String] {
+        return _randomSceneryArt
     }
     
     internal override func createNodeOf(type type:tileType, location:CGPoint, level: Int) {
@@ -367,6 +364,7 @@ class TileLayer1: TileLayer{
             node.tileSpriteType = type
             node.position = location
             node.zPosition = GameSettings.GameParams.zValues.zWorld
+            node.name = "crateNode"
             
             let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
             physicsComponent.setCategoryBitmask(ColliderType.Destroyable.rawValue, dynamic: true)

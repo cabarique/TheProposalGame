@@ -79,6 +79,17 @@ class FullControlComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func animateFire() -> SKAction{
+        let atlas = SKTextureAtlas(named: "Projectile")
+        let textures = atlas.textureNames.filter {
+            $0.containsString("Cat_Fire__")
+            }.sort {
+                $0 < $1 }.map {
+                    atlas.textureNamed($0)
+        }
+        return SKAction.sequence([SKAction.fadeInWithDuration(NSTimeInterval(0)), SKAction.animateWithTextures(textures, timePerFrame: NSTimeInterval(0.1)), SKAction.fadeOutWithDuration(NSTimeInterval(0))])
+    }
+    
     func updateWithDeltaTime(seconds: NSTimeInterval, controlInput: FullMoveControlScheme) {
         super.updateWithDeltaTime(seconds)
         if controlInput.willDie && !isDying {
@@ -140,6 +151,7 @@ class FullControlComponent: GKComponent {
         if controlInput.firePressed && !isFiring {
             if let playerEnt = entity as? PlayerEntity {
                 playerEnt.gameScene.runAction(playerEnt.gameScene.sndFire)
+                playerEnt.fireNode.runAction(animateFire())
             }
             fireTime = fireTime > 0 ? fireTime : 0.5
         }
