@@ -22,7 +22,7 @@ class Enemy2Entity: EnemyEntity {
         addComponent(self.spriteComponent)
         self.animationComponent = AnimationComponent(node: self.spriteComponent.node, animations: loadAnimations(atlas))
         addComponent(animationComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.6, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         
         enablePhysicContacts()
         addComponent(physicsComponent)

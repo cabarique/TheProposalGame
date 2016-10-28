@@ -84,6 +84,14 @@ class Mage2Entity: SGEntity {
                 self.animationComponent.requestedAnimationState = .Rise
             })
         }
+        
+        if gameScene.camera?.containsNode(spriteComponent.node) == true {
+            if gameScene.camera?.position.x < spriteComponent.node.position.x{
+                spriteComponent.node.xScale = -1
+            }else{
+                spriteComponent.node.xScale = 1
+            }
+        }
     }
     
     override func contactWith(entity:SGEntity) {

@@ -46,7 +46,7 @@ class PlayerEntity: SGEntity {
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         physicsComponent.setCategoryBitmask(ColliderType.Player.rawValue, dynamic: true)
         physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
-        physicsComponent.setPhysicsContacts(ColliderType.Collectable.rawValue | ColliderType.EndLevel.rawValue | ColliderType.KillZone.rawValue | ColliderType.None.rawValue | ColliderType.Enemy.rawValue)
+        physicsComponent.setPhysicsContacts(ColliderType.Collectable.rawValue | ColliderType.EndLevel.rawValue | ColliderType.KillZone.rawValue | ColliderType.None.rawValue | ColliderType.Enemy.rawValue | ColliderType.Projectile.rawValue)
         addComponent(physicsComponent)
         scrollerComponent = FullControlComponent(entity: self)
         addComponent(scrollerComponent)
@@ -92,7 +92,7 @@ class PlayerEntity: SGEntity {
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
         
-        if !gameScene.worldFrame.contains(spriteComponent.node.position) {
+        if spriteComponent.node.position.y < 0 && !gameScene.worldFrame.contains(spriteComponent.node.position) {
             playerDied()
         }
     }
@@ -119,7 +119,8 @@ class PlayerEntity: SGEntity {
             }
         }
         
-        if entity.name == "zombieEntity" {
+        if entity.name.rangeOfString("Zombie") != nil || entity.name.rangeOfString("Mage") != nil
+            || entity.name == "BossEntity" || entity.name == "parabolicProjectileEntity" {
             gameScene.control.willDie = true
         }
         

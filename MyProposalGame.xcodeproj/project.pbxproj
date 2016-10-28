@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F0494BF1DA4555F0084FB35 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */; };
+		4F0E65A21DC1BD170068035B /* ParabolicProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0E65A11DC1BD170068035B /* ParabolicProjectileEntity.swift */; };
 		4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E9591DB426C600FD3538 /* Zombie2.atlas */; };
 		4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E95B1DB4299300FD3538 /* Boss.atlas */; };
 		4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		4F0494BE1DA454640084FB35 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ARCADECLASSIC.TTF; path = Resources/Fonts/ARCADECLASSIC.TTF; sourceTree = "<group>"; };
+		4F0E65A11DC1BD170068035B /* ParabolicProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParabolicProjectileEntity.swift; path = Entities/ParabolicProjectileEntity.swift; sourceTree = "<group>"; };
 		4F12E9591DB426C600FD3538 /* Zombie2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie2.atlas; path = Resources/Atlas/Zombie2.atlas; sourceTree = "<group>"; };
 		4F12E95B1DB4299300FD3538 /* Boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Boss.atlas; path = Resources/Atlas/Boss.atlas; sourceTree = "<group>"; };
 		4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy2Entity.swift; path = Entities/Enemy2Entity.swift; sourceTree = "<group>"; };
@@ -217,6 +219,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		4F0E65A01DC1BCDB0068035B /* Projectile */ = {
+			isa = PBXGroup;
+			children = (
+				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
+				4F0E65A11DC1BD170068035B /* ParabolicProjectileEntity.swift */,
+			);
+			name = Projectile;
+			sourceTree = "<group>";
+		};
 		4F12E95F1DB432CF00FD3538 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,9 +303,9 @@
 				4F12E95F1DB432CF00FD3538 /* Enemy */,
 				4FF367D11DBFA5B3006C5CAF /* Characters */,
 				4FF367D01DBFA5A6006C5CAF /* Collectable */,
+				4F0E65A01DC1BCDB0068035B /* Projectile */,
 				4FEA20301D87893A00E96E1A /* BackgroundEntity.swift */,
 				4FEA20311D87893A00E96E1A /* FinishEntity.swift */,
-				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
 				4FEA20351D87893A00E96E1A /* SGEntity.swift */,
 			);
 			name = Entities;
@@ -593,6 +604,7 @@
 				4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */,
 				4FEA202F1D87888D00E96E1A /* PlayModeStates.swift in Sources */,
 				4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */,
+				4F0E65A21DC1BD170068035B /* ParabolicProjectileEntity.swift in Sources */,
 				4FEA202C1D87882F00E96E1A /* TileMapBuilder.swift in Sources */,
 				4FF367C71DBFA478006C5CAF /* TileLayer2.swift in Sources */,
 				4FF367CB1DBFA494006C5CAF /* BossEntity.swift in Sources */,

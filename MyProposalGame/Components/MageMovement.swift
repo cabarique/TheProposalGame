@@ -37,6 +37,11 @@ class MageMovementComponent: GKComponent {
     
     var lifePoints = 1
     
+    var fireRate: CGFloat = 0.0
+    var amunition = 2
+    private var reloadTime: CGFloat = 2.0
+    
+    
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
         return spriteComponent
@@ -66,6 +71,28 @@ class MageMovementComponent: GKComponent {
         }
     }
     
+    private func parabolicFire(){
+        let atlas = SKTextureAtlas(named: "Projectile")
+        guard let enemyEnt = entity as? Mage1Entity else { return }
+        let spriteNode = enemyEnt.spriteComponent.node
+        let orientation: CGFloat = spriteNode.xScale
+        let positionX = orientation >= 0 ? spriteNode.position.x + 30 : spriteNode.position.x - 30
+        let gameScene = enemyEnt.gameScene
+        var alfa: CGFloat = 45
+        let deltaY = abs(abs(gameScene.camera!.position.y) - abs(spriteComponent.node.position.y))
+        let delta = abs(abs(gameScene.camera!.position.x) - abs(spriteComponent.node.position.x))
+        if deltaY < 10 {
+            alfa = 50
+        } else if deltaY > 100{
+            alfa = 10
+        }
+        let xImpulse: CGFloat = ( delta * alfa ) / 83
+        
+        let projectile = ParabolicProjectileEntity(position: CGPoint(x: positionX, y: spriteNode.position.y + 40), size: CGSize(width: 20, height: 20), orientation: orientation, texture: atlas.textureNamed("Proyectil__000"), scene: enemyEnt.gameScene, impulseX: Double(xImpulse))
+        projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
+        gameScene.addEntity(projectile, toLayer: gameScene.worldLayer)
+    }
+    
     func updateMage1WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage1Entity){
         if enemyEnt.didRise {
             
@@ -77,7 +104,7 @@ class MageMovementComponent: GKComponent {
                 }else{
                     isActive = true
                     enemyEnt.enablePhysicContacts()
-                    animationComponent.requestedAnimationState = .Idle
+//                    animationComponent.requestedAnimationState = .Idle
                 }
                 return
             }
@@ -91,6 +118,29 @@ class MageMovementComponent: GKComponent {
                 spriteComponent.node.removeFromParent()
                 return
             }
+            
+            if reloadTime <= 0 {
+                if fireRate <= 0 {
+                    fireRate = 1
+                }else if fireRate < 1 {
+                    if fireRate < 0.5 {
+                        animationComponent.requestedAnimationState = .Idle
+                    }
+                    fireRate = fireRate - CGFloat(seconds)
+                }else if amunition > 0 {
+                    animationComponent.requestedAnimationState = .Attack
+                    amunition -= 1
+                    parabolicFire()
+                    fireRate = fireRate - CGFloat(seconds)
+                }else{
+                    amunition = 2
+                    animationComponent.requestedAnimationState = .Idle
+                    reloadTime = 4
+                }
+            }else{
+                reloadTime = reloadTime - CGFloat(seconds)
+            }
+            
             
             let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
             

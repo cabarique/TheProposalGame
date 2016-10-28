@@ -38,10 +38,10 @@ enum tileType: Int {
     case tileGroundCornerLU      = 10
     case tileGroundCornerL       = 11
     case tileCeilingLeft         = 12
-    case tilePlatformLeft        = 13
-    case tilePlatform            = 14
-    case tilePlatformRight       = 15
-    case tileCeilingRight        = 16
+    case tileCeilingRight        = 13
+    case tilePlatformLeft        = 14
+    case tilePlatform            = 15
+    case tilePlatformRight       = 16
     case tileWaterSurface        = 17
     case tileWater               = 18
     case tileRandomScenery       = 19

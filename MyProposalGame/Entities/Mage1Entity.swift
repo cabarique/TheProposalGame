@@ -36,7 +36,7 @@ class Mage1Entity: SGEntity {
         addComponent(spriteComponent)
         animationComponent = AnimationComponent(node: spriteComponent.node, animations: loadAnimations(atlas))
         addComponent(animationComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.6, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         
         enablePhysicContacts()
         addComponent(physicsComponent)
@@ -61,16 +61,16 @@ class Mage1Entity: SGEntity {
         
         animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                  withImageIdentifier: AnimationState.Attack.rawValue,
-                                                                 forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 56.01, height: 90))
-        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
-                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 58.73, height: 90))
+                                                                 forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 60.64, height: 90))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))
+        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
+                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 55.99, height: 90))
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 60.54, height: 60))
         
         return animations
     }
@@ -84,6 +84,14 @@ class Mage1Entity: SGEntity {
                 self.spriteComponent.node.alpha = 1.0
                 self.animationComponent.requestedAnimationState = .Rise
             })
+        }
+        
+        if gameScene.camera?.containsNode(spriteComponent.node) == true {
+            if gameScene.camera?.position.x < spriteComponent.node.position.x {
+                spriteComponent.node.xScale = -1
+            }else{
+                spriteComponent.node.xScale = 1
+            }
         }
     }
     

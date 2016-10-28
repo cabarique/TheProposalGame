@@ -111,7 +111,7 @@ class GameSceneInitialState: GameSceneState {
         let enemies = ["Zombie1", "Zombie2", "Mage1", "Mage2", "Boss"]
         let enemy1Atlas = SKTextureAtlas(named: enemies[0])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[0])") { (node, stop) in
-            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemy1Atlas, scene: self.gs, name: enemies[0])
+            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 48, height: 48.0), atlas: enemy1Atlas, scene: self.gs, name: enemies[0])
             zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
             self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
@@ -119,7 +119,7 @@ class GameSceneInitialState: GameSceneState {
         
         let enemy2Atlas = SKTextureAtlas(named: enemies[1])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[1])") { (node, stop) in
-            let zombie = EnemyEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: enemy2Atlas, scene: self.gs, name: enemies[1])
+            let zombie = Enemy2Entity(position: node.position, size: CGSize(width: 48, height: 48.0), atlas: enemy2Atlas, scene: self.gs, name: enemies[1])
             zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
             self.gs.addEntity(zombie, toLayer: self.gs.worldLayer)
@@ -127,7 +127,7 @@ class GameSceneInitialState: GameSceneState {
         
         let mage1Atlas = SKTextureAtlas(named: enemies[2])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[2])") { (node, stop) in
-            let mage = Mage1Entity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: mage1Atlas, scene: self.gs, name: enemies[2])
+            let mage = Mage1Entity(position: node.position, size: CGSize(width: 50.34, height: 60), atlas: mage1Atlas, scene: self.gs, name: enemies[2])
             mage.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             mage.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
             self.gs.addEntity(mage, toLayer: self.gs.worldLayer)

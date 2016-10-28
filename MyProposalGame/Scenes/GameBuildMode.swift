@@ -71,7 +71,7 @@ class GameBuildMode: SGScene {
             tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles2")
         case 2:
             worldLayer = TileLayer3(levelIndex: GameSettings.Builder.BUILDER_LEVEL, typeIndex: .setBuilder)
-            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles2")
+            tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles3")
         default:
             worldLayer = TileLayer1(levelIndex: 0, typeIndex: .setBuilder)
             tilePanel = builderPanel(objectImages: tileObjects, objectTexture: "TileObjects", tileImages: tileImages, imagetexture: "Tiles")

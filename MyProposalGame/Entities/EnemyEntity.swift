@@ -36,7 +36,7 @@ class EnemyEntity: SGEntity {
         addComponent(spriteComponent)
         animationComponent = AnimationComponent(node: spriteComponent.node, animations: loadAnimations(atlas))
         addComponent(animationComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.6, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         
         enablePhysicContacts()
         addComponent(physicsComponent)
@@ -79,7 +79,7 @@ class EnemyEntity: SGEntity {
         super.updateWithDeltaTime(seconds)
         
         if gameScene.camera?.containsNode(spriteComponent.node) == true && !didRise {
-            NSTimer.scheduledTimerWithTimeInterval(0.4, repeats: false, block: { (timer) in
+            NSTimer.scheduledTimerWithTimeInterval(0.2, repeats: false, block: { (timer) in
                 self.didRise = true
                 self.spriteComponent.node.alpha = 1.0
                 self.animationComponent.requestedAnimationState = .Rise
