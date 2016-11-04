@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class Mage2Entity: SGEntity {
+class Mage2Entity: SGEntity, ParabolicAttacking {
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
     var physicsComponent: PhysicsComponent!
@@ -36,7 +36,7 @@ class Mage2Entity: SGEntity {
         addComponent(spriteComponent)
         animationComponent = AnimationComponent(node: spriteComponent.node, animations: loadAnimations(atlas))
         addComponent(animationComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.6, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         
         enablePhysicContacts()
         addComponent(physicsComponent)
@@ -61,16 +61,16 @@ class Mage2Entity: SGEntity {
         
         animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                     withImageIdentifier: AnimationState.Attack.rawValue,
-                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 47.81, height: 80.0))
+                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 35.86, height: 60.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 75.49, height: 80.0))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 46.73, height: 80.0))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 35.05, height: 60.0))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 50.81, height: 80.0))
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 38.11, height: 60.0))
         return animations
     }
     

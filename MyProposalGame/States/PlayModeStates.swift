@@ -36,6 +36,7 @@ class GameSceneInitialState: GameSceneState {
         
         //Delegates
         gs.physicsWorld.contactDelegate = gs
+        gs.physicsWorld.speed = 0.8
         gs.physicsWorld.gravity = CGVectorMake(0.0, -1.8)
         
         //Camera
@@ -65,22 +66,23 @@ class GameSceneInitialState: GameSceneState {
         myCamera.addChild(gs.overlayGUI)
         
         //Initial Entities
-        let background01 = BackgroundEntity(movementFactor: CGPoint(x: -0.33, y: 0.0), image: SKTexture(imageNamed: "BG001") , size: SKMSceneSize!, position:CGPointZero, reset: true)
+        let backgroundSufix = ["", "SNOW_", "DESERT_", "GRAVEYARD_"]
+        let background01 = BackgroundEntity(movementFactor: CGPoint(x: -0.33, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG001") , size: SKMSceneSize!, position:CGPointZero, reset: true)
         background01.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground01
         gs.addEntity(background01, toLayer:gs.backgroundLayer)
-        let background02 = BackgroundEntity(movementFactor: CGPoint(x: -0.33, y: 0.0), image: SKTexture(imageNamed: "BG001") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
+        let background02 = BackgroundEntity(movementFactor: CGPoint(x: -0.33, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG001") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
         background02.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground01
         gs.addEntity(background02, toLayer:gs.backgroundLayer)
-        let background03 = BackgroundEntity(movementFactor: CGPoint(x: -0.66, y: 0.0), image: SKTexture(imageNamed: "BG002") , size: SKMSceneSize!, position:CGPointZero, reset: true)
+        let background03 = BackgroundEntity(movementFactor: CGPoint(x: -0.66, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG002") , size: SKMSceneSize!, position:CGPointZero, reset: true)
         background03.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground02
         gs.addEntity(background03, toLayer:gs.backgroundLayer)
-        let background04 = BackgroundEntity(movementFactor: CGPoint(x: -0.66, y: 0.0), image: SKTexture(imageNamed: "BG002") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
+        let background04 = BackgroundEntity(movementFactor: CGPoint(x: -0.66, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG002") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
         background04.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground02
         gs.addEntity(background04, toLayer:gs.backgroundLayer)
-        let background05 = BackgroundEntity(movementFactor: CGPoint(x: -1.00, y: 0.0), image: SKTexture(imageNamed: "BG003") , size: SKMSceneSize!, position:CGPointZero, reset: true)
+        let background05 = BackgroundEntity(movementFactor: CGPoint(x: -1.00, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG003") , size: SKMSceneSize!, position:CGPointZero, reset: true)
         background05.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground03
         gs.addEntity(background05, toLayer:gs.backgroundLayer)
-        let background06 = BackgroundEntity(movementFactor: CGPoint(x: -1.00, y: 0.0), image: SKTexture(imageNamed: "BG003") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
+        let background06 = BackgroundEntity(movementFactor: CGPoint(x: -1.00, y: 0.0), image: SKTexture(imageNamed: "\(backgroundSufix[gs.levelIndex])BG003") , size: SKMSceneSize!, position:CGPoint(x: SKMSceneSize!.width, y: 0), reset: true)
         background06.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zBackground03
         gs.addEntity(background06, toLayer:gs.backgroundLayer)
         
@@ -135,7 +137,7 @@ class GameSceneInitialState: GameSceneState {
         
         let mage2Atlas = SKTextureAtlas(named: enemies[3])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[3])") { (node, stop) in
-            let mage = Mage2Entity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: mage2Atlas, scene: self.gs, name: enemies[3])
+            let mage = Mage2Entity(position: node.position, size: CGSize(width: 38.11, height: 60), atlas: mage2Atlas, scene: self.gs, name: enemies[3])
             mage.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             mage.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
             self.gs.addEntity(mage, toLayer: self.gs.worldLayer)
@@ -184,10 +186,10 @@ class GameSceneInitialState: GameSceneState {
         gs.movementStick.posByScreen(-0.40, y: -0.49)
         gs.overlayGUI.addChild(gs.movementStick)
         
-        gs.jumpButton.posByScreen(0.42, y: -0.52)
+        gs.jumpButton.posByScreen(0.35, y: -0.55)
         gs.overlayGUI.addChild(gs.jumpButton)
         
-        gs.fireButton.posByScreen(0.3, y: -0.52)
+        gs.fireButton.posByScreen(0.43, y: -0.36)
         gs.overlayGUI.addChild(gs.fireButton)
         
         gs.stateMachine.enterState(GameSceneActiveState.self)

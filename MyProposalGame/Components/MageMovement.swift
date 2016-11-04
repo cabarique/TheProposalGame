@@ -71,20 +71,19 @@ class MageMovementComponent: GKComponent {
         }
     }
     
-    private func parabolicFire(){
+    private func parabolicFire<T: ParabolicAttacking>(havingEnemy enemyEnt: T ){
         let atlas = SKTextureAtlas(named: "Projectile")
-        guard let enemyEnt = entity as? Mage1Entity else { return }
         let spriteNode = enemyEnt.spriteComponent.node
         let orientation: CGFloat = spriteNode.xScale
         let positionX = orientation >= 0 ? spriteNode.position.x + 30 : spriteNode.position.x - 30
         let gameScene = enemyEnt.gameScene
-        var alfa: CGFloat = 45
+        var alfa: CGFloat = 35
         let deltaY = abs(abs(gameScene.camera!.position.y) - abs(spriteComponent.node.position.y))
         let delta = abs(abs(gameScene.camera!.position.x) - abs(spriteComponent.node.position.x))
         if deltaY < 10 {
-            alfa = 50
+            alfa = 40
         } else if deltaY > 100{
-            alfa = 10
+            alfa = 5
         }
         let xImpulse: CGFloat = ( delta * alfa ) / 83
         
@@ -93,7 +92,19 @@ class MageMovementComponent: GKComponent {
         gameScene.addEntity(projectile, toLayer: gameScene.worldLayer)
     }
     
-    func updateMage1WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage1Entity){
+    private func groundFire(havingEnemy enemyEnt: Mage1Entity) {
+        let atlas = SKTextureAtlas(named: "Projectile")
+        let spriteNode = enemyEnt.spriteComponent.node
+        let orientation: CGFloat = spriteNode.xScale
+        let positionX = orientation >= 0 ? spriteNode.position.x + 30 : spriteNode.position.x - 30
+        let gameScene = enemyEnt.gameScene
+        
+        let projectile = GroundProjectileEntity(position: CGPoint(x: positionX, y: spriteNode.position.y + 20), size: CGSize(width: 30, height: 20), orientation: orientation, texture: atlas.textureNamed("Fantasma__001"), scene: enemyEnt.gameScene)
+        projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
+        gameScene.addEntity(projectile, toLayer: gameScene.worldLayer)
+    }
+    
+    func updateMage2WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage2Entity){
         if enemyEnt.didRise {
             
             if !isActive {
@@ -104,7 +115,7 @@ class MageMovementComponent: GKComponent {
                 }else{
                     isActive = true
                     enemyEnt.enablePhysicContacts()
-//                    animationComponent.requestedAnimationState = .Idle
+                    //                    animationComponent.requestedAnimationState = .Idle
                 }
                 return
             }
@@ -130,12 +141,90 @@ class MageMovementComponent: GKComponent {
                 }else if amunition > 0 {
                     animationComponent.requestedAnimationState = .Attack
                     amunition -= 1
-                    parabolicFire()
+                    parabolicFire(havingEnemy: enemyEnt)
                     fireRate = fireRate - CGFloat(seconds)
                 }else{
                     amunition = 2
                     animationComponent.requestedAnimationState = .Idle
                     reloadTime = 4
+                }
+            }else{
+                reloadTime = reloadTime - CGFloat(seconds)
+            }
+            
+            
+            let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
+            
+            //Move sprite
+            
+            //when contacts with a tile, turns arround
+            if allContactedBodies?.count > 0 {
+                for body in allContactedBodies! {
+                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
+//                    let nodeDir = nodeDif.angle
+                    
+                    if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
+                        lifePoints -= 1
+                        body.node?.removeFromParent()
+                    }
+                    
+                    if !isDying && body.node?.name == "projectileNode" && isActive && lifePoints == 0 {
+                        body.node?.removeFromParent()
+                        spriteComponent.node.physicsBody = nil
+                        enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
+                        animationComponent.requestedAnimationState = .Dead
+                        isDying = true
+                        deadTime = 1
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateMage1WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage1Entity){
+        if enemyEnt.didRise {
+            
+            if !isActive {
+                if riseTime == 0 {
+                    riseTime = 0.4
+                }else if riseTime > 0 {
+                    riseTime = riseTime - CGFloat(seconds)
+                }else{
+                    isActive = true
+                    enemyEnt.enablePhysicContacts()
+                    //                    animationComponent.requestedAnimationState = .Idle
+                }
+                return
+            }
+            
+            if isDying && deadTime > 0{
+                deadTime = deadTime - CGFloat(seconds)
+                return
+            }
+            
+            if deadTime <= 0 && isDying {
+                spriteComponent.node.removeFromParent()
+                return
+            }
+            
+            if reloadTime <= 0 {
+                if fireRate <= 0 {
+                    fireRate = 1
+                }else if fireRate < 1 {
+                    if fireRate < 0.5 {
+                        animationComponent.requestedAnimationState = .Idle
+                    }
+                    fireRate = fireRate - CGFloat(seconds)
+                }else if amunition > 0 {
+                    animationComponent.requestedAnimationState = .Attack
+                    amunition -= 1
+                    groundFire(havingEnemy: enemyEnt)
+                    fireRate = fireRate - CGFloat(seconds)
+                }else{
+                    amunition = 2
+                    animationComponent.requestedAnimationState = .Idle
+                    reloadTime = 3
                 }
             }else{
                 reloadTime = reloadTime - CGFloat(seconds)
@@ -170,60 +259,4 @@ class MageMovementComponent: GKComponent {
             }
         }
     }
-    
-    func updateMage2WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage2Entity){
-        if enemyEnt.didRise {
-            
-            if !isActive {
-                if riseTime == 0 {
-                    riseTime = 0.4
-                }else if riseTime > 0 {
-                    riseTime = riseTime - CGFloat(seconds)
-                }else{
-                    isActive = true
-                    enemyEnt.enablePhysicContacts()
-                    animationComponent.requestedAnimationState = .Idle
-                }
-                return
-            }
-            
-            if isDying && deadTime > 0{
-                deadTime = deadTime - CGFloat(seconds)
-                return
-            }
-            
-            if deadTime <= 0 && isDying {
-                spriteComponent.node.removeFromParent()
-                return
-            }
-            
-            let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
-            
-            //Move sprite
-            
-            //when contacts with a tile, turns arround
-            if allContactedBodies?.count > 0 {
-                for body in allContactedBodies! {
-                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
-                    let nodeDir = nodeDif.angle
-                    
-                    if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
-                        lifePoints -= 1
-                        body.node?.removeFromParent()
-                    }
-                    
-                    if !isDying && body.node?.name == "projectileNode" && isActive && lifePoints == 0 {
-                        body.node?.removeFromParent()
-                        spriteComponent.node.physicsBody = nil
-                        enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
-                        animationComponent.requestedAnimationState = .Dead
-                        isDying = true
-                        deadTime = 1
-                        return
-                    }
-                }
-            }
-        }
-    }
-    
 }

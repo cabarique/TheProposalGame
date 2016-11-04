@@ -120,11 +120,12 @@ class EnemyMovementComponent: GKComponent {
                         movementSpeed.x *= -1
                     }else if body.node is SGSpriteNode {
                         animationComponent.requestedAnimationState = .Run
-                        let leftAngle: CGFloat = 2.5852
-                        let rightAngle: CGFloat = 0.5564
-                        if ( nodeDir > (leftAngle - 0.01) && nodeDir < (leftAngle + 0.01) && spriteComponent.node.xScale == -1 ) ||
-                            ( nodeDir > (rightAngle - 0.01) && nodeDir < (rightAngle + 0.01) && spriteComponent.node.xScale == 1) {
-                            movementSpeed.x *= -1
+                        let leftAngle: CGFloat = 2.3
+                        let rightAngle: CGFloat = 0.5
+                        if ( nodeDir > (leftAngle - 0.4) && nodeDir < (leftAngle + 0.4) && spriteComponent.node.xScale == -1 ) {
+                            movementSpeed.x = 30
+                        }else if ( nodeDir > (rightAngle - 0.4) && nodeDir < (rightAngle + 0.4) && spriteComponent.node.xScale == 1){
+                            movementSpeed.x = -30
                         }
                     }
                 }

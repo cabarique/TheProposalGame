@@ -31,6 +31,7 @@ class ParabolicProjectileEntity: SGEntity {
         //Initialize components
         spriteComponent = SpriteComponent(entity: self, texture: texture, size: size, position:position)
         spriteComponent.node.xScale = projectileOrientation
+        spriteComponent.node.anchorPoint.y = 0
         addComponent(spriteComponent)
         physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
         physicsComponent.setCategoryBitmask(ColliderType.Projectile.rawValue, dynamic: true)
@@ -56,7 +57,8 @@ class ParabolicProjectileEntity: SGEntity {
         super.updateWithDeltaTime(seconds)
         
         if impulseTime > 0 {
-            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: (seconds * impulseX) * Double(spriteComponent.node.xScale), dy: (seconds * 40)), atPoint: spriteComponent.node.position)
+            let dy = impulseX != 0 ? (seconds * 100) : (seconds * 90)
+            spriteComponent.node.physicsBody?.applyImpulse(CGVector(dx: (seconds * impulseX) * Double(spriteComponent.node.xScale), dy: dy), atPoint: spriteComponent.node.position)
             impulseTime = impulseTime - CGFloat(impulseTime)
         }
         

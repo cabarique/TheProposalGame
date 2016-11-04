@@ -406,10 +406,10 @@ class TileLayer2: TileLayer{
             node.name = "placeholder_Zombie2"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
-        case .tileMage1:
+        case .tileMage2:
             let node = SKNode()
             node.position = location
-            node.name = "placeholder_Mage1"
+            node.name = "placeholder_Mage2"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
         default:

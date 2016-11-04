@@ -11,8 +11,8 @@ import GameplayKit
 
 class JumpButton: SKNode {
     
-    var button = SKSpriteNode()
-    let radius:CGFloat
+    var touchArea: SKSpriteNode!
+    var button: SKSpriteNode!
     var jumpPressed = false
     
     var zPos:CGFloat = 1000
@@ -20,20 +20,23 @@ class JumpButton: SKNode {
     init(buttonName: String) {
         
         let atlas = SKTextureAtlas(named: "Button")
+        touchArea = SKSpriteNode()
+        touchArea.size = CGSize(width: 130, height: 130)
+        touchArea.color = SKColor.clearColor()
         
         button = SKSpriteNode(texture: atlas.textureNamed("arrowU"))
         button.zPosition = zPos
         button.alpha = 0.5
         button.size = CGSize(width: 90, height: 90)
         
-        radius = button.size.width
+        touchArea.addChild(button)
         
         super.init()
         
         self.name = buttonName
         self.userInteractionEnabled = true
  
-        self.addChild(button)
+        self.addChild(touchArea)
         
     }
     

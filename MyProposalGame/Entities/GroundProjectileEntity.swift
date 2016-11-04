@@ -1,15 +1,15 @@
 //
-//  ProjectileEntity.swift
+//  GroundProjectileEntity.swift
 //  MyProposalGame
 //
-//  Created by Luis Cabarique on 9/18/16.
+//  Created by Luis Cabarique on 11/3/16.
 //  Copyright © 2016 Luis Cabarique. All rights reserved.
 //
 
 import SpriteKit
 import GameplayKit
 
-class ProjectileEntity: SGEntity {
+class GroundProjectileEntity: SGEntity {
     
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
@@ -18,30 +18,31 @@ class ProjectileEntity: SGEntity {
     var gameScene:GamePlayMode!
     
     private var projectileOrientation: CGFloat = 1.0
+    private let speed: CGPoint = CGPoint(x: 40.0, y: 0.0)
     
     init(position: CGPoint, size: CGSize, orientation: CGFloat, texture: SKTexture, scene:GamePlayMode) {
         super.init()
         
         gameScene = scene
         projectileOrientation = orientation
-        
         //Initialize components
         spriteComponent = SpriteComponent(entity: self, texture: texture, size: size, position:position)
         spriteComponent.node.xScale = projectileOrientation
         spriteComponent.node.anchorPoint.y = 0
         addComponent(spriteComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
-        physicsComponent.setCategoryBitmask(ColliderType.Projectile.rawValue, dynamic: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: size, bodyShape: .squareOffset, rotation: false)
+        physicsComponent.setCategoryBitmask(ColliderType.Projectile.rawValue, dynamic: true)
         physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
-        physicsComponent.setPhysicsContacts(ColliderType.Enemy.rawValue | ColliderType.Destroyable.rawValue | ColliderType.Enemy.rawValue)
+        physicsComponent.setPhysicsContacts(ColliderType.Player.rawValue)
+        
         addComponent(physicsComponent)
         
         
         //Final setup of components
-        physicsComponent.physicsBody.affectedByGravity = false
+        physicsComponent.physicsBody.affectedByGravity = true
         spriteComponent.node.physicsBody = physicsComponent.physicsBody
-        spriteComponent.node.name = "projectileNode"
-        name = "projectileEntity"
+        spriteComponent.node.name = "groundProjectileNode"
+        name = "groundProjectileEntity"
         
     }
     
@@ -49,20 +50,26 @@ class ProjectileEntity: SGEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
-        let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
-        let projectileSpeed = CGPoint(x: 400.0 * projectileOrientation, y: 0.0)
+        
+        let projectileSpeed = CGPoint(x: speed.x * projectileOrientation, y: speed.y)
         spriteComponent.node.position += (projectileSpeed * CGFloat(seconds))
         
+        let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
         if allContactedBodies?.count > 0 {
             for body in allContactedBodies! {
+                let nodeDif = (body.node?.position)! - spriteComponent.node.position
+                let nodeDir = nodeDif.angle
                 if body.node is SGSpriteNode {
-                    projectileMiss()
-                    
-                    if body.node?.name == "crateNode" {
-                        body.node?.removeFromParent()
+                    let leftAngle: CGFloat = 2.6
+                    let rightAngle: CGFloat = 0.5
+                    if ( nodeDir > (leftAngle - 0.4) && nodeDir < (leftAngle + 0.4) && spriteComponent.node.xScale == -1 ) ||
+                        ( nodeDir > (rightAngle - 0.4) && nodeDir < (rightAngle + 0.4) && spriteComponent.node.xScale == 1) {
+                            projectileMiss()
                     }
+
                 }
             }
             
@@ -76,10 +83,7 @@ class ProjectileEntity: SGEntity {
     
     override func contactWith(entity:SGEntity) {
         
-        if entity.name == "zombieEntity" {
-           print("")
-        }
-
+        
     }
     
     func projectileMiss() {

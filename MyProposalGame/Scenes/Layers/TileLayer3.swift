@@ -13,7 +13,7 @@ class TileLayer3: TileLayer{
     
     override var randomSceneryArt: [String] {
         get{
-            return ["Crystal","Igloo","SnowMan","Stone","Tree_1","Tree_2"]
+            return ["Bush-1","Bush-2","Cactus-1","Cactus-2","Cactus-3","Grass-1", "Grass-2", "Stone", "Skeleton", "Tree"]
         }
         set{
             
@@ -21,7 +21,7 @@ class TileLayer3: TileLayer{
     }
     
     convenience init(levelIndex: Int, typeIndex: setType) {
-        self.init(levelIndex: levelIndex, typeIndex: typeIndex, textureName: "Tiles2" )
+        self.init(levelIndex: levelIndex, typeIndex: typeIndex, textureName: "Tiles3" )
         
     }
     
@@ -241,8 +241,22 @@ class TileLayer3: TileLayer{
             
             addChild(node)
             break
-        case .tilePlatformLeft:
+        case .tileCeilingRight:
             let node = SGSpriteNode(texture: atlasTiles.textureNamed("13"))
+            node.size = CGSize(width: 32, height: 32)
+            node.tileSpriteType = type
+            node.position = location
+            node.zPosition = GameSettings.GameParams.zValues.zWorld
+            
+            let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
+            physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
+            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
+            node.physicsBody = physicsComponent.physicsBody
+            
+            addChild(node)
+            break
+        case .tilePlatformLeft:
+            let node = SGSpriteNode(texture: atlasTiles.textureNamed("14"))
             node.size = CGSize(width: 32, height: 32)
             node.tileSpriteType = type
             node.position = location
@@ -267,7 +281,7 @@ class TileLayer3: TileLayer{
             addChild(node)
             break
         case .tilePlatform:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("14"))
+            let node = SGSpriteNode(texture: atlasTiles.textureNamed("15"))
             node.size = CGSize(width: 32, height: 32)
             node.tileSpriteType = type
             node.position = location
@@ -281,7 +295,7 @@ class TileLayer3: TileLayer{
             addChild(node)
             break
         case .tilePlatformRight:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("15"))
+            let node = SGSpriteNode(texture: atlasTiles.textureNamed("16"))
             node.size = CGSize(width: 32, height: 32)
             node.tileSpriteType = type
             node.position = location
@@ -302,20 +316,6 @@ class TileLayer3: TileLayer{
             invisiblePhysicsComponent.setPhysicsCollisions(ColliderType.Enemy.rawValue)
             invisibleWall.physicsBody = invisiblePhysicsComponent.physicsBody
             node.addChild(invisibleWall)
-            
-            addChild(node)
-            break
-        case .tileCeilingRight:
-            let node = SGSpriteNode(texture: atlasTiles.textureNamed("16"))
-            node.size = CGSize(width: 32, height: 32)
-            node.tileSpriteType = type
-            node.position = location
-            node.zPosition = GameSettings.GameParams.zValues.zWorld
-            
-            let physicsComponent = PhysicsComponent(entity: GKEntity(), bodySize: node.size, bodyShape: .square, rotation: false)
-            physicsComponent.setCategoryBitmask(ColliderType.Wall.rawValue, dynamic: false)
-            physicsComponent.setPhysicsCollisions(ColliderType.Player.rawValue)
-            node.physicsBody = physicsComponent.physicsBody
             
             addChild(node)
             break
@@ -414,24 +414,6 @@ class TileLayer3: TileLayer{
             let node = SKNode()
             node.position = location
             node.name = "placeholder_Mage1"
-            node.zPosition = GameSettings.GameParams.zValues.zWorld
-            addChild(node)
-        case .tileMage2:
-            let node = SKNode()
-            node.position = location
-            node.name = "placeholder_Mage2"
-            node.zPosition = GameSettings.GameParams.zValues.zWorld
-            addChild(node)
-        case .tileBoss:
-            let node = SKNode()
-            node.position = location
-            node.name = "placeholder_Boss"
-            node.zPosition = GameSettings.GameParams.zValues.zWorld
-            addChild(node)
-        case .tilePrincess:
-            let node = SKNode()
-            node.position = location
-            node.name = "placeholder_Princess"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
         default:

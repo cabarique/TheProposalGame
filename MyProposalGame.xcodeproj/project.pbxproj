@@ -29,6 +29,7 @@
 		4F8890F91D936A2C00563F8A /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F71D936A2C00563F8A /* FireButton.swift */; };
 		4F8890FA1D936A2C00563F8A /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F81D936A2C00563F8A /* JumpButton.swift */; };
 		4F8890FC1D936A6200563F8A /* SGSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890FB1D936A6200563F8A /* SGSpriteNode.swift */; };
+		4F9DA7751DCBB1BA0046E509 /* GroundProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DA7741DCBB1BA0046E509 /* GroundProjectileEntity.swift */; };
 		4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */; };
 		4FD2B3631D8DBC4F005F169A /* Button.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FD2B3621D8DBC4F005F169A /* Button.atlas */; };
 		4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */; };
@@ -125,6 +126,7 @@
 		4F8890F71D936A2C00563F8A /* FireButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireButton.swift; path = "Libraries/SG-Engine/FireButton.swift"; sourceTree = "<group>"; };
 		4F8890F81D936A2C00563F8A /* JumpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JumpButton.swift; path = "Libraries/SG-Engine/JumpButton.swift"; sourceTree = "<group>"; };
 		4F8890FB1D936A6200563F8A /* SGSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SGSpriteNode.swift; path = "Libraries/SG-Engine/SGSpriteNode.swift"; sourceTree = "<group>"; };
+		4F9DA7741DCBB1BA0046E509 /* GroundProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroundProjectileEntity.swift; path = Entities/GroundProjectileEntity.swift; sourceTree = "<group>"; };
 		4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunshot.wav; path = Resources/Sounds/gunshot.wav; sourceTree = "<group>"; };
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreBanner.swift; path = "Libraries/SG-Engine/ScoreBanner.swift"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				4F8890F01D9369EF00563F8A /* ProjectileEntity.swift */,
 				4F0E65A11DC1BD170068035B /* ParabolicProjectileEntity.swift */,
+				4F9DA7741DCBB1BA0046E509 /* GroundProjectileEntity.swift */,
 			);
 			name = Projectile;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				4FEA201C1D87880200E96E1A /* SKTAudio.swift in Sources */,
 				4FEA20111D87880200E96E1A /* CGFloat+Extensions.swift in Sources */,
 				4F5774081DBEFCCB007CF1FB /* TileLayer1.swift in Sources */,
+				4F9DA7751DCBB1BA0046E509 /* GroundProjectileEntity.swift in Sources */,
 				4FEA204A1D878A4A00E96E1A /* MainMenu.swift in Sources */,
 				4FF367CF1DBFA514006C5CAF /* PrincessEntity.swift in Sources */,
 				4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */,

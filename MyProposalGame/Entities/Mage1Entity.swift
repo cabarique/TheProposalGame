@@ -9,7 +9,12 @@
 import SpriteKit
 import GameplayKit
 
-class Mage1Entity: SGEntity {
+protocol ParabolicAttacking {
+    var spriteComponent: SpriteComponent! { get set}
+    var gameScene:GamePlayMode! { get }
+}
+
+class Mage1Entity: SGEntity, ParabolicAttacking {
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
     var physicsComponent: PhysicsComponent!
