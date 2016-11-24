@@ -98,7 +98,6 @@ class EnemyMovementComponent: GKComponent {
             if allContactedBodies?.count > 0 {
                 for body in allContactedBodies! {
                     let nodeDif = (body.node?.position)! - spriteComponent.node.position
-                    let nodeDir = nodeDif.angle
                     
                     if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
                         lifePoints -= 1
@@ -115,19 +114,29 @@ class EnemyMovementComponent: GKComponent {
                         return
                     }
                     
-                    if body.node?.name == "invisibleWallL" && movementSpeed.x < 0 ||
-                        body.node?.name == "invisibleWallR" && movementSpeed.x > 0{
-                        movementSpeed.x *= -1
-                    }else if body.node is SGSpriteNode {
+                    let gameScene = enemyEnt.gameScene
+                    if gameScene.camera?.containsNode(spriteComponent.node) == true {
                         animationComponent.requestedAnimationState = .Run
-                        let leftAngle: CGFloat = 2.3
-                        let rightAngle: CGFloat = 0.5
-                        if ( nodeDir > (leftAngle - 0.4) && nodeDir < (leftAngle + 0.4) && spriteComponent.node.xScale == -1 ) {
-                            movementSpeed.x = 30
-                        }else if ( nodeDir > (rightAngle - 0.4) && nodeDir < (rightAngle + 0.4) && spriteComponent.node.xScale == 1){
+                        if gameScene.camera?.position.x < spriteComponent.node.position.x {
                             movementSpeed.x = -30
+                        }else{
+                            movementSpeed.x = 30
                         }
                     }
+                    
+//                    if body.node?.name == "invisibleWallL" && movementSpeed.x < 0 ||
+//                        body.node?.name == "invisibleWallR" && movementSpeed.x > 0{
+//                        movementSpeed.x *= -1
+//                    }else if body.node is SGSpriteNode {
+//                        animationComponent.requestedAnimationState = .Run
+//                        let leftAngle: CGFloat = 2.3
+//                        let rightAngle: CGFloat = 0.5
+//                        if ( nodeDir > (leftAngle - 0.4) && nodeDir < (leftAngle + 0.4) && spriteComponent.node.xScale == -1 ) {
+//                            movementSpeed.x = 30
+//                        }else if ( nodeDir > (rightAngle - 0.4) && nodeDir < (rightAngle + 0.4) && spriteComponent.node.xScale == 1){
+//                            movementSpeed.x = -30
+//                        }
+//                    }
                 }
             }
         }

@@ -60,6 +60,10 @@ class FullControlComponent: GKComponent {
     var isDying = false
     var deadTime: CGFloat = 0.0
     
+    //Pew
+    var firstPew = true
+    var pewDuration: CGFloat = 0.0
+    
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
         return spriteComponent
@@ -150,7 +154,7 @@ class FullControlComponent: GKComponent {
         
         if controlInput.firePressed && !isFiring {
             if let playerEnt = entity as? PlayerEntity {
-                playerEnt.gameScene.runAction(playerEnt.gameScene.sndFire)
+                self.playPew(having: playerEnt)
                 playerEnt.fireNode.runAction(animateFire())
             }
             fireTime = fireTime > 0 ? fireTime : 0.5
@@ -192,6 +196,17 @@ class FullControlComponent: GKComponent {
                 }
             }
         }
+    }
+    
+    func playPew(having playerEntity: PlayerEntity){
+        if firstPew {
+            playerEntity.gameScene.runAction(playerEntity.gameScene.sndFire)
+            playerEntity.gameScene.runAction(playerEntity.gameScene.sndFirePew)
+            firstPew = false
+        }else{
+            playerEntity.gameScene.runAction(playerEntity.gameScene.sndFire)
+        }
+        
     }
 }
 

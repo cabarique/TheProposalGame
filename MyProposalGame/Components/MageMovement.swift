@@ -132,9 +132,9 @@ class MageMovementComponent: GKComponent {
             
             if reloadTime <= 0 {
                 if fireRate <= 0 {
-                    fireRate = 1
-                }else if fireRate < 1 {
-                    if fireRate < 0.5 {
+                    fireRate = 0.3
+                }else if fireRate < 0.3 {
+                    if fireRate < 0.15 {
                         animationComponent.requestedAnimationState = .Idle
                     }
                     fireRate = fireRate - CGFloat(seconds)

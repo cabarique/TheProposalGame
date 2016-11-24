@@ -12,6 +12,8 @@
 		4F12E95A1DB426C600FD3538 /* Zombie2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E9591DB426C600FD3538 /* Zombie2.atlas */; };
 		4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F12E95B1DB4299300FD3538 /* Boss.atlas */; };
 		4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */; };
+		4F491C1D1DE69B5F00563955 /* pew.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F491C1C1DE69B5F00563955 /* pew.wav */; };
+		4F491C1F1DE69DDD00563955 /* gun-pew.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F491C1E1DE69DDD00563955 /* gun-pew.wav */; };
 		4F5773F81DBED656007CF1FB /* Mage2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5773F61DBED656007CF1FB /* Mage2.atlas */; };
 		4F5773FC1DBED853007CF1FB /* Projectile.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4F5773FA1DBED853007CF1FB /* Projectile.atlas */; };
 		4F5773FE1DBEE3B9007CF1FB /* Mage1Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F5773FD1DBEE3B9007CF1FB /* Mage1Entity.swift */; };
@@ -109,6 +111,8 @@
 		4F12E9591DB426C600FD3538 /* Zombie2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Zombie2.atlas; path = Resources/Atlas/Zombie2.atlas; sourceTree = "<group>"; };
 		4F12E95B1DB4299300FD3538 /* Boss.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Boss.atlas; path = Resources/Atlas/Boss.atlas; sourceTree = "<group>"; };
 		4F12E95D1DB432BF00FD3538 /* Enemy2Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy2Entity.swift; path = Entities/Enemy2Entity.swift; sourceTree = "<group>"; };
+		4F491C1C1DE69B5F00563955 /* pew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = pew.wav; path = Resources/Sounds/pew.wav; sourceTree = "<group>"; };
+		4F491C1E1DE69DDD00563955 /* gun-pew.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "gun-pew.wav"; path = "Resources/Sounds/gun-pew.wav"; sourceTree = "<group>"; };
 		4F5773F61DBED656007CF1FB /* Mage2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Mage2.atlas; path = Resources/Atlas/Mage2.atlas; sourceTree = "<group>"; };
 		4F5773FA1DBED853007CF1FB /* Projectile.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Projectile.atlas; path = Resources/Atlas/Projectile.atlas; sourceTree = "<group>"; };
 		4F5773FD1DBEE3B9007CF1FB /* Mage1Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mage1Entity.swift; path = Entities/Mage1Entity.swift; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 		4FEA1FDC1D87845300E96E1A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				4F491C1E1DE69DDD00563955 /* gun-pew.wav */,
+				4F491C1C1DE69B5F00563955 /* pew.wav */,
 				4FEA205C1D878C9F00E96E1A /* button_click.wav */,
 				4FEA205D1D878C9F00E96E1A /* collect_good.wav */,
 				4FEA205E1D878C9F00E96E1A /* impact.wav */,
@@ -556,6 +562,7 @@
 				4F12E95C1DB4299300FD3538 /* Boss.atlas in Resources */,
 				4FEA20631D878C9F00E96E1A /* collect_good.wav in Resources */,
 				4FEA1FCC1D87802B00E96E1A /* LaunchScreen.storyboard in Resources */,
+				4F491C1F1DE69DDD00563955 /* gun-pew.wav in Resources */,
 				4FEA20641D878C9F00E96E1A /* impact.wav in Resources */,
 				DA9484641D9CB9AF00EDD1B1 /* background_music_intro.wav in Resources */,
 				4FF367D31DBFA623006C5CAF /* Princess.atlas in Resources */,
@@ -567,6 +574,7 @@
 				4F5774051DBEEBB8007CF1FB /* Tiles4.atlas in Resources */,
 				DA9484601D9CB88100EDD1B1 /* background_music_halloween.mp3 in Resources */,
 				4FEA1FC91D87802B00E96E1A /* Assets.xcassets in Resources */,
+				4F491C1D1DE69B5F00563955 /* pew.wav in Resources */,
 				4F5773FC1DBED853007CF1FB /* Projectile.atlas in Resources */,
 				DAAB0CA51D9CAE3D00D8A0BD /* meow.mp3 in Resources */,
 				4FEA1FC71D87802B00E96E1A /* Main.storyboard in Resources */,

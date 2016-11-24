@@ -97,6 +97,7 @@ class PlayerEntity: SGEntity {
                 playerDied()
             }
         }
+        
     }
     
     override func contactWith(entity:SGEntity) {

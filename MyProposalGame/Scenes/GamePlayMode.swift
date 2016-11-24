@@ -93,7 +93,8 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     //Sounds
     let sndCollectGood = SKAction.playSoundFileNamed("collect_good.wav", waitForCompletion: false)
     let sndJump = SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false)
-    let sndFire = SKAction.playSoundFileNamed("gunshot.wav", waitForCompletion: false)
+    let sndFirePew = SKAction.playSoundFileNamed("gun-pew.wav", waitForCompletion: false)
+    let sndFire = SKAction.playSoundFileNamed("pew.wav", waitForCompletion: false)
     let sndDead = SKAction.playSoundFileNamed("game_over.wav", waitForCompletion: false)
     let sndMeow = SKAction.playSoundFileNamed("meow.mp3", waitForCompletion: false)
     let sndMeow2 = SKAction.playSoundFileNamed("meow", atVolume: 0.8, waitForCompletion: false, withExtension: ".mp3")
