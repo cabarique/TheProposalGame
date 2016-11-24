@@ -17,6 +17,7 @@ class EnemyEntity: SGEntity {
     
     var gameScene:GamePlayMode!
     var didRise: Bool = false
+    var riseTime: CGFloat = 0.2
     
     var lifePoints: Int!
     
@@ -78,12 +79,13 @@ class EnemyEntity: SGEntity {
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
         
-        if gameScene.camera?.containsNode(spriteComponent.node) == true && !didRise {
-            NSTimer.scheduledTimerWithTimeInterval(0.2, repeats: false, block: { (timer) in
+        if !didRise && gameScene.camera?.containsNode(spriteComponent.node) == true {
+            riseTime = riseTime - CGFloat(seconds)
+            if riseTime < 0 {
                 self.didRise = true
                 self.spriteComponent.node.alpha = 1.0
                 self.animationComponent.requestedAnimationState = .Rise
-            })
+            }
         }
     }
     

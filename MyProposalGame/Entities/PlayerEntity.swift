@@ -92,8 +92,10 @@ class PlayerEntity: SGEntity {
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
         
-        if spriteComponent.node.position.y < 0 && !gameScene.worldFrame.contains(spriteComponent.node.position) {
-            playerDied()
+        if !gameScene.worldFrame.contains(spriteComponent.node.position) {
+            if spriteComponent.node.position.y < 0 {
+                playerDied()
+            }
         }
     }
     

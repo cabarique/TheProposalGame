@@ -416,6 +416,12 @@ class TileLayer3: TileLayer{
             node.name = "placeholder_Mage1"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
+        case .tileMage2:
+            let node = SKNode()
+            node.position = location
+            node.name = "placeholder_Mage2"
+            node.zPosition = GameSettings.GameParams.zValues.zWorld
+            addChild(node)
         default:
             break
         }

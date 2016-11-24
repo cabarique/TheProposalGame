@@ -58,7 +58,7 @@ struct GameSettings {
     
     struct Builder {
         static var ALL_Black_Background: Bool = false
-        static let BUILDER_LEVEL = 0
+        static let BUILDER_LEVEL = 2
     }
     
     /**
