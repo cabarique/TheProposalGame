@@ -58,7 +58,7 @@ struct GameSettings {
     
     struct Builder {
         static var ALL_Black_Background: Bool = false
-        static let BUILDER_LEVEL = 2
+        static let BUILDER_LEVEL = 3
     }
     
     /**
@@ -70,12 +70,12 @@ struct GameSettings {
         static let ALL_ShowFrameRate: Bool = true
         static let ALL_ShowNodeCount: Bool = true
         
-        static let IOS_ShowDrawCount: Bool = false
-        static let IOS_ShowQuadCount: Bool = false
-        static let IOS_ShowPhysics  : Bool = false
-        static let IOS_ShowFields   : Bool = false
+        static let IOS_ShowDrawCount: Bool = true
+        static let IOS_ShowQuadCount: Bool = true
+        static let IOS_ShowPhysics  : Bool = true
+        static let IOS_ShowFields   : Bool = true
         
-        static let ALL_TellMeStatus : Bool = true
+        static let ALL_TellMeStatus : Bool = false
     }
     
     /**

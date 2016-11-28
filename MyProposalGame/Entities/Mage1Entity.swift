@@ -9,12 +9,12 @@
 import SpriteKit
 import GameplayKit
 
-protocol ParabolicAttacking {
+protocol GroundAttacking {
     var spriteComponent: SpriteComponent! { get set}
     var gameScene:GamePlayMode! { get }
 }
 
-class Mage1Entity: SGEntity, ParabolicAttacking {
+class Mage1Entity: SGEntity, GroundAttacking {
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
     var physicsComponent: PhysicsComponent!
@@ -103,10 +103,6 @@ class Mage1Entity: SGEntity, ParabolicAttacking {
     }
     
     override func contactWith(entity:SGEntity) {
-        if entity.name == "projectileEntity" {
-            
-        }
-        
         
     }
     

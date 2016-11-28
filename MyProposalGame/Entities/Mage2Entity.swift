@@ -9,6 +9,11 @@
 import SpriteKit
 import GameplayKit
 
+protocol ParabolicAttacking {
+    var spriteComponent: SpriteComponent! { get set}
+    var gameScene:GamePlayMode! { get }
+}
+
 class Mage2Entity: SGEntity, ParabolicAttacking {
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
@@ -62,16 +67,16 @@ class Mage2Entity: SGEntity, ParabolicAttacking {
         
         animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                     withImageIdentifier: AnimationState.Attack.rawValue,
-                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 35.86, height: 60.0))
+                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
                                                                   forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 35.05, height: 60.0))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 38.11, height: 60.0))
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 56.62, height: 60.0))
         return animations
     }
     

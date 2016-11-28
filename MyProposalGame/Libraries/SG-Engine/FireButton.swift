@@ -28,7 +28,7 @@ class FireButton: SKNode {
         button = SKSpriteNode(texture: atlas.textureNamed("game"))
         button.zPosition = zPos
         button.alpha = 0.5
-        button.size = CGSize(width: 90, height: 90)
+        button.size = CGSize(width: 100, height: 100)
         touchArea.addChild(button)
         
         super.init()

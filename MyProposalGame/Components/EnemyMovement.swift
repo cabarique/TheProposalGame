@@ -87,7 +87,7 @@ class EnemyMovementComponent: GKComponent {
             let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
             
             //Move sprite
-            if movementSpeed.x >= 0 {
+            if movementSpeed.x > 0 {
                 spriteComponent.node.xScale = 1.0
             }else{
                 spriteComponent.node.xScale = -1.0
@@ -97,7 +97,6 @@ class EnemyMovementComponent: GKComponent {
             //when contacts with a tile, turns arround
             if allContactedBodies?.count > 0 {
                 for body in allContactedBodies! {
-                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
                     
                     if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
                         lifePoints -= 1
@@ -117,7 +116,11 @@ class EnemyMovementComponent: GKComponent {
                     let gameScene = enemyEnt.gameScene
                     if gameScene.camera?.containsNode(spriteComponent.node) == true {
                         animationComponent.requestedAnimationState = .Run
-                        if gameScene.camera?.position.x < spriteComponent.node.position.x {
+                        let dif = abs(abs((gameScene.camera?.position.x)!) - abs(spriteComponent.node.position.x) )
+                        if dif > 0  &&  dif < 15{
+                            movementSpeed.x = 0
+                            animationComponent.requestedAnimationState = .Idle
+                        }else if gameScene.camera?.position.x < spriteComponent.node.position.x {
                             movementSpeed.x = -30
                         }else{
                             movementSpeed.x = 30

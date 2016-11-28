@@ -66,8 +66,10 @@ class MageMovementComponent: GKComponent {
         
         if let enemyEnt = entity as? Mage1Entity {
             updateMage1WithDeltaTime(seconds, controlInput: controlInput, enemyEnt: enemyEnt)
+        }else if let enemyEnt = entity as? Mage2Entity {
+            updateMage2WithDeltaTime(seconds, controlInput: controlInput, enemyEnt: enemyEnt)
         }else {
-            updateMage2WithDeltaTime(seconds, controlInput: controlInput, enemyEnt: entity as! Mage2Entity)
+            updateBossWithDeltaTime(seconds, controlInput: controlInput, enemyEnt: entity as! BossEntity)
         }
     }
     
@@ -92,7 +94,7 @@ class MageMovementComponent: GKComponent {
         gameScene.addEntity(projectile, toLayer: gameScene.worldLayer)
     }
     
-    private func groundFire(havingEnemy enemyEnt: Mage1Entity) {
+    private func groundFire<T: GroundAttacking>(havingEnemy enemyEnt: T) {
         let atlas = SKTextureAtlas(named: "Projectile")
         let spriteNode = enemyEnt.spriteComponent.node
         let orientation: CGFloat = spriteNode.xScale
@@ -102,6 +104,23 @@ class MageMovementComponent: GKComponent {
         let projectile = GroundProjectileEntity(position: CGPoint(x: positionX, y: spriteNode.position.y + 20), size: CGSize(width: 30, height: 20), orientation: orientation, texture: atlas.textureNamed("Fantasma__001"), scene: enemyEnt.gameScene)
         projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
         gameScene.addEntity(projectile, toLayer: gameScene.worldLayer)
+    }
+    
+    private func summon<T: SummonAttacking>(havingEnemy enemyEnt: T) {
+        let enemy1Atlas = SKTextureAtlas(named: "Zombie1")
+        let spriteNode = enemyEnt.spriteComponent.node
+        let gameScene = enemyEnt.gameScene
+        
+        let randomNumbers = [-20...10]
+        let randomPosition = GKRandomDistribution(forDieWithSideCount: randomNumbers.count)
+        let cameraPosition = gameScene.camera!.position
+        let leftRange = cameraPosition.x - 90 + CGFloat(randomPosition.nextInt())
+        
+        let zombie = EnemyEntity(position: CGPoint(x: leftRange, y: spriteNode.position.y), size: CGSize(width: 48, height: 48.0), atlas: enemy1Atlas, scene: gameScene, name: "Zombie1")
+        zombie.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        zombie.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
+        gameScene.addEntity(zombie, toLayer: gameScene.worldLayer)
+        
     }
     
     func updateMage2WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage2Entity){
@@ -160,8 +179,6 @@ class MageMovementComponent: GKComponent {
             //when contacts with a tile, turns arround
             if allContactedBodies?.count > 0 {
                 for body in allContactedBodies! {
-                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
-//                    let nodeDir = nodeDif.angle
                     
                     if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
                         lifePoints -= 1
@@ -182,7 +199,7 @@ class MageMovementComponent: GKComponent {
         }
     }
     
-    func updateMage1WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage1Entity){
+    func updateMage1WithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: Mage1Entity) {
         if enemyEnt.didRise {
             
             if !isActive {
@@ -193,7 +210,6 @@ class MageMovementComponent: GKComponent {
                 }else{
                     isActive = true
                     enemyEnt.enablePhysicContacts()
-                    //                    animationComponent.requestedAnimationState = .Idle
                 }
                 return
             }
@@ -238,8 +254,91 @@ class MageMovementComponent: GKComponent {
             //when contacts with a tile, turns arround
             if allContactedBodies?.count > 0 {
                 for body in allContactedBodies! {
-                    let nodeDif = (body.node?.position)! - spriteComponent.node.position
-                    let nodeDir = nodeDif.angle
+                    
+                    if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
+                        lifePoints -= 1
+                        body.node?.removeFromParent()
+                    }
+                    
+                    if !isDying && body.node?.name == "projectileNode" && isActive && lifePoints == 0 {
+                        body.node?.removeFromParent()
+                        spriteComponent.node.physicsBody = nil
+                        enemyEnt.gameScene.runAction(enemyEnt.gameScene.sndJump)
+                        animationComponent.requestedAnimationState = .Dead
+                        isDying = true
+                        deadTime = 1
+                        return
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    private let bossAttackOptions = ["parabolic", "summon", "ground"]
+    private var bossAttack = 0
+    func updateBossWithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: BossEntity) {
+        if enemyEnt.didRise {
+            
+            if !isActive {
+                if riseTime == 0 {
+                    riseTime = 0.4
+                }else if riseTime > 0 {
+                    riseTime = riseTime - CGFloat(seconds)
+                }else{
+                    isActive = true
+                    enemyEnt.enablePhysicContacts()
+                }
+                return
+            }
+            
+            if isDying && deadTime > 0{
+                deadTime = deadTime - CGFloat(seconds)
+                return
+            }
+            
+            if deadTime <= 0 && isDying {
+                spriteComponent.node.removeFromParent()
+                return
+            }
+            
+            if reloadTime <= 0 {
+                if fireRate <= 0 {
+                    fireRate = 0.3
+                }else if fireRate < 0.3 {
+                    if fireRate < 0.15 {
+                        animationComponent.requestedAnimationState = .Idle
+                    }
+                    fireRate = fireRate - CGFloat(seconds)
+                }else if amunition > 0 {
+                    animationComponent.requestedAnimationState = .Attack
+                    amunition -= 1
+                    if bossAttackOptions[bossAttack] == "parabolic" {
+                        parabolicFire(havingEnemy: enemyEnt)
+                    }else if bossAttackOptions[bossAttack] == "summon" {
+                        groundFire(havingEnemy: enemyEnt)
+                    }else{
+                        summon(havingEnemy: enemyEnt)
+                    }
+                    fireRate = fireRate - CGFloat(seconds)
+                }else{
+                    amunition = 2
+                    animationComponent.requestedAnimationState = .Idle
+                    reloadTime = 3
+                    bossAttack = (bossAttackOptions.count - 1 ) == bossAttack ?  0 : bossAttack + 1
+                }
+            }else{
+                reloadTime = reloadTime - CGFloat(seconds)
+            }
+            
+            
+            let allContactedBodies = spriteComponent.node.physicsBody?.allContactedBodies()
+            
+            //Move sprite
+            
+            //when contacts with a tile, turns arround
+            if allContactedBodies?.count > 0 {
+                for body in allContactedBodies! {
                     
                     if lifePoints > 0 && body.node?.name == "projectileNode" && isActive {
                         lifePoints -= 1

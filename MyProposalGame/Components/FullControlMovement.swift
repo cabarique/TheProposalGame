@@ -169,7 +169,7 @@ class FullControlComponent: GKComponent {
                 let nodeDif = (body.node?.position)! - spriteComponent.node.position
                 let nodeDir = nodeDif.angle
                 
-                if (nodeDir > -2.355 && nodeDir < -0.785 /*&& nodeDif.y < -16.56*/) {
+                if (nodeDir > -2.6 && nodeDir < -0.6 /*&& nodeDif.y < -16.56*/) {
                     isJumping = false
                     isDoubleJumping = false
                     

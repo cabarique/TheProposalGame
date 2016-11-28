@@ -124,11 +124,10 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
             enemySystem.addComponentWithEntity(entity)
         }
         
-        if entity is Mage1Entity || entity is Mage2Entity{
+        if entity is Mage1Entity || entity is Mage2Entity || entity is BossEntity {
             mageSystem.addComponentWithEntity(entity)
         }
 
-        
         scrollerSystem.addComponentWithEntity(entity)
         
         
@@ -177,7 +176,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
                 let spriteNode = playerEntity?.spriteComponent.node
                 let orientation: CGFloat = (spriteNode?.xScale)!
                 let positionX = orientation >= 0 ? spriteNode!.position.x + 40 : spriteNode!.position.x - 40
-                let projectile = ProjectileEntity(position: CGPoint(x: positionX, y: spriteNode!.position.y + 20), size: CGSize(width: 15, height: 8), orientation: orientation, texture: atlas.textureNamed("Cat_Bullet"), scene: self)
+                let projectile = ProjectileEntity(position: CGPoint(x: positionX, y: spriteNode!.position.y + 15), size: CGSize(width: 15, height: 8), orientation: orientation, texture: atlas.textureNamed("Cat_Bullet"), scene: self)
                 projectile.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zWorldFront
                 self.addEntity(projectile, toLayer: self.worldLayer)
                 

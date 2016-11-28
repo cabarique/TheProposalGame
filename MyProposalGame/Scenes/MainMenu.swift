@@ -112,11 +112,18 @@ class MainMenu: SGScene {
     if event == "buttonA" {
       
       self.runAction(sndButtonClick)
-      
-      let nextScene = LevelSelect(size: self.scene!.size)
-      nextScene.scaleMode = self.scaleMode
-      self.view?.presentScene(nextScene)
-      
+        
+        let indexLevel1 = NSUserDefaults.standardUserDefaults().boolForKey("Level_\(1)")
+        
+        if indexLevel1 == true {
+            let nextScene = LevelSelect(size: self.scene!.size)
+            nextScene.scaleMode = self.scaleMode
+            self.view?.presentScene(nextScene)
+        }else{
+            let nextScene = IntroScreen(size: self.scene!.size)
+            nextScene.scaleMode = self.scaleMode
+            self.view?.presentScene(nextScene)
+        }
     }
     if event == "buttonB" {
       

@@ -28,7 +28,7 @@ class MovementStick: SKNode {
     
     var stick = SKSpriteNode()
     let radius:CGFloat
-    private var backGroundSize: CGFloat = 150
+    private var backGroundSize: CGFloat = 200
     var movement:CGPoint {
         get {
             let x = fabs(stick.position.x) <= 75 ? stick.position.x : ( stick.position.x > 0 ? (backGroundSize / 2) : -1 * (backGroundSize / 2) )
@@ -54,7 +54,7 @@ class MovementStick: SKNode {
         self.userInteractionEnabled = true
         
         stick = SKSpriteNode(texture: atlas.textureNamed("Joystick"))
-        stick.size = CGSize(width: 80, height: 80)
+        stick.size = CGSize(width: 90, height: 90)
         stick.alpha = 0.5
         stick.zPosition = zPos + 1
         

@@ -54,7 +54,7 @@ class GameSceneInitialState: GameSceneState {
         case 2:
             gs.worldLayer = TileLayer3(levelIndex: gs.levelIndex, typeIndex: .setMain)
         case 3:
-            gs.worldLayer = TileLayer2(levelIndex: gs.levelIndex, typeIndex: .setMain)
+            gs.worldLayer = TileLayer4(levelIndex: gs.levelIndex, typeIndex: .setMain)
         default:
             gs.worldLayer = TileLayer1(levelIndex: gs.levelIndex, typeIndex: .setMain)
         }
@@ -145,7 +145,7 @@ class GameSceneInitialState: GameSceneState {
         
         let bossAtlas = SKTextureAtlas(named: enemies[4])
         gs.worldLayer.enumerateChildNodesWithName("placeholder_\(enemies[4])") { (node, stop) in
-            let boss = BossEntity(position: node.position, size: CGSize(width: 25.4, height: 48.0), atlas: bossAtlas, scene: self.gs, name: enemies[4])
+            let boss = BossEntity(position: node.position, size: CGSize(width: 52, height: 60), atlas: bossAtlas, scene: self.gs, name: enemies[4])
             boss.spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.0)
             boss.spriteComponent.node.zPosition = GameSettings.GameParams.zValues.zPlayer - 1
             self.gs.addEntity(boss, toLayer: self.gs.worldLayer)
@@ -183,7 +183,7 @@ class GameSceneInitialState: GameSceneState {
         gs.overlayGUI.addChild(gs.scoreBanner)
         
         //Controls
-        gs.movementStick.posByScreen(-0.40, y: -0.49)
+        gs.movementStick.posByScreen(-0.38, y: -0.47)
         gs.overlayGUI.addChild(gs.movementStick)
         
         gs.jumpButton.posByScreen(0.35, y: -0.55)

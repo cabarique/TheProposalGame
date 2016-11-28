@@ -123,7 +123,7 @@ class PlayerEntity: SGEntity {
         }
         
         if entity.name.rangeOfString("Zombie") != nil || entity.name.rangeOfString("Mage") != nil
-            || entity.name == "BossEntity" || entity.name == "parabolicProjectileEntity" {
+            || entity.name == "BossEntity" || entity.name == "parabolicProjectileEntity"  || entity.name == "groundProjectileEntity" {
             gameScene.control.willDie = true
         }
         

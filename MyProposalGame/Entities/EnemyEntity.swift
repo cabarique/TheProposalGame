@@ -71,7 +71,7 @@ class EnemyEntity: SGEntity {
                                                                   forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 57.39, height: 48.0))
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48.0))
         
         return animations
     }

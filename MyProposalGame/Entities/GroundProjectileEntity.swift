@@ -18,7 +18,7 @@ class GroundProjectileEntity: SGEntity {
     var gameScene:GamePlayMode!
     
     private var projectileOrientation: CGFloat = 1.0
-    private let speed: CGPoint = CGPoint(x: 40.0, y: 0.0)
+    private let speed: CGPoint = CGPoint(x: 30.0, y: 0.0)
     
     init(position: CGPoint, size: CGSize, orientation: CGFloat, texture: SKTexture, scene:GamePlayMode) {
         super.init()

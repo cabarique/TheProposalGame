@@ -88,6 +88,8 @@
 		4FEA20711D878D6700E96E1A /* FullControlMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20701D878D6700E96E1A /* FullControlMovement.swift */; };
 		4FEA20731D878FDF00E96E1A /* MovementStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA20721D878FDF00E96E1A /* MovementStick.swift */; };
 		4FEA20751D87912300E96E1A /* GUI.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA20741D87912300E96E1A /* GUI.atlas */; };
+		4FEB8E2F1DE7D48800DE5EFC /* TileLayer4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB8E2E1DE7D48700DE5EFC /* TileLayer4.swift */; };
+		4FEB8E311DE7D76600DE5EFC /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEB8E301DE7D76600DE5EFC /* IntroScene.swift */; };
 		4FF367C71DBFA478006C5CAF /* TileLayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C61DBFA478006C5CAF /* TileLayer2.swift */; };
 		4FF367CB1DBFA494006C5CAF /* BossEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C81DBFA494006C5CAF /* BossEntity.swift */; };
 		4FF367CC1DBFA494006C5CAF /* CoinEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF367C91DBFA494006C5CAF /* CoinEntity.swift */; };
@@ -189,6 +191,8 @@
 		4FEA20701D878D6700E96E1A /* FullControlMovement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FullControlMovement.swift; path = Components/FullControlMovement.swift; sourceTree = "<group>"; };
 		4FEA20721D878FDF00E96E1A /* MovementStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovementStick.swift; path = "Libraries/SG-Engine/MovementStick.swift"; sourceTree = "<group>"; };
 		4FEA20741D87912300E96E1A /* GUI.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = GUI.atlas; path = Resources/Atlas/GUI.atlas; sourceTree = "<group>"; };
+		4FEB8E2E1DE7D48700DE5EFC /* TileLayer4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer4.swift; path = Scenes/Layers/TileLayer4.swift; sourceTree = "<group>"; };
+		4FEB8E301DE7D76600DE5EFC /* IntroScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroScene.swift; path = Scenes/IntroScene.swift; sourceTree = "<group>"; };
 		4FF367C61DBFA478006C5CAF /* TileLayer2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileLayer2.swift; path = Scenes/Layers/TileLayer2.swift; sourceTree = "<group>"; };
 		4FF367C81DBFA494006C5CAF /* BossEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BossEntity.swift; path = Entities/BossEntity.swift; sourceTree = "<group>"; };
 		4FF367C91DBFA494006C5CAF /* CoinEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoinEntity.swift; path = Entities/CoinEntity.swift; sourceTree = "<group>"; };
@@ -351,6 +355,7 @@
 				4FEA20401D878A4A00E96E1A /* GamePlayMode.swift */,
 				4FEA20431D878A4A00E96E1A /* MainMenu.swift */,
 				4FEA20441D878A4A00E96E1A /* PostScene.swift */,
+				4FEB8E301DE7D76600DE5EFC /* IntroScene.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				4F5774071DBEFCCB007CF1FB /* TileLayer1.swift */,
 				4FF367C61DBFA478006C5CAF /* TileLayer2.swift */,
 				4FF367D41DBFA8BA006C5CAF /* TileLayer3.swift */,
+				4FEB8E2E1DE7D48700DE5EFC /* TileLayer4.swift */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -608,12 +614,14 @@
 				4FF367D51DBFA8BA006C5CAF /* TileLayer3.swift in Sources */,
 				4FEA20251D87882200E96E1A /* SGExtensions.swift in Sources */,
 				4FEA201C1D87880200E96E1A /* SKTAudio.swift in Sources */,
+				4FEB8E2F1DE7D48800DE5EFC /* TileLayer4.swift in Sources */,
 				4FEA20111D87880200E96E1A /* CGFloat+Extensions.swift in Sources */,
 				4F5774081DBEFCCB007CF1FB /* TileLayer1.swift in Sources */,
 				4F9DA7751DCBB1BA0046E509 /* GroundProjectileEntity.swift in Sources */,
 				4FEA204A1D878A4A00E96E1A /* MainMenu.swift in Sources */,
 				4FF367CF1DBFA514006C5CAF /* PrincessEntity.swift in Sources */,
 				4FE4B2711D9D807100EB2FC4 /* ScoreBanner.swift in Sources */,
+				4FEB8E311DE7D76600DE5EFC /* IntroScene.swift in Sources */,
 				4FEA202F1D87888D00E96E1A /* PlayModeStates.swift in Sources */,
 				4F12E95E1DB432BF00FD3538 /* Enemy2Entity.swift in Sources */,
 				4F0E65A21DC1BD170068035B /* ParabolicProjectileEntity.swift in Sources */,

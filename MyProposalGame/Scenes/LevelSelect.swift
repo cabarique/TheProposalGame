@@ -148,11 +148,18 @@ class LevelSelect: SGScene {
                     self.view?.presentScene(nextScene)
                 }else if nodeName == "LevelSign" {
                     if theNode.userData!["Available"] as! Bool == true {
-                        self.runAction(sndButtonClick)
-                        let nextScene = GamePlayMode(size: self.scene!.size)
-                        nextScene.levelIndex = (theNode.userData!["Index"] as? Int)!
-                        nextScene.scaleMode = self.scaleMode
-                        self.view?.presentScene(nextScene)
+                        let indexLevel = theNode.userData!["Index"] as! Int
+                        if indexLevel == 0 {
+                            let nextScene = IntroScreen(size: self.scene!.size)
+                            nextScene.scaleMode = self.scaleMode
+                            self.view?.presentScene(nextScene)
+                        }else{
+                            self.runAction(sndButtonClick)
+                            let nextScene = GamePlayMode(size: self.scene!.size)
+                            nextScene.levelIndex = indexLevel
+                            nextScene.scaleMode = self.scaleMode
+                            self.view?.presentScene(nextScene)
+                        }
                     }
                 }
             }

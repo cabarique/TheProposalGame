@@ -9,7 +9,12 @@
 import SpriteKit
 import GameplayKit
 
-class BossEntity: SGEntity {
+protocol SummonAttacking {
+    var spriteComponent: SpriteComponent! { get set}
+    var gameScene:GamePlayMode! { get }
+}
+
+class BossEntity: SGEntity, ParabolicAttacking, GroundAttacking, SummonAttacking {
     var spriteComponent: SpriteComponent!
     var animationComponent: AnimationComponent!
     var physicsComponent: PhysicsComponent!
@@ -17,8 +22,10 @@ class BossEntity: SGEntity {
     
     var gameScene:GamePlayMode!
     var didRise: Bool = false
+    var riseTime: CGFloat = 0.2
     
     var lifePoints: Int!
+    
     
     override init() {
         super.init()
@@ -36,7 +43,7 @@ class BossEntity: SGEntity {
         addComponent(spriteComponent)
         animationComponent = AnimationComponent(node: spriteComponent.node, animations: loadAnimations(atlas))
         addComponent(animationComponent)
-        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width * 0.8, height: spriteComponent.node.size.height * 0.8), bodyShape: .squareOffset, rotation: false)
+        physicsComponent = PhysicsComponent(entity: self, bodySize: CGSize(width: spriteComponent.node.size.width, height: spriteComponent.node.size.height), bodyShape: .squareOffset, rotation: false)
         
         enablePhysicContacts()
         addComponent(physicsComponent)
@@ -61,37 +68,46 @@ class BossEntity: SGEntity {
         
         animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                     withImageIdentifier: AnimationState.Attack.rawValue,
-                                                                    forAnimationState: .Attack, repeatTexturesForever: true, textureSize: CGSize(width: 28.69, height: 48))
+                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 35.88, height: 55.0))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0))
+//        animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
+//                                                                    withImageIdentifier: AnimationState.Attack.rawValue,
+//                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 85.22, height: 100.0))
+//        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
+//                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
+//                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 81.6, height: 100.0))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
                                                                   forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160))
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
-                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 34.22, height: 55.0))
-        
+                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 142.85, height: 160.0))
+//
+//        animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
+//                                                                  withImageIdentifier: AnimationState.Idle.rawValue,
+//                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 82.56, height: 86.0))
+//        
         return animations
     }
     
     override func updateWithDeltaTime(seconds: NSTimeInterval) {
         super.updateWithDeltaTime(seconds)
         
-        if gameScene.camera?.containsNode(spriteComponent.node) == true && !didRise {
-            NSTimer.scheduledTimerWithTimeInterval(0.4, repeats: false, block: { (timer) in
+        if !didRise && gameScene.camera?.containsNode(spriteComponent.node) == true {
+            riseTime = riseTime - CGFloat(seconds)
+            if riseTime < 0 {
                 self.didRise = true
                 self.spriteComponent.node.alpha = 1.0
                 self.animationComponent.requestedAnimationState = .Rise
-            })
+            }
         }
+
     }
     
     override func contactWith(entity:SGEntity) {
-        if entity.name == "projectileEntity" {
-            
-        }
-        
+       
         
     }
     
@@ -102,6 +118,6 @@ class BossEntity: SGEntity {
     func enablePhysicContacts(){
         physicsComponent.setCategoryBitmask(ColliderType.Enemy.rawValue, dynamic: true)
         physicsComponent.setPhysicsContacts(ColliderType.Projectile.rawValue | ColliderType.Player.rawValue)
-        physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.InvisibleWall.rawValue | ColliderType.Destroyable.rawValue)
+        physicsComponent.setPhysicsCollisions(ColliderType.Wall.rawValue | ColliderType.Destroyable.rawValue)
     }
 }
