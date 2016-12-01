@@ -136,7 +136,7 @@
 		4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunshot.wav; path = Resources/Sounds/gunshot.wav; sourceTree = "<group>"; };
 		4FD2B3621D8DBC4F005F169A /* Button.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Button.atlas; path = Resources/Atlas/Button.atlas; sourceTree = "<group>"; };
 		4FE4B2701D9D807100EB2FC4 /* ScoreBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreBanner.swift; path = "Libraries/SG-Engine/ScoreBanner.swift"; sourceTree = "<group>"; };
-		4FEA1FBA1D87802B00E96E1A /* the game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "the game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyProposalGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA1FBD1D87802B00E96E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA1FC31D87802B00E96E1A /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4FEA1FC61D87802B00E96E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,7 +262,7 @@
 		4FEA1FBB1D87802B00E96E1A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FEA1FBA1D87802B00E96E1A /* the game.app */,
+				4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 			);
 			name = MyProposalGame;
 			productName = MyProposalGame;
-			productReference = 4FEA1FBA1D87802B00E96E1A /* the game.app */;
+			productReference = 4FEA1FBA1D87802B00E96E1A /* MyProposalGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -787,7 +787,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.MyProposalGame;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
-				PRODUCT_NAME = "the game";
+				PRODUCT_NAME = MyProposalGame;
 				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
@@ -802,7 +802,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cabarique.MyProposalGame;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
-				PRODUCT_NAME = "the game";
+				PRODUCT_NAME = MyProposalGame;
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
