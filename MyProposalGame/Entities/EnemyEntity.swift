@@ -65,10 +65,10 @@ class EnemyEntity: SGEntity {
                                                                  forAnimationState: .Run, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48.0))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 64, height: 48.0))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 64, height: 48.0), repeatingTextures: 2)
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 48, height: 48.0), repeatingTextures: 2)
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48.0))

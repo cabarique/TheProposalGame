@@ -70,7 +70,7 @@ class Mage1Entity: SGEntity, GroundAttacking {
                                                                  forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60), repeatingTextures: 2)
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
                                                                   forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 60.54, height: 60))

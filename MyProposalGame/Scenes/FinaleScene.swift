@@ -1,17 +1,17 @@
 //
-//  IntroScene.swift
+//  FinaleScene.swift
 //  MyProposalGame
 //
-//  Created by Luis Cabarique on 11/24/16.
+//  Created by Luis Cabarique on 11/28/16.
 //  Copyright © 2016 Luis Cabarique. All rights reserved.
 //
 
 import SpriteKit
 
-class IntroScreen: SGScene {
+class FinaleScreen: SGScene {
     let sndButtonClick = SKAction.playSoundFileNamed("button_click.wav", waitForCompletion: false)
     
-    var introScene:Int = 1
+    var finaleScene:Int = 1
     var background: SKSpriteNode!
     
     override func didMoveToView(view: SKView) {
@@ -33,7 +33,7 @@ class IntroScreen: SGScene {
         homeButton.name = "Next"
         addChild(homeButton)
         
-        background = SKSpriteNode(imageNamed: "INTRO_0\(introScene)")
+        background = SKSpriteNode(imageNamed: "FINALE_0\(finaleScene)")
         background.posByCanvas(0.5, y: 0.5)
         background.setScale(0.8)
         background.zPosition = -1
@@ -47,21 +47,20 @@ class IntroScreen: SGScene {
                 let nodeName = theNode.name {
                 if nodeName == "Next"{
                     self.runAction(sndButtonClick)
-                    nextGame(introScene)
+                    nextGame(finaleScene)
                 }
             }
         }
     }
     
     private func nextGame(index: Int){
-        introScene = index + 1
-        if introScene > 4 {
-            let nextScene = GamePlayMode(size: self.scene!.size)
-            nextScene.levelIndex = 0
+        finaleScene = index + 1
+        if finaleScene > 2 {
+            let nextScene = LevelSelect(size: self.scene!.size)
             nextScene.scaleMode = self.scaleMode
             self.view?.presentScene(nextScene)
         }else{
-            background.texture = SKTexture(imageNamed: "INTRO_0\(introScene)")
+            background.texture = SKTexture(imageNamed: "FINALE_0\(finaleScene)")
         }
         
     }

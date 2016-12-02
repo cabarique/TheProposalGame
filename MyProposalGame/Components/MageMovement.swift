@@ -41,6 +41,20 @@ class MageMovementComponent: GKComponent {
     var amunition = 2
     private var reloadTime: CGFloat = 2.0
     
+    //Boss Attack variables
+    private enum attackTypes {
+        case parabolic
+        case ground
+        case summon
+    }
+    private let bossAttackOptions: [attackTypes] = [.parabolic, .ground, .summon, .summon, .parabolic, .ground, .summon]
+    private var bossAttack = 0
+    
+    private let attackFireRates: [attackTypes: CGFloat] = [
+        .parabolic: 0.3,
+        .ground: 0.5,
+        .summon: 0.5
+    ]
     
     var spriteComponent: SpriteComponent {
         guard let spriteComponent = entity?.componentForClass(SpriteComponent.self) else { fatalError("SpriteComponent Missing") }
@@ -151,9 +165,9 @@ class MageMovementComponent: GKComponent {
             
             if reloadTime <= 0 {
                 if fireRate <= 0 {
-                    fireRate = 0.3
-                }else if fireRate < 0.3 {
-                    if fireRate < 0.15 {
+                    fireRate = attackFireRates[.parabolic]!
+                }else if fireRate < attackFireRates[.parabolic]! {
+                    if fireRate < attackFireRates[.parabolic]! / 2 {
                         animationComponent.requestedAnimationState = .Idle
                     }
                     fireRate = fireRate - CGFloat(seconds)
@@ -226,9 +240,9 @@ class MageMovementComponent: GKComponent {
             
             if reloadTime <= 0 {
                 if fireRate <= 0 {
-                    fireRate = 1
-                }else if fireRate < 1 {
-                    if fireRate < 0.5 {
+                    fireRate = attackFireRates[.ground]!
+                }else if fireRate < attackFireRates[.ground]! {
+                    if fireRate < attackFireRates[.ground]! / 2 {
                         animationComponent.requestedAnimationState = .Idle
                     }
                     fireRate = fireRate - CGFloat(seconds)
@@ -274,9 +288,6 @@ class MageMovementComponent: GKComponent {
         }
     }
     
-    
-    private let bossAttackOptions = ["parabolic", "summon", "ground"]
-    private var bossAttack = 0
     func updateBossWithDeltaTime(seconds: NSTimeInterval, controlInput: MageMoveControlScheme, enemyEnt: BossEntity) {
         if enemyEnt.didRise {
             
@@ -304,18 +315,18 @@ class MageMovementComponent: GKComponent {
             
             if reloadTime <= 0 {
                 if fireRate <= 0 {
-                    fireRate = 0.3
-                }else if fireRate < 0.3 {
-                    if fireRate < 0.15 {
+                    fireRate = attackFireRates[bossAttackOptions[bossAttack]]!
+                }else if fireRate < attackFireRates[bossAttackOptions[bossAttack]]! {
+                    if fireRate < attackFireRates[bossAttackOptions[bossAttack]]! / 2 {
                         animationComponent.requestedAnimationState = .Idle
                     }
                     fireRate = fireRate - CGFloat(seconds)
                 }else if amunition > 0 {
                     animationComponent.requestedAnimationState = .Attack
                     amunition -= 1
-                    if bossAttackOptions[bossAttack] == "parabolic" {
+                    if bossAttackOptions[bossAttack] == .parabolic {
                         parabolicFire(havingEnemy: enemyEnt)
-                    }else if bossAttackOptions[bossAttack] == "summon" {
+                    }else if bossAttackOptions[bossAttack] == .ground {
                         groundFire(havingEnemy: enemyEnt)
                     }else{
                         summon(havingEnemy: enemyEnt)

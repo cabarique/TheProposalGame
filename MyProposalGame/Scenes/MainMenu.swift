@@ -56,29 +56,46 @@ class MainMenu: SGScene {
     
     //For debugging
     
-    let buildButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
-    buildButton.posByScreen(0.5, y: 0.2)
-    buildButton.fontSize = 60
-    buildButton.text = lt("Constructor")
-    buildButton.fontColor = SKColor.blackColor()
-    buildButton.zPosition = 10
-    buildButton.name = "buildGame"
+//    let buildButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
+//    buildButton.posByScreen(0.5, y: 0.2)
+//    buildButton.fontSize = 60
+//    buildButton.text = lt("Constructor")
+//    buildButton.fontColor = SKColor.blackColor()
+//    buildButton.zPosition = 10
+//    buildButton.name = "buildGame"
+//    
+//    let dropShadow = SKLabelNode(fontNamed: GameSettings.standarFontName)
+//    dropShadow.fontSize = buildButton.fontSize
+//    dropShadow.fontColor = SKColor.whiteColor()
+//    dropShadow.text = buildButton.text
+//    dropShadow.zPosition = buildButton.zPosition + 1
+//    dropShadow.position = CGPointMake(dropShadow.position.x - 2, dropShadow.position.y - 2)
+//    buildButton.addChild(dropShadow)
+//    addChild(buildButton)
+    
+    let creaditosButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
+    creaditosButton.posByScreen(0.5, y: 0.2)
+    creaditosButton.fontSize = 60
+    creaditosButton.text = lt("CREDITOS")
+    creaditosButton.fontColor = SKColor.blackColor()
+    creaditosButton.zPosition = 10
+    creaditosButton.name = "creditos"
     
     let dropShadow = SKLabelNode(fontNamed: GameSettings.standarFontName)
-    dropShadow.fontSize = buildButton.fontSize
+    dropShadow.fontSize = creaditosButton.fontSize
     dropShadow.fontColor = SKColor.whiteColor()
-    dropShadow.text = buildButton.text
-    dropShadow.zPosition = buildButton.zPosition + 1
+    dropShadow.text = creaditosButton.text
+    dropShadow.zPosition = creaditosButton.zPosition + 1
     dropShadow.position = CGPointMake(dropShadow.position.x - 2, dropShadow.position.y - 2)
-    buildButton.addChild(dropShadow)
-    addChild(buildButton)
+    creaditosButton.addChild(dropShadow)
+    addChild(creaditosButton)
+
     
     
     
-    let title = SKSpriteNode(imageNamed: "TOTSG01")
+    let title = SKSpriteNode(imageNamed: "TITLE")
     title.posByCanvas(0.5, y: 1.5)
-    title.xScale = 0.5
-    title.yScale = 0.5
+    title.setScale(1.2)
     title.zPosition = 15
     addChild(title)
     title.runAction(SKAction.sequence([
@@ -101,6 +118,10 @@ class MainMenu: SGScene {
         
         if node.name == "buildGame" {
           buttonEvent("buttonB", velocity: 1.0, pushedOn: true)
+        }
+        
+        if node.name == "creditos" {
+            buttonEvent("creditos", velocity: 1.0, pushedOn: true)
         }
         
       }
@@ -133,6 +154,16 @@ class MainMenu: SGScene {
       nextScene.scaleMode = self.scaleMode
       self.view?.presentScene(nextScene)
       
+    }
+    
+    if event == "creditos" {
+        
+        self.runAction(sndButtonClick)
+        
+        let nextScene = CreditsScreen(size: self.scene!.size)
+        nextScene.scaleMode = self.scaleMode
+        self.view?.presentScene(nextScene)
+        
     }
     
   }

@@ -84,7 +84,7 @@ class PlayerEntity: SGEntity {
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 48, height: 48))
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 78.857, height: 48))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 78.857, height: 48), repeatingTextures: 2)
         
         return animations
     }

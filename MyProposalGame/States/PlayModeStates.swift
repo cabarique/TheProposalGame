@@ -225,13 +225,20 @@ class GameSceneVictorySeqState: GameSceneState {
 }
 class GameSceneWinState: GameSceneState {
     override func didEnterWithPreviousState(previousState: GKState?) {
-        let nextScene = PostScreen(size: gs.scene!.size)
-        nextScene.level = gs.levelIndex
-        nextScene.win = true
-        nextScene.diamonds = gs.diamondsCollected
-        nextScene.coins = gs.coinsCollected
-        nextScene.scaleMode = gs.scaleMode
-        gs.view?.presentScene(nextScene)
+        if gs.levelIndex == 3 {
+            let nextScene = FinaleScreen(size: gs.scene!.size)
+            nextScene.scaleMode = gs.scaleMode
+            gs.view?.presentScene(nextScene)
+        }else{
+            let nextScene = PostScreen(size: gs.scene!.size)
+            nextScene.level = gs.levelIndex
+            nextScene.win = true
+            nextScene.diamonds = gs.diamondsCollected
+            nextScene.coins = gs.coinsCollected
+            nextScene.scaleMode = gs.scaleMode
+            gs.view?.presentScene(nextScene)
+        }
+        
     }
 }
 class GameSceneLoseState: GameSceneState {

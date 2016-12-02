@@ -68,26 +68,16 @@ class BossEntity: SGEntity, ParabolicAttacking, GroundAttacking, SummonAttacking
         
         animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                     withImageIdentifier: AnimationState.Attack.rawValue,
-                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0))
+                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0), repeatingTextures: 2)
         animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Dead.rawValue,
-                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0))
-//        animations[.Attack] = AnimationComponent.animationFromAtlas(textureAtlas,
-//                                                                    withImageIdentifier: AnimationState.Attack.rawValue,
-//                                                                    forAnimationState: .Attack, repeatTexturesForever: false, textureSize: CGSize(width: 85.22, height: 100.0))
-//        animations[.Dead] = AnimationComponent.animationFromAtlas(textureAtlas,
-//                                                                  withImageIdentifier: AnimationState.Dead.rawValue,
-//                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 81.6, height: 100.0))
+                                                                  forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160.0), repeatingTextures: 2)
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 142.85, height: 160), repeatingTextures: 2)
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 142.85, height: 160.0))
-//
-//        animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
-//                                                                  withImageIdentifier: AnimationState.Idle.rawValue,
-//                                                                  forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 82.56, height: 86.0))
 //        
         return animations
     }

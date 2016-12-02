@@ -89,12 +89,25 @@ class AnimationComponent: GKComponent {
     
     class func animationFromAtlas(atlas: SKTextureAtlas, withImageIdentifier
         identifier: String, forAnimationState animationState: AnimationState,
-        repeatTexturesForever: Bool = true, textureSize:CGSize) -> Animation {
-        let textures = atlas.textureNames.filter {
+        repeatTexturesForever: Bool = true, textureSize:CGSize, repeatingTextures: Int = 1) -> Animation {
+        let filterTextures = atlas.textureNames.filter {
             $0.containsString("\(identifier)")
-            }.sort {
-                $0 < $1 }.map {
-                    atlas.textureNamed($0)
+            }
+        var textures: [SKTexture]!
+        if repeatingTextures > 1 {
+            var textureStrings:[String] = []
+            for value in filterTextures {
+                var repeatedTextureStrings: [String] = []
+                for _ in 1...repeatingTextures {
+                    repeatedTextureStrings = repeatedTextureStrings + [value]
+                }
+                textureStrings = textureStrings + repeatedTextureStrings
+            }
+            
+            textures = textureStrings.sort {$0 < $1 }.map {atlas.textureNamed($0)}
+            
+        }else {
+            textures = filterTextures.sort {$0 < $1 }.map {atlas.textureNamed($0)}
         }
         return Animation(
             animationState: animationState,
@@ -102,5 +115,6 @@ class AnimationComponent: GKComponent {
             repeatTexturesForever: repeatTexturesForever,
             textureSize: textureSize
         )
+        
     }
 }

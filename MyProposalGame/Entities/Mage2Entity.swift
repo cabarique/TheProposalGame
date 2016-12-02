@@ -73,7 +73,7 @@ class Mage2Entity: SGEntity, ParabolicAttacking {
                                                                   forAnimationState: .Dead, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
         animations[.Rise] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Rise.rawValue,
-                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0))
+                                                                  forAnimationState: .Rise, repeatTexturesForever: false, textureSize: CGSize(width: 56.62, height: 60.0), repeatingTextures: 2)
         animations[.Idle] = AnimationComponent.animationFromAtlas(textureAtlas,
                                                                   withImageIdentifier: AnimationState.Idle.rawValue,
                                                                   forAnimationState: .Idle, repeatTexturesForever: true, textureSize: CGSize(width: 56.62, height: 60.0))
