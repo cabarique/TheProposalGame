@@ -311,6 +311,13 @@ class GameBuildMode: SGScene {
                     label.position = child.position
                     worldLayer.addChild(label)
                     break
+                    
+                case "placeholder_EndDialog":
+                    let label = SKLabelNode(text: "ED")
+                    label.zPosition = GameSettings.GameParams.zValues.zWorld + 1
+                    label.position = child.position
+                    worldLayer.addChild(label)
+                    break
                 
                 default:
                     break

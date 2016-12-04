@@ -16,7 +16,8 @@ class Enemy2Entity: EnemyEntity {
         self.gameScene = scene
         self.lifePoints = 2
         //Initialize components
-        self.spriteComponent = SpriteComponent(entity: self, texture: SKTexture(), size: size, position:position)
+        let texture = SKTexture(image: UIImage.imageWithColor(SKColor.clearColor()))
+        self.spriteComponent = SpriteComponent(entity: self, texture: texture, size: size, position:position)
         self.spriteComponent.node.xScale = -1
         self.spriteComponent.node.alpha = 0
         addComponent(self.spriteComponent)

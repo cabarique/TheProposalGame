@@ -434,6 +434,14 @@ class TileLayer4: TileLayer{
             node.name = "placeholder_Princess"
             node.zPosition = GameSettings.GameParams.zValues.zWorld
             addChild(node)
+        case .tileEndDialog:
+            let node = SKSpriteNode(color: SKColor.clearColor(), size: CGSize(width: 32, height: 32))
+            node.position = location
+            node.name = "placeholder_EndDialog"
+            node.zPosition = GameSettings.GameParams.zValues.zWorld
+            addChild(node)
+            break
+
         default:
             break
         }

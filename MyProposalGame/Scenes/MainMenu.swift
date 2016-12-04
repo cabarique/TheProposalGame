@@ -73,22 +73,22 @@ class MainMenu: SGScene {
 //    buildButton.addChild(dropShadow)
 //    addChild(buildButton)
     
-    let creaditosButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
-    creaditosButton.posByScreen(0.5, y: 0.2)
-    creaditosButton.fontSize = 60
-    creaditosButton.text = lt("CREDITOS")
-    creaditosButton.fontColor = SKColor.blackColor()
-    creaditosButton.zPosition = 10
-    creaditosButton.name = "creditos"
+    let creditosButton = SKLabelNode(fontNamed: GameSettings.standarFontName)
+    creditosButton.posByScreen(0.5, y: 0.2)
+    creditosButton.fontSize = 60
+    creditosButton.text = lt("CREDITOS")
+    creditosButton.fontColor = SKColor.blackColor()
+    creditosButton.zPosition = 10
+    creditosButton.name = "creditos"
     
     let dropShadow = SKLabelNode(fontNamed: GameSettings.standarFontName)
-    dropShadow.fontSize = creaditosButton.fontSize
+    dropShadow.fontSize = creditosButton.fontSize
     dropShadow.fontColor = SKColor.whiteColor()
-    dropShadow.text = creaditosButton.text
-    dropShadow.zPosition = creaditosButton.zPosition + 1
+    dropShadow.text = creditosButton.text
+    dropShadow.zPosition = creditosButton.zPosition + 1
     dropShadow.position = CGPointMake(dropShadow.position.x - 2, dropShadow.position.y - 2)
-    creaditosButton.addChild(dropShadow)
-    addChild(creaditosButton)
+    creditosButton.addChild(dropShadow)
+    addChild(creditosButton)
 
     
     

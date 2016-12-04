@@ -86,6 +86,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     let movementStick = MovementStick(stickName: "MoveStick")
     let jumpButton = JumpButton(buttonName: "JumpButton")
     let fireButton = FireButton(buttonName: "FireButton")
+    var displayFinale = false
     
     //Scores
     let scoreBanner = ScoreBanner(scoreName: "ScoreBanner")
@@ -98,6 +99,7 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     let sndDead = SKAction.playSoundFileNamed("game_over.wav", waitForCompletion: false)
     let sndMeow = SKAction.playSoundFileNamed("meow.mp3", waitForCompletion: false)
     let sndMeow2 = SKAction.playSoundFileNamed("meow", atVolume: 0.8, waitForCompletion: false, withExtension: ".mp3")
+    let sndFinale = SKAction.playSoundFileNamed("meowSong.wav", waitForCompletion: false)
     
     //MARK: Initializer
     
@@ -136,6 +138,9 @@ class GamePlayMode: SGScene, SKPhysicsContactDelegate {
     //MARK: Life Cycle
     
     override func update(currentTime: CFTimeInterval) {
+        if displayFinale {
+            stateMachine.enterState(GameSceneWinState.self)
+        }
         if !pauseLoop {
             //Calculate delta time
             var deltaTime = currentTime - lastUpdateTimeInterval

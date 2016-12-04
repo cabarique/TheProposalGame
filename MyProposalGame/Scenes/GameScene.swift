@@ -36,6 +36,9 @@ class GameScene: SGScene {
     nextScene.scaleMode = self.scaleMode
     self.view?.presentScene(nextScene)
     
+//    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Level_0")
+//    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Level_1")
+//    NSUserDefaults.standardUserDefaults().setBool(true, forKey: "Level_2")
     
 //    let nextScene = GamePlayMode(size: self.scene!.size)
 //    nextScene.levelIndex = 1

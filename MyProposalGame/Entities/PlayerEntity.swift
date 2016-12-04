@@ -127,6 +127,37 @@ class PlayerEntity: SGEntity {
             gameScene.control.willDie = true
         }
         
+        if entity.name == "endEntity" {
+            animationComponent.requestedAnimationState = .Idle
+            let text = "GRACIAS DON GATO!\n\nTU BUSQUEDA HA TERMINADO.\nTE OFRECEMOS UNA NUEVA Y DIVERTIDA AVENTURA."
+            let attributedString = NSMutableAttributedString(string: text)
+            let style = NSMutableParagraphStyle()
+            style.alignment = NSTextAlignment.Center
+            attributedString.addAttributes([
+                NSKernAttributeName: CGFloat(1.4),
+                NSFontAttributeName: UIFont(name: GameSettings.standarFontName, size: 40)!,
+                NSForegroundColorAttributeName: SKColor.whiteColor(),
+                NSParagraphStyleAttributeName: style,
+                NSStrokeColorAttributeName: SKColor.blackColor(),
+                NSStrokeWidthAttributeName: -1
+                ], range: NSRange(location: 0, length: text.characters.count))
+            
+            let myLabel = ASAttributedLabelNode(size: CGSize(width: gameScene.view!.frame.size.width - 40, height: gameScene.view!.frame.size.height - 100))
+            myLabel.attributedString = attributedString
+            myLabel.zPosition = GameSettings.GameParams.zValues.zWorld
+            myLabel.posByScreen(0, y: 0)
+            gameScene.overlayGUI.addChild(myLabel)
+            
+                
+            gameScene.pauseLoop = true
+            SKTAudio.sharedInstance().backgroundMusicPlayer?.volume = 0
+            self.gameScene.runAction(self.gameScene.sndFinale)
+            spriteComponent.node.afterDelay(16, runBlock: {
+                self.gameScene.displayFinale = true
+                
+            })
+        }
+        
     }
     
     func playerDied() {

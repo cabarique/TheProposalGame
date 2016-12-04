@@ -32,6 +32,9 @@
 		4F8890F91D936A2C00563F8A /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F71D936A2C00563F8A /* FireButton.swift */; };
 		4F8890FA1D936A2C00563F8A /* JumpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890F81D936A2C00563F8A /* JumpButton.swift */; };
 		4F8890FC1D936A6200563F8A /* SGSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8890FB1D936A6200563F8A /* SGSpriteNode.swift */; };
+		4F9464D91DF1F930000693D6 /* ASAttributedLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9464D81DF1F930000693D6 /* ASAttributedLabelNode.swift */; };
+		4F9863F31DF347C000E94824 /* meowSong.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4F9863F21DF347C000E94824 /* meowSong.wav */; };
+		4F9863F51DF47BB600E94824 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9863F41DF47BB600E94824 /* UIImage+Extensions.swift */; };
 		4F9DA7751DCBB1BA0046E509 /* GroundProjectileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9DA7741DCBB1BA0046E509 /* GroundProjectileEntity.swift */; };
 		4FBAF8971DEE1FFB001047CA /* CreditsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBAF8961DEE1FFB001047CA /* CreditsScene.swift */; };
 		4FD11F0F1D8F61F900FBBE26 /* gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */; };
@@ -135,6 +138,9 @@
 		4F8890F71D936A2C00563F8A /* FireButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FireButton.swift; path = "Libraries/SG-Engine/FireButton.swift"; sourceTree = "<group>"; };
 		4F8890F81D936A2C00563F8A /* JumpButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JumpButton.swift; path = "Libraries/SG-Engine/JumpButton.swift"; sourceTree = "<group>"; };
 		4F8890FB1D936A6200563F8A /* SGSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SGSpriteNode.swift; path = "Libraries/SG-Engine/SGSpriteNode.swift"; sourceTree = "<group>"; };
+		4F9464D81DF1F930000693D6 /* ASAttributedLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASAttributedLabelNode.swift; path = Libraries/SKUtils/ASAttributedLabelNode.swift; sourceTree = "<group>"; };
+		4F9863F21DF347C000E94824 /* meowSong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = meowSong.wav; path = Resources/Music/meowSong.wav; sourceTree = "<group>"; };
+		4F9863F41DF47BB600E94824 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "Libraries/SKUtils/UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		4F9DA7741DCBB1BA0046E509 /* GroundProjectileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroundProjectileEntity.swift; path = Entities/GroundProjectileEntity.swift; sourceTree = "<group>"; };
 		4FBAF8961DEE1FFB001047CA /* CreditsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreditsScene.swift; path = Scenes/CreditsScene.swift; sourceTree = "<group>"; };
 		4FD11F0E1D8F61F900FBBE26 /* gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = gunshot.wav; path = Resources/Sounds/gunshot.wav; sourceTree = "<group>"; };
@@ -377,6 +383,7 @@
 		4FEA1FDB1D87844D00E96E1A /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				4F9863F21DF347C000E94824 /* meowSong.wav */,
 				DA94845F1D9CB88100EDD1B1 /* background_music_halloween.mp3 */,
 				DA9484611D9CB9AF00EDD1B1 /* background_music_02.wav */,
 				DA9484621D9CB9AF00EDD1B1 /* background_music_intro.wav */,
@@ -467,6 +474,8 @@
 				4FEA200E1D87880200E96E1A /* SKTEffects.swift */,
 				4FEA200F1D87880200E96E1A /* SKTTimingFunctions.swift */,
 				4FEA20101D87880200E96E1A /* Vector3.swift */,
+				4F9464D81DF1F930000693D6 /* ASAttributedLabelNode.swift */,
+				4F9863F41DF47BB600E94824 /* UIImage+Extensions.swift */,
 			);
 			name = SKUtils;
 			sourceTree = "<group>";
@@ -579,6 +588,7 @@
 				DA9484641D9CB9AF00EDD1B1 /* background_music_intro.wav in Resources */,
 				4FF367D31DBFA623006C5CAF /* Princess.atlas in Resources */,
 				DA9484631D9CB9AF00EDD1B1 /* background_music_02.wav in Resources */,
+				4F9863F31DF347C000E94824 /* meowSong.wav in Resources */,
 				4FEA20591D878C8500E96E1A /* Localizable.strings in Resources */,
 				4F5773F81DBED656007CF1FB /* Mage2.atlas in Resources */,
 				4FEA206D1D878CB200E96E1A /* LargeMedia.xcassets in Resources */,
@@ -621,6 +631,7 @@
 				4FEA20251D87882200E96E1A /* SGExtensions.swift in Sources */,
 				4FEA201C1D87880200E96E1A /* SKTAudio.swift in Sources */,
 				4FEB8E2F1DE7D48800DE5EFC /* TileLayer4.swift in Sources */,
+				4F9863F51DF47BB600E94824 /* UIImage+Extensions.swift in Sources */,
 				4FEA20111D87880200E96E1A /* CGFloat+Extensions.swift in Sources */,
 				4F5774081DBEFCCB007CF1FB /* TileLayer1.swift in Sources */,
 				4F9DA7751DCBB1BA0046E509 /* GroundProjectileEntity.swift in Sources */,
@@ -666,6 +677,7 @@
 				4FEA201A1D87880200E96E1A /* SKColor+Extensions.swift in Sources */,
 				4FEA20471D878A4A00E96E1A /* GamePlayMode.swift in Sources */,
 				4FEA20461D878A4A00E96E1A /* GameBuildMode.swift in Sources */,
+				4F9464D91DF1F930000693D6 /* ASAttributedLabelNode.swift in Sources */,
 				4FEA20501D878A5800E96E1A /* AnimationComponent.swift in Sources */,
 				4F8890FA1D936A2C00563F8A /* JumpButton.swift in Sources */,
 				4F5774001DBEE503007CF1FB /* MageMovement.swift in Sources */,

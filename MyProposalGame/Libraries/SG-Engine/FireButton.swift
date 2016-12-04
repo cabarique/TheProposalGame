@@ -56,7 +56,7 @@ class FireButton: SKNode {
         button.alpha = 0.5
         firePressed = false
         self.userInteractionEnabled = false
-        NSTimer.scheduledTimerWithTimeInterval(0.1, repeats: false) { (timer) in
+        self.afterDelay(0.1) {
             self.userInteractionEnabled = true
         }
     }

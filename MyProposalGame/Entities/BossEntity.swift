@@ -22,7 +22,6 @@ class BossEntity: SGEntity, ParabolicAttacking, GroundAttacking, SummonAttacking
     
     var gameScene:GamePlayMode!
     var didRise: Bool = false
-    var riseTime: CGFloat = 0.2
     
     var lifePoints: Int!
     
@@ -37,7 +36,8 @@ class BossEntity: SGEntity, ParabolicAttacking, GroundAttacking, SummonAttacking
         gameScene = scene
         lifePoints = 20
         //Initialize components
-        spriteComponent = SpriteComponent(entity: self, texture: SKTexture(), size: size, position:position)
+        let texture = SKTexture(image: UIImage.imageWithColor(SKColor.clearColor()))
+        spriteComponent = SpriteComponent(entity: self, texture: texture, size: size, position:position)
         spriteComponent.node.xScale = -1
         spriteComponent.node.alpha = 0
         addComponent(spriteComponent)
@@ -86,12 +86,11 @@ class BossEntity: SGEntity, ParabolicAttacking, GroundAttacking, SummonAttacking
         super.updateWithDeltaTime(seconds)
         
         if !didRise && gameScene.camera?.containsNode(spriteComponent.node) == true {
-            riseTime = riseTime - CGFloat(seconds)
-            if riseTime < 0 {
-                self.didRise = true
+            self.didRise = true
+            spriteComponent.node.afterDelay(0.2, runBlock: {
                 self.spriteComponent.node.alpha = 1.0
                 self.animationComponent.requestedAnimationState = .Rise
-            }
+            })
         }
 
     }

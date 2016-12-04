@@ -32,6 +32,7 @@ class LevelSelect: SGScene {
     let levelLayer = SKNode()
     
     override func didMoveToView(view: SKView) {
+        SKTAudio.sharedInstance().backgroundMusicPlayer?.volume = 0.4
         
         let background = SKSpriteNode(imageNamed: "BG")
         background.posByCanvas(0.5, y: 0.5)

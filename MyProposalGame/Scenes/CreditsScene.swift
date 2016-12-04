@@ -13,12 +13,15 @@ class CreditsScreen: SGScene {
     
     var finaleScene:Int = 1
     var background: SKSpriteNode!
+    var textField: UITextView!
     
     override func didMoveToView(view: SKView) {
         
         layoutScene()
         
     }
+    
+    
     
     func layoutScene() {
         
@@ -38,7 +41,7 @@ class CreditsScreen: SGScene {
         background.zPosition = -1
         addChild(background)
         
-        let textField = UITextView(frame: CGRect(x: 20, y: 20, width: view!.frame.size.width - 40, height: view!.frame.size.height - 40))
+        textField = UITextView(frame: CGRect(x: 20, y: 20, width: view!.frame.size.width - 40, height: view!.frame.size.height - 150))
         textField.textColor = SKColor.whiteColor()
         textField.editable = false
         textField.backgroundColor = SKColor.clearColor()
@@ -63,11 +66,14 @@ class CreditsScreen: SGScene {
                 if nodeName == "Next"{
                     let nextScene = MainMenu(size: self.scene!.size)
                     nextScene.scaleMode = self.scaleMode
+                    textField.removeFromSuperview()
                     self.view?.presentScene(nextScene)
                 }
             }
         }
     }
+    
+    
     
     
 }

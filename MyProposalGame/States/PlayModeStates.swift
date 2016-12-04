@@ -156,6 +156,13 @@ class GameSceneInitialState: GameSceneState {
             self.gs.addEntity(finish, toLayer: self.gs.worldLayer)
         }
         
+        gs.worldLayer.enumerateChildNodesWithName("placeholder_EndDialog") { (node, stop) in
+            let finish = FinishEntity(position: node.position, size: CGSize(width: 32, height: 32), texture: SKTexture())
+            finish.name = "endEntity"
+            finish.spriteComponent.node.name = "endNode"
+            self.gs.addEntity(finish, toLayer: self.gs.worldLayer)
+        }
+        
         let GUIAtlas = SKTextureAtlas(named: "GUI")
         gs.worldLayer.enumerateChildNodesWithName("placeholder_Diamond") { (node, stop) -> Void in
             let diamond = GemEntity(position: node.position, size: CGSize(width: 32, height: 29), texture: GUIAtlas.textureNamed("diamondBlue"))
